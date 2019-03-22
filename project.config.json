@@ -1,0 +1,15 @@
+{
+	"description": "ENE",
+	"setting": {
+		"urlCheck": true,
+		"es6": false,
+		"postcss": false,
+		"minified": false,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"appid": "wx14821fda9abe94a9",
+	"projectname": "ene_wechat",
+	"miniprogramRoot": "dist/",
+	"condition": {}
+}
