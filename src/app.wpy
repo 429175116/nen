@@ -1,23 +1,30 @@
 <style lang="less">
-.container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
+@font-face {
+  font-family: 'iconfont';  /* project id 1104556 */
+  src: url('//at.alicdn.com/t/font_1104556_pau0c792cor.eot');
+  src: url('//at.alicdn.com/t/font_1104556_pau0c792cor.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1104556_pau0c792cor.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1104556_pau0c792cor.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1104556_pau0c792cor.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1104556_pau0c792cor.svg#iconfont') format('svg');
 }
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size: 50rpx;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-gouwuche:before { content: "\e602"; } // 购物车
+.icon-tianjia:before { content: "\e6c4"; } // 添加
 </style>
 
 <script>
 import wepy from 'wepy'
 import 'wepy-async-function'
 
-import { setStore } from 'wepy-redux'
-import configStore from './store'
-
-const store = configStore()
-setStore(store)
 
 export default class extends wepy.app {
   config = {
