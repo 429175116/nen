@@ -10,7 +10,7 @@
 <script>
   import wepy from 'wepy'
   import nav from '../components/nav' // 底部导航
-  export default class AboutUs extends wepy.page {
+  export default class PackageList extends wepy.page {
     config = {
       navigationBarTitleText: '套餐'
     }
