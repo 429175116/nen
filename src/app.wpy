@@ -24,13 +24,11 @@
 <script>
 import wepy from 'wepy'
 import 'wepy-async-function'
-
-
 export default class extends wepy.app {
   config = {
     pages: [
-      'pages/user',
       'pages/aboutUs',
+      'pages/user',
       'pages/packageList',
       'pages/index'
     ],
