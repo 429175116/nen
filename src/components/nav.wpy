@@ -5,7 +5,8 @@
   bottom: 0;
   background: #fff;
   border-top: 1rpx solid #f3f1f1;
-  z-index: 5;
+  // padding-bottom: -120rpx;
+  // z-index: 5;
 }
 
 .footer .ft_item {
@@ -13,19 +14,12 @@
   height: 100%;
   text-align: center;
   float: left;
+  padding: 10rpx 0;
+}
+.footer .ft_item text {
+  font-size: 25rpx;
 }
 
-.text {
-  font-size: 24rpx;
-  color: #999;
-}
-
-.footer .ft_item image {
-  height: 50rpx;
-  width: 50rpx;
-  margin: 10rpx auto 0rpx auto;
-  display: block;
-}
 .appointment {
   position: absolute;
   top: 200rpx;
@@ -39,11 +33,6 @@
   padding: 0 60rpx;
   box-sizing: border-box;
   z-index: 3;
-}
-
-.title {
-  margin-top: -80rpx;
-  font-weight: bold;
 }
 
 .appointment_form {
@@ -95,36 +84,40 @@
 .hidden {
   display: none;
 }
-.action{
-  color: #f86e09;
+
+.footer .action .iconfont,
+.footer .action{
+  color: #EE6667 !important;
+}
+.footer,
+.footer .noAction .iconfont{
+  color: #999 !important;
 }
 </style>
 <template>
-  <view>
-    <view class="footer">
-      <view class="ft_item on">
-        <view @tap="goIndex">
-          <image src="/img/{{navImg[0]}}.png" />
-          <text class="text {{navAction[0]}}">首页</text>
-        </view>
+  <view class="footer">
+    <view class="ft_item {{navAction[0]}}">
+      <view @tap="goIndex">
+        <view class="iconfont icon-yuyue"></view>
+        <text class="text">预约</text>
       </view>
-      <view class="ft_item">
-        <view @tap="goExchange">
-          <image src="/img/{{navImg[1]}}.png" />
-          <text class="text {{navAction[1]}}">兑换</text>
-        </view>
+    </view>
+    <view class="ft_item {{navAction[1]}}">
+      <view @tap="goMall">
+        <view class="iconfont icon-shangpinliebiao"></view>
+        <text class="text">商城</text>
       </view>
-      <view class="ft_item">
-        <view @tap="goGameList">
-          <image src="/img/{{navImg[2]}}.png" />
-          <text class="text {{navAction[2]}}">游戏</text>
-        </view>
+    </view>
+    <view class="ft_item {{navAction[2]}}">
+      <view @tap="goCar">
+        <view class="iconfont icon-gouwuche"></view>
+        <text class="text">购物车</text>
       </view>
-      <view class="ft_item">
-        <view @tap="goUser">
-          <image src="/img/{{navImg[3]}}.png" />
-          <text class="text {{navAction[3]}}">我的</text>
-        </view>
+    </view>
+    <view class="ft_item {{navAction[3]}}">
+      <view @tap="goUser">
+        <view class="iconfont icon-gerenzhongxin"></view>
+        <text class="text">个人中心</text>
       </view>
     </view>
   </view>
@@ -132,44 +125,40 @@
 <script>
 import wepy from 'wepy'
 // 校验封装
-import check from '../mixins/check'
+// import check from '../mixins/check'
 export default class Nav extends wepy.component {
-  mixins = [check]
+  // mixins = [check]
   data = {
     userInfo: {},
     guangGaoNode: null,
     name: '',
     phone: '',
     id: '',
-    navImg: ['home1', 'exchange', 'game', 'user'],
     navAction: ['action', 'noAction', 'noAction', 'noAction']
   };
   props = {};
   methods = {
     goIndex() {
-      this.$parent.$parent.globalData.navImg = ['home1', 'exchange', 'game', 'user']
       this.$parent.$parent.globalData.navAction = ['action', 'noAction', 'noAction', 'noAction']
       this.$emit('childFn', '/pages/index')
     },
-    goExchange() {
-      this.$parent.$parent.globalData.navImg = ['home', 'exchange1', 'game', 'user']
+    goMall() {
+      // 顶部导航状态初始化
       this.$parent.$parent.globalData.navAction = ['noAction', 'action', 'noAction', 'noAction']
-      this.$emit('childFn', '/pages/exchangeList')
+      this.$emit('childFn', '/pages/mall')
     },
-    goGameList() {
-      this.$parent.$parent.globalData.navImg = ['home', 'exchange', 'game1', 'user']
+    goCar() {
       this.$parent.$parent.globalData.navAction = ['noAction', 'noAction', 'action', 'noAction']
-      this.$emit('childFn', '/pages/gameList')
+      this.$emit('childFn', '/pages/car')
     },
     goUser() {
-      this.$parent.$parent.globalData.navImg = ['home', 'exchange', 'game', 'user1']
       this.$parent.$parent.globalData.navAction = ['noAction', 'noAction', 'noAction', 'action']
       this.$emit('childFn', '/pages/user')
     }
   };
   onLoad() {
-    this.navImg = this.$parent.$parent.globalData.navImg
     this.navAction = this.$parent.$parent.globalData.navAction
     this.$apply()
   };
 }
+</script>

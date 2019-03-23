@@ -3,16 +3,16 @@
 </style>
 <template>
   <view>
-    index.wepy
+    packageList.wepy
   </view>
 </template>
 
 <script>
   import wepy from 'wepy'
   import nav from '../components/nav' // 底部导航
-  export default class Index extends wepy.page {
+  export default class AboutUs extends wepy.page {
     config = {
-      navigationBarTitleText: '历史'
+      navigationBarTitleText: '套餐'
     }
     components = {
       nav: nav
