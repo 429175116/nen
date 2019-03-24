@@ -98,26 +98,26 @@
   <view class="footer">
     <view class="ft_item {{navAction[0]}}">
       <view @tap="goIndex">
-        <view class="iconfont icon-yuyue"></view>
-        <text class="text">预约</text>
+        <view class="iconfont icon-yiliaohangyedeICON-2"></view>
+        <text class="text">病历</text>
       </view>
     </view>
     <view class="ft_item {{navAction[1]}}">
-      <view @tap="goMall">
-        <view class="iconfont icon-shangpinliebiao"></view>
-        <text class="text">商城</text>
+      <view @tap="goPackageList">
+        <view class="iconfont icon-navicon-pgtcgl"></view>
+        <text class="text">套餐</text>
       </view>
     </view>
     <view class="ft_item {{navAction[2]}}">
-      <view @tap="goCar">
-        <view class="iconfont icon-gouwuche"></view>
-        <text class="text">购物车</text>
+      <view @tap="goUser">
+        <view class="iconfont icon-yiliaohangyedeICON-7"></view>
+        <text class="text">个人中心</text>
       </view>
     </view>
     <view class="ft_item {{navAction[3]}}">
-      <view @tap="goUser">
-        <view class="iconfont icon-gerenzhongxin"></view>
-        <text class="text">个人中心</text>
+      <view @tap="goAboutUs">
+        <view class="iconfont icon-guanyuwomen"></view>
+        <text class="text">关于我们</text>
       </view>
     </view>
   </view>
@@ -138,22 +138,26 @@ export default class Nav extends wepy.component {
   };
   props = {};
   methods = {
+    // 病历
     goIndex() {
       this.$parent.$parent.globalData.navAction = ['action', 'noAction', 'noAction', 'noAction']
       this.$emit('childFn', '/pages/index')
     },
-    goMall() {
+    // 套餐购买
+    goPackageList() {
       // 顶部导航状态初始化
       this.$parent.$parent.globalData.navAction = ['noAction', 'action', 'noAction', 'noAction']
-      this.$emit('childFn', '/pages/mall')
+      this.$emit('childFn', '/pages/packageList')
     },
-    goCar() {
-      this.$parent.$parent.globalData.navAction = ['noAction', 'noAction', 'action', 'noAction']
-      this.$emit('childFn', '/pages/car')
-    },
+    // 个人中心
     goUser() {
-      this.$parent.$parent.globalData.navAction = ['noAction', 'noAction', 'noAction', 'action']
+      this.$parent.$parent.globalData.navAction = ['noAction', 'noAction', 'action', 'noAction']
       this.$emit('childFn', '/pages/user')
+    },
+    // 关于我们
+    goAboutUs() {
+      this.$parent.$parent.globalData.navAction = ['noAction', 'noAction', 'noAction', 'action']
+      this.$emit('childFn', '/pages/aboutUs')
     }
   };
   onLoad() {

@@ -46,11 +46,12 @@
         QQ群：283791150
         电话：029-85798937
         邮箱：services@enuoe.cn
-        
+        地址：陕西省西安市沣东新城协同创新港研发办公楼A座8层-60号
       </text>
-      地址：
-        <view bindtap='intoMap'>陕西省西安市沣东新城协同创新港研发办公楼A座8层-60号</view>
+      <!-- 地址：
+      <view bindtap='intoMap'>陕西省西安市沣东新城协同创新港研发办公楼A座8层-60号</view> -->
     </view>
+    <nav @childFn.user="goPage" />
   </view>
   
 </template>
