@@ -48,6 +48,7 @@
   }
   .item input{
     width: 460rpx;
+    font-size: 30rpx;
   }
 </style>
 <template>
@@ -84,7 +85,6 @@
           </view>
         </view>
       </block>
-      
     </view>
     <nav @childFn.user="goPage" />
   </view>

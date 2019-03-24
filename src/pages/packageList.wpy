@@ -1,9 +1,111 @@
 <style lang="less">
-  
+    .list{
+    width: 750rpx;
+    height: auto;
+    padding: 20rpx;
+    margin-bottom: 130rpx;
+  }
+  .item{
+    width: 710rpx;
+    height: auto;
+    border-bottom: 1rpx solid #ccc;
+    color: #333;
+  }
+  .titleCon, .infoItem{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1rpx solid #eee;
+  }
+  .titleCon{
+    height: 130rpx;
+  }
+  .infoItem{
+    height: 100rpx;
+  }
+  .order{
+    height: 130rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .order view{
+    width: 200rpx;
+    height: 60rpx;
+    border-radius: 60rpx;
+    font-size: 30rpx;
+    background-color: #3498db;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .tiele{
+    width: 600rpx;
+    font-size: 40rpx;
+    
+  }
+  .price{
+    width: 600rpx;
+    font-size: 28rpx;
+    color: #ccc;
+  }
+  .showInfo{
+    width: 110rpx;
+    height: 100%;
+    font-size: 50rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .item label{
+    font-size: 35rpx;
+    width: 250rpx;
+    color: #333;
+  }
+  .item input{
+    width: 460rpx;
+    font-size: 30rpx;
+  }
 </style>
 <template>
   <view>
-    packageList.wepy
+    <view class="list">
+      <block wx:for="{{listData}}" key="index" index="index" item="item">
+        <view class="item">
+          <view class="titleCon">
+            <view>
+              <view class="tiele">{{item.name}}</view>
+              <view class="price">{{item.price}}</view>
+            </view>
+            <view class="showInfo" data-index="{{index}}" @tap="showInfo">
+              <view class="iconfont icon-ai36"></view>
+            </view>
+          </view>
+          <view class="infoList" wx:if="{{item.sta}}">
+            <view class="infoItem">
+              <label>{{item.infoName}}:</label>
+              <input type="text" value="{{item.infoCon}}" />
+            </view>
+            <view class="infoItem">
+              <label>{{item.infoName}}:</label>
+              <input type="text" value="{{item.infoCon}}" />
+            </view>
+            <view class="infoItem">
+              <label>{{item.infoName}}:</label>
+              <input type="text" value="{{item.infoCon}}" />
+            </view>
+            <view class="infoItem">
+              <label>{{item.infoName}}:</label>
+              <input type="text" value="{{item.infoCon}}" />
+            </view>
+            <view class="order">
+              <view @tap="runBuy" data-name="{{item.name}}">购买套餐</view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
     <nav @childFn.user="goPage" />
   </view>
 </template>
@@ -22,7 +124,13 @@
     mixins = []
 
     data = {
-      
+      listData: [
+        {'name': '套餐名称-1', 'price': '￥1000', 'infoName': '套餐详情', 'infoCon': '详情内容', 'sta': true},
+        {'name': '套餐名称-2', 'price': '￥1000', 'infoName': '套餐详情', 'infoCon': '详情内容', 'sta': false},
+        {'name': '套餐名称-3', 'price': '￥1000', 'infoName': '套餐详情', 'infoCon': '详情内容', 'sta': false},
+        {'name': '套餐名称-4', 'price': '￥1000', 'infoName': '套餐详情', 'infoCon': '详情内容', 'sta': false},
+        {'name': '套餐名称-5', 'price': '￥1000', 'infoName': '套餐详情', 'infoCon': '详情内容', 'sta': false}
+      ]
     }
 
     computed = {
@@ -35,6 +143,23 @@
         // 销毁当前页{跳转}
         this.$redirect(url)
       },
+      showInfo(e) {
+        let index = e.currentTarget.dataset.index
+        if (this.listData[index].sta) {
+          this.listData[index]['sta'] = false
+        } else {
+          this.listData[index]['sta'] = true
+        }
+        this.$apply()
+      },
+      runBuy(e) {
+        // 购买套餐
+        let name = e.currentTarget.dataset.name
+        wx.showModal({
+          title: '',
+          content: `购买${name}事件执行`
+        })
+      }
     }
 
     events = {
