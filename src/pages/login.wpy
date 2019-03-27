@@ -4,7 +4,7 @@
 <template>
 <view class="login">
   <view class="logo">
-    <image class="img" src="/img/logo.jpg" />
+    <image class="img" src="http://www.enuoe.cn/enuoe/favicon.ico" />
   </view>
   <view class="form">
     <view class="set">
@@ -79,8 +79,9 @@ export default class Login extends wepy.page {
         this.passwordIcon = 'biyan'
       } else {
         this.passwordInputType = 'password',
-        this.passwordIcon = 'zhengyan'
+        this.passwordIcon = 'in_zhengyan'
       }
+      this.$apply()
     },
     getUserName(e) {
         this.userName = e.detail.value
@@ -92,7 +93,8 @@ export default class Login extends wepy.page {
         this.userName = ''
     },
     submit() {
-      
+      this.$redirect(`/pages/index`)
+      return ''
       if (this.check.isPhone(this.userName)) {
         wx.showModal({
           title: '',

@@ -1,12 +1,12 @@
 <style lang="less">
 @font-face {
   font-family: 'iconfont';  /* project id 1104556 */
-  src: url('//at.alicdn.com/t/font_1104556_xywpl5a08n.eot');
-  src: url('//at.alicdn.com/t/font_1104556_xywpl5a08n.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_1104556_xywpl5a08n.woff2') format('woff2'),
-  url('//at.alicdn.com/t/font_1104556_xywpl5a08n.woff') format('woff'),
-  url('//at.alicdn.com/t/font_1104556_xywpl5a08n.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_1104556_xywpl5a08n.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_1104556_l2hjvssunx.eot');
+  src: url('//at.alicdn.com/t/font_1104556_l2hjvssunx.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1104556_l2hjvssunx.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1104556_l2hjvssunx.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1104556_l2hjvssunx.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1104556_l2hjvssunx.svg#iconfont') format('svg');
 }
 
 .iconfont {
@@ -22,6 +22,20 @@
 .icon-navicon-pgtcgl:before { content: "\e67f"; } // 套餐
 .icon-guanyuwomen:before { content: "\e673"; } // 关于我们
 .icon-ai36:before { content: "\e699"; } // 打开关闭
+.icon-xwj:before { content: "\e605"; } // 显微镜
+.icon-tubiaozhizuo-:before { content: "\e612"; } // 竖杠
+.icon-guanbi:before { content: "\e62b"; } // 关闭
+.icon-biyan:before { content: "\e7ca"; } // 闭眼
+.icon-in_zhengyan:before { content: "\e60e"; } // 睁眼
+.icon-yonghu-tianchong:before { content: "\e670"; } // 用户
+.icon-yanzhengma:before { content: "\e60c"; } // 验证码
+.icon-mimaffffffpx:before { content: "\e604"; } // 密码
+
+.icon-yiliaohangyedeICON-12:before { content: "\e625"; } // 地址
+.icon-yiliaohangyedeICON-2:before { content: "\e610"; } // 预约日期
+.icon-yiliaohangyedeICON-5:before { content: "\e61b"; } // 消息
+
+.icon-yiliaohangyedeICON-3:before { content: "\e611"; } // 智能导诊
 
 
 
@@ -175,9 +189,9 @@ export default class extends wepy.app {
   config = {
     pages: [
       'pages/login',  // 登录
+      'pages/index',  // 历史
       'pages/login_alterPassword',  // 修改密码
       'pages/login_registered',  // 注册
-      'pages/index',  // 历史
       'pages/aboutUs', // 关于我们
       'pages/user', // 个人中心
       'pages/packageList' // 套餐

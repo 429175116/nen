@@ -1,59 +1,476 @@
 <style lang="less">
-  .list{
+  // .list{
+  //   width: 750rpx;
+  //   height: auto;
+  //   padding: 20rpx;
+  //   margin-bottom: 130rpx;
+  // }
+  // .item{
+  //   width: 710rpx;
+  //   height: auto;
+  //   border-bottom: 1rpx solid #ccc;
+  //   color: #333;
+  // }
+  // .titleCon, .infoItem{
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  //   border-bottom: 1rpx solid #eee;
+  // }
+  // .titleCon{
+  //   height: 130rpx;
+  // }
+  // .infoItem{
+  //   height: 100rpx;
+  // }
+  // .tiele{
+  //   width: 600rpx;
+  //   font-size: 40rpx;
+    
+  // }
+  // .time{
+  //   width: 600rpx;
+  //   font-size: 28rpx;
+  //   color: #ccc;
+  // }
+  // .showInfo{
+  //   width: 110rpx;
+  //   height: 100%;
+  //   font-size: 50rpx;
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  // }
+  // .item label{
+  //   font-size: 35rpx;
+  //   width: 250rpx;
+  //   color: #333;
+  // }
+  // .item input{
+  //   width: 460rpx;
+  //   font-size: 30rpx;
+  // }
+  page{
+    background-color: #f5f5f5;
+  }
+  .swiper {
     width: 750rpx;
-    height: auto;
-    padding: 20rpx;
-    margin-bottom: 130rpx;
+    height: 400rpx;
+    overflow: hidden;
   }
-  .item{
-    width: 710rpx;
-    height: auto;
-    border-bottom: 1rpx solid #ccc;
-    color: #333;
+  .swiper image {
+    width: 100%;
+    height: 100%;
   }
-  .titleCon, .infoItem{
+  .topNav{
     display: flex;
     align-items: center;
-    justify-content: center;
-    border-bottom: 1rpx solid #eee;
+    justify-content: space-around;
+    padding: 40rpx 40rpx 30rpx 40rpx;
+    background-color: #fafafa;
   }
-  .titleCon{
-    height: 130rpx;
-  }
-  .infoItem{
-    height: 100rpx;
-  }
-  .tiele{
-    width: 600rpx;
-    font-size: 40rpx;
+  .topNavItem{
     
   }
-  .time{
-    width: 600rpx;
-    font-size: 28rpx;
-    color: #ccc;
-  }
-  .showInfo{
-    width: 110rpx;
-    height: 100%;
-    font-size: 50rpx;
+  .topNavItem view{
+    font-size: 22rpx;
+    color: #6a6a6a;
+    height: 70rpx;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  .item label{
-    font-size: 35rpx;
-    width: 250rpx;
-    color: #333;
+  .topNavItem .iconfont{
+    width: 85rpx;
+    height: 85rpx;
+    border-radius: 85rpx;
+    // background-color: #ffb66c;
+    color: #fff;
+    font-size: 45rpx;
+    margin: auto; 
   }
-  .item input{
-    width: 460rpx;
+  .topNav .topNavItem:nth-child(1) .iconfont{background-color: #ffb66c; }
+  .topNav .topNavItem:nth-child(2) .iconfont{background-color: #63a7f8; }
+  .topNav .topNavItem:nth-child(3) .iconfont{background-color: #ff755e; }
+  .topNav .topNavItem:nth-child(4) .iconfont{background-color: #3ccaf2; }
+  .expert{
+    margin-top: 20rpx;
+    width: 690rpx;
+    padding: 30rpx;
+    height: auto;
+    background-color: #fafafa;
+  }
+  .expertTitle{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .expertTitle view:nth-child(1){
+    color: #353535;
+    font-size: 35rpx;
+    font-weight: 600;
+  }
+  .expertTitle view:nth-child(2){
+    color: #6a6a6a;
+    font-size: 25rpx;
+  }
+  .expertTitle icon{
+    width: 6rpx;
+    font-size: 35rpx;
+    color: #43beaa;
+  }
+  .expertList{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .expertList image{
+    width: 210rpx;
+    height: 210rpx;
+    border-radius: 20rpx;
+  }
+  .expertList{
+    margin-top: 30rpx;
+  }
+  .expertList .expertName,
+  .expertList .expertOffice{
+    text-align: center;
+    padding: 12rpx;
+  }
+  .expertList .expertName{
+    color: #353535;
     font-size: 30rpx;
+    padding-top: 25rpx;
+  }
+  .expertList .expertOffice{
+    color: #6a6a6a;
+    font-size: 22rpx;
+  }
+  .articleTitle{
+    width: 480rpx;
+    font-size: 30rpx;
+    font-weight: 600;
+    color: #353535;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+  }
+  .articleCon{
+    width: 480rpx;
+    height: 120rpx;
+    color: #6a6a6a;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    font-size: 25rpx;
+    padding:10rpx;
+  }
+  .views{
+    width: 480rpx;
+    font-size: 20rpx;
+    color: #6a6a6a;
+    height: 30rpx;
+    line-height: 30rpx;
+    margin-top: 20rpx;
+  }
+  .listaddress{
+    display: block !important;
+  }
+  .infoList{
+    width: 690rpx;
+    height: 60rpx;
+    font-size: 25rpx;
+    color: #6a6a6a;
+  }
+  .infoList icon{
+    font-size: 30rpx;
+    color: #6a6a6a;
+    margin-right: 20rpx;
+  }
+  .buttonList{
+    margin-bottom: 130rpx;
+  }
+  .departmentList{
+    display: block;
+    margin: 0 !important;
+  } 
+  .department{
+    width: 345rpx;
+    height: 90rpx;
+    display: inline-block;
+    margin: 30rpx 0;
+  }
+  .departmentInfoCon{
+    width: 250rpx;
+    padding-left: 10rpx;
+  }
+  .departmentCon{
+    width: 345px;
+    height: 90rpx;
+    display: flex;
+    align-items: center;
+  }
+  .department .iconfont{
+    width: 90rpx;
+    height: 90rpx;
+    border-radius: 90rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #3ccaf2;
+    padding: 0;
+    color: #fff;
+  }
+  // .department view{
+  //   width: 345rpx;
+    
+  // }
+  .department .departmentName{
+    font-size: 28rpx;
+    width: 250rpx;
+    color: #353535;
+  }
+  .department .departmentInfo{
+    font-size: 20rpx;
+    width: 250rpx;
+    color: #6a6a6a;
+  }
+  .service {
+    width:100rpx;
+    height:140rpx;
+    position:fixed;
+    bottom:156rpx;
+    right:10rpx;
+    color:#fff;
+    padding: 0;
+    border: none;
+    background: none !important;
+  }
+  .service::after{
+    border: none;
+  }
+  .service .iconfont{
+    width: 90rpx;
+    height: 90rpx;
+    border-radius: 90rpx;
+    background-color: #ff755e;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+  }
+  .service view{
+    font-size: 23rpx;
+    color: #6a6a6a;
   }
 </style>
 <template>
   <view>
-    <view class="list">
+    <view>
+      <swiper class='swiper' indicator-dots="true" autoplay='true' interval='5000' duration='2000'>
+        <!-- <repeat for="{{bannerList}}" item="item"> -->
+          <swiper-item>
+            <image src="{{bannerImg}}" />
+          </swiper-item>
+          <swiper-item>
+            <image src="{{bannerImg}}" />
+          </swiper-item>
+          <swiper-item>
+            <image src="{{bannerImg}}" />
+          </swiper-item>
+        <!-- </repeat> -->
+        <!-- <repeat for="{{bannerList}}" item="item">
+          <swiper-item>
+            <image src="{{ imgUrl + item.img }}" />
+          </swiper-item>
+        </repeat> -->
+      </swiper>
+    </view>
+    <view class="topNav">
+      <view class="topNavItem">
+        <view class="iconfont icon-xwj"></view>
+        <view>预约挂号</view>
+      </view>
+      <view class="topNavItem">
+        <view class="iconfont icon-xwj"></view>
+        <view>诊所概况</view>
+      </view>
+      <view class="topNavItem">
+        <view class="iconfont icon-xwj"></view>
+        <view>在线咨询</view>
+      </view>
+      <view class="topNavItem">
+        <view class="iconfont icon-xwj"></view>
+        <view>来院路线</view>
+      </view>
+    </view>
+    <view class="expert">
+      <view class="expertTitle">
+        <view>
+          <icon class="iconfont icon-tubiaozhizuo-"></icon>
+          专家推荐
+        </view>
+        <view>
+          查看更多
+        </view>
+      </view>
+      <view class="expertList">
+        <view>
+          <image src="{{bannerImg}}" />
+          <view class="expertName">杨泽方</view>
+          <view class="expertOffice">主治医师</view>
+        </view>
+        <view>
+          <image src="{{bannerImg}}" />
+          <view class="expertName">杨泽方</view>
+          <view class="expertOffice">主治医师</view>
+        </view>
+        <view>
+          <image src="{{bannerImg}}" />
+          <view class="expertName">杨泽方</view>
+          <view class="expertOffice">主治医师</view>
+        </view>
+      </view>
+    </view>
+    <view class="expert">
+      <view class="expertTitle">
+        <view>
+          <icon class="iconfont icon-tubiaozhizuo-"></icon>
+          常见症状
+        </view>
+        <view>
+          <!-- 查看更多 -->
+        </view>
+      </view>
+      <view class="expertList departmentList">
+        <view class="department">
+          <view class="departmentCon">
+            <view class="iconfont icon-yiliaohangyedeICON-3"></view>
+            <view class="departmentInfoCon">
+              <view class="departmentName">儿科</view>
+              <view class="departmentInfo">小儿发烧、咳嗽</view>
+            </view>
+          </view>
+        </view>
+        <view class="department">
+          <view class="departmentCon">
+            <view class="iconfont icon-yiliaohangyedeICON-3"></view>
+            <view class="departmentInfoCon">
+              <view class="departmentName">儿科</view>
+              <view class="departmentInfo">小儿发烧、咳嗽</view>
+            </view>
+          </view>
+        </view>
+        <view class="department">
+          <view class="departmentCon">
+            <view class="iconfont icon-yiliaohangyedeICON-3"></view>
+            <view class="departmentInfoCon">
+              <view class="departmentName">儿科</view>
+              <view class="departmentInfo">小儿发烧、咳嗽</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="expert">
+      <view class="expertTitle">
+        <view>
+          <icon class="iconfont icon-tubiaozhizuo-"></icon>
+          热点关注
+        </view>
+        <view>
+          查看更多
+        </view>
+      </view>
+      <view class="expertList">
+        <view class="article">
+          <view class="articleTitle">文章标题文章标题</view>
+          <view class="articleCon">
+            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+          </view>
+          <view class="views">300次浏览</view>
+        </view>
+        <view>
+          <image src="{{bannerImg}}" />
+        </view>
+      </view>
+      <view class="expertList">
+        <view class="article">
+          <view class="articleTitle">文章标题文章标题</view>
+          <view class="articleCon">
+            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+          </view>
+          <view class="views">300次浏览</view>
+        </view>
+        <view>
+          <image src="{{bannerImg}}" />
+        </view>
+      </view>
+    </view>
+    <view class="expert">
+      <view class="expertTitle">
+        <view>
+          <icon class="iconfont icon-tubiaozhizuo-"></icon>
+          就医环境
+        </view>
+        <view>
+          查看更多
+        </view>
+      </view>
+      <view class="expertList">
+        <view>
+          <image src="{{bannerImg}}" />
+        </view>
+        <view>
+          <image src="{{bannerImg}}" />
+        </view>
+        <view>
+          <image src="{{bannerImg}}" />
+        </view>
+      </view>
+    </view>
+    <view class="expert buttonList">
+      <view class="expertTitle">
+        <view>
+          <icon class="iconfont icon-tubiaozhizuo-"></icon>
+          联系我们
+        </view>
+        <view>
+        </view>
+      </view>
+      <view class="expertList listaddress">
+        <view class="infoList">
+          <icon class="iconfont icon-yiliaohangyedeICON-12"></icon>
+          地址地址地址地址地址地址地址地址地址地址地址地址
+        </view>
+        <view class="infoList">
+          <icon class="iconfont icon-yiliaohangyedeICON-2"></icon>
+          2019-01-30
+        </view>
+        <view class="infoList">
+          <icon class="iconfont icon-yiliaohangyedeICON-5"></icon>
+          029-888888888
+        </view>
+      </view>
+    </view>
+    <!-- <view class='service'>
+      <image src="/img/phone.png" @tap="dialPhone" class="service_img" />
+    </view> -->
+    <button class="service" open-type="contact" session-from="weapp">
+      <icon class="iconfont icon-yiliaohangyedeICON-5"></icon>
+      <view>在线客服</view>
+    </button>
+    <!-- <view class="list">
       <block wx:for="{{listData}}" key="index" index="index" item="item">
         <view class="item">
           <view class="titleCon">
@@ -85,7 +502,7 @@
           </view>
         </view>
       </block>
-    </view>
+    </view> -->
     <nav @childFn.user="goPage" />
   </view>
 </template>
@@ -95,7 +512,7 @@
   import nav from '../components/nav' // 底部导航
   export default class Index extends wepy.page {
     config = {
-      navigationBarTitleText: '历史'
+      navigationBarTitleText: 'XXX诊所'
     }
     components = {
       nav: nav
@@ -115,7 +532,8 @@
         {'name': '病历名称', 'time': '2018-03-20', 'infoName': '详情名称', 'infoCon': '详情内容', 'sta': false},
         {'name': '病历名称', 'time': '2018-03-20', 'infoName': '详情名称', 'infoCon': '详情内容', 'sta': false},
         {'name': '病历名称', 'time': '2018-03-20', 'infoName': '详情名称', 'infoCon': '详情内容', 'sta': false}
-      ]
+      ],
+      bannerImg: 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'
     }
 
     computed = {

@@ -14,7 +14,7 @@
 <view class="login">
   <view class="logo">
     <!-- logo图片 -->
-    <image class="img" src="/img/logo.jpg" />
+    <image class="img" src="http://www.enuoe.cn/enuoe/favicon.ico" />
   </view>
   <view class="form">
     <view class="set">
@@ -102,15 +102,18 @@ export default class Registered extends wepy.page {
       this.userName = ''
     },
     showPassword() {
+      console.log(this.passwordInputType)
       if (this.passwordInputType === 'password') {
         this.passwordInputType = 'text'
         this.passwordIcon = 'biyan'
       } else {
-        passwordInputType = 'password'
-        passwordIcon = 'in_zhengyan'
+        this.passwordInputType = 'password'
+        this.passwordIcon = 'in_zhengyan'
       }
+      this.$apply()
     },
     showPassword2() {
+      console.log(this.passwordInputType2)
       if (this.passwordInputType2 === 'password') {
         this.passwordInputType2 = 'text'
         this.passwordIcon2 = 'biyan'
@@ -118,6 +121,7 @@ export default class Registered extends wepy.page {
         this.passwordInputType2 = 'password'
         this.passwordIcon2 =  'in_zhengyan'
       }
+      this.$apply()
     },
     smsCode() {
       if (this.check.isPhone(this.userName)) {
