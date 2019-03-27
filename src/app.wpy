@@ -22,6 +22,150 @@
 .icon-navicon-pgtcgl:before { content: "\e67f"; } // 套餐
 .icon-guanyuwomen:before { content: "\e673"; } // 关于我们
 .icon-ai36:before { content: "\e699"; } // 打开关闭
+
+
+
+/** 登陆，注册，忘记密码页面的样式--开始 */
+.login .logo{
+  width: 750rpx;
+  height: 300rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin:50rpx 0;
+}
+.login .logo .img{
+  width: 300rpx;
+  height: 300rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login .set{
+  margin: auto;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login .set view{
+  width: 70rpx;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1rpx solid #363636;
+  border-right: 0;
+  color: #363636;
+}
+.login .set .rightIcon{
+  color: #cbcbcb;
+}
+.login .set input{
+  width: 330rpx;
+  height: 80rpx;
+  font-size: 30rpx;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1rpx solid #363636;
+}
+.login .sub{
+  margin-top: 50rpx;
+}
+.login .sub view{
+  width: 470rpx;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1rpx solid #363636;
+  border-radius: 40rpx;
+  color: #fff;
+  background-color: #363636;
+}
+.login .verification{
+  margin: auto;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login .verification .iconfont,
+.login .verification .getCode{
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1rpx solid #363636;
+}
+.login .verification .getCode{
+  width: 170rpx;
+}
+.login .verification .getCode view{
+  width: 170rpx;
+  height: 60rpx;
+  color: #2c4e0a;
+  background-color: #e5f1dc;
+  font-size: 20rpx;
+  margin-bottom: 10rpx;
+  border-radius: 10rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login .verification .iconfont{
+  width: 70rpx;
+  color: #363636;
+}
+.login .verification input{
+  width: 230rpx;
+  height: 80rpx;
+  font-size:30rpx;
+  color:#333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1rpx solid #363636;
+}
+.registered{
+  margin: auto;
+  width: 470rpx;
+  height: 50rpx;
+  font-size: 20rpx;
+  color: #363636;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.registered .alter {
+  color: #9f9f9f;
+}
+
+
+// 多选框样式
+checkbox .wx-checkbox-input{
+  border-radius: 50%;/* 圆角 */
+  width: 40rpx; /* 背景的宽 */
+  height: 40rpx; /* 背景的高 */
+}
+checkbox .wx-checkbox-input.wx-checkbox-input-checked{
+  border: none;
+  background: #fc6800;
+}
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
+  border-radius: 50%;/* 圆角 */
+  width: 40rpx;/* 选中后对勾大小，不要超过背景的尺寸 */
+  height: 40rpx;/* 选中后对勾大小，不要超过背景的尺寸 */
+  line-height: 40rpx;
+  text-align: center;
+  font-size:30rpx; /* 对勾大小 30rpx */
+  color:#fff; /* 对勾颜色 白色 */
+  background: transparent;
+  transform:translate(-50%, -50%) scale(1);
+  -webkit-transform:translate(-50%, -50%) scale(1);
+}
 </style>
 
 <script>
@@ -30,6 +174,9 @@ import 'wepy-async-function'
 export default class extends wepy.app {
   config = {
     pages: [
+      'pages/login',  // 登录
+      'pages/login_alterPassword',  // 修改密码
+      'pages/login_registered',  // 注册
       'pages/index',  // 历史
       'pages/aboutUs', // 关于我们
       'pages/user', // 个人中心
