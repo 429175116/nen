@@ -1,0 +1,200 @@
+<style lang="less">
+page{
+  background-color: #f8f8f8;
+}
+.form-box {
+  width: 100%;
+  background: #fff;
+  padding: 20rpx;
+}
+.row-wrap {
+  width: 690rpx;
+  height: 88rpx;
+  margin: 30rpx 0;
+  font-size: 28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1rpx solid #f1f1f1;
+  font-size: 30rpx;
+}
+.row-wrap label {
+  height: 60rpx;
+  line-height: 60rpx;
+  width: 230rpx;
+}
+.row-wrap input,
+.row-wrap .weui-btn {
+  height: 60rpx;
+  width: 460rpx;
+}
+.save-btn {
+  width: 550rpx;
+  height: 85rpx;
+  font-size: 30rpx;
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(to right, #c0a069, #e9d5ac);
+  position: fixed;
+  bottom: 60rpx;
+  left: 100rpx;
+}
+</style>
+
+<template>
+  <view>
+    <form class="appointment_form" bindsubmit='newAddss'>
+      <view class="form-box">
+        <view class="row-wrap">
+          <label>收货人:</label>
+          <input type="text" placeholder="请输入收货人" name="real_name" />
+        </view>
+        <view class="row-wrap">
+          <label>联系方式:</label>
+          <input type="digit" placeholder="请输入电话号码" name="mobile" />
+        </view>
+        <view class="row-wrap">
+          <label>所在地区:</label>
+          <!-- <input type="text" name="area" /> -->
+          <picker class="weui-btn" mode="region" @change="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+            <view class="weui-btn">
+              {{region}}
+              <!-- {{region[0]}}{{region[1]}}{{region[2]}} -->
+            </view>
+          </picker>
+        </view>
+        <view class="row-wrap">
+          <label>详细地址:</label>
+          <input type="text" placeholder="请输入详细地址" name="address" />
+        </view>
+      </view>
+      <button class="save-btn" formType="submit">确认</button>
+    </form>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+import citys from '../mixins/citys'
+import check from '../mixins/check'
+export default class Newaddss extends wepy.page {
+  mixins = [citys, check]
+  config = {
+    'navigationBarTitleText': '新建地址'
+  };
+  // 生命组件ID
+  components = {
+  };
+  // alias example
+  data = {
+    userInfo: null,
+    invite: 'hide',
+    setLabel: '',
+    labelNum: 0,
+    total: '',
+    city: '',
+    region: '请选择详细地址',
+    customItem: '全部',
+    id: []
+  };
+
+  methods = {
+    bindRegionChange: function (e) {
+      this.region = e.detail.value
+      let area = ''
+      let area1 = ''
+      let area2 = []
+      for (let i in this.region) {
+        if (this.region[i] !== '全部' && this.region[i] !== '请选择详细地址') {
+          area += this.region[i]
+          area1 = this.region[i]
+          area2.push(area1)
+        }
+      }
+      this.region = area
+      this.city = area2
+    },
+    newAddss(e) {
+      // 收货人
+      let realName = e.detail.value.real_name
+      // 电话
+      let mobile = e.detail.value.mobile
+      // 区域
+      let area = this.region
+      let city = this.city
+      // 详细地址
+      let address = e.detail.value.address
+      if (this.check.isNull(realName)) {
+        wepy.showModal({
+          title: '',
+          content: '请输入收货人姓名',
+          showCancel: false
+        })
+        return
+      }
+      if (this.check.isPhone(mobile)) {
+        wepy.showModal({
+          title: '',
+          content: '请输入正确的电话格式',
+          showCancel: false
+        })
+        return
+      }
+      if (this.check.isNull(area) || area === '请选择详细地址') {
+        wepy.showModal({
+          title: '',
+          content: '请选择地区',
+          showCancel: false
+        })
+        return
+      }
+      if (this.check.isNull(address)) {
+        wepy.showModal({
+          title: '',
+          content: '请输入详细地址',
+          showCancel: false
+        })
+        return
+      }
+      wepy.login().then(res => {
+        wx.request({
+          url: `${this.$parent.globalData.requestUrl}/addShipment`,
+          method: 'POST',
+          header: {
+            AuthrizeOpenId: this.$parent.globalData.open_id
+          },
+          data: {
+            // 收货人
+            real_name: realName,
+            // 电话
+            mobile: mobile,
+            area: area,
+            address: address
+          },
+          success: data => {
+              if (data.data.success) {
+                wx.showToast({
+                  title: '添加成功',
+                  duration: 2000,
+                  mask: true,
+                  icon: 'success'
+                })
+                this.$navigate('/pages/addressList?id=' + this.id + '&totalPrice=' + this.total)
+              } else {
+                wx.showModal({
+                  title: '',
+                  content: data.data.errmsg
+                })
+              }
+          }
+        })
+      })
+    }
+  };
+  onLoad(options) {
+    this.id = options.id
+    this.total = options.totalPrice
+    console.log('999999',options)
+  };
+}
+</script>

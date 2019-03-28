@@ -88,15 +88,15 @@
     <view class="userInfpList">
       <view class="item" @tap="goLogin">
         <view>我的订单</view>
-        <icon class="iconfont icon-yiliaohangyedeICON-5"></icon>
+        <icon class="iconfont icon-jiantou"></icon>
       </view>
       <view class="item" @tap="goLogin">
         <view>我的预约</view>
-        <icon class="iconfont icon-yiliaohangyedeICON-5"></icon>
+        <icon class="iconfont icon-jiantou"></icon>
       </view>
-      <view class="item" @tap="goLogin">
-        <view>我的订单</view>
-        <icon class="iconfont icon-yiliaohangyedeICON-5"></icon>
+      <view class="item" @tap="goAddressList">
+        <view>收货地址</view>
+        <icon class="iconfont icon-jiantou"></icon>
       </view>
     </view>
     <nav @childFn.user="goPage" />
@@ -133,7 +133,10 @@
         this.$redirect(url)
       },
       goLogin() {
-
+        this.$navigate(`/pages/login`)
+      },
+      goAddressList() {
+        this.$navigate(`/pages/addressList`)
       }
     }
 

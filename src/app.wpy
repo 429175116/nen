@@ -1,12 +1,12 @@
 <style lang="less">
 @font-face {
   font-family: 'iconfont';  /* project id 1104556 */
-  src: url('//at.alicdn.com/t/font_1104556_l2hjvssunx.eot');
-  src: url('//at.alicdn.com/t/font_1104556_l2hjvssunx.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_1104556_l2hjvssunx.woff2') format('woff2'),
-  url('//at.alicdn.com/t/font_1104556_l2hjvssunx.woff') format('woff'),
-  url('//at.alicdn.com/t/font_1104556_l2hjvssunx.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_1104556_l2hjvssunx.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_1104556_s8xbeu2nwtd.eot');
+  src: url('//at.alicdn.com/t/font_1104556_s8xbeu2nwtd.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1104556_s8xbeu2nwtd.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1104556_s8xbeu2nwtd.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1104556_s8xbeu2nwtd.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1104556_s8xbeu2nwtd.svg#iconfont') format('svg');
 }
 
 .iconfont {
@@ -17,6 +17,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-jiantou:before { content: "\e621"; } // 箭头
 .icon-yiliaohangyedeICON-7:before { content: "\e61d"; } // 我的
 .icon-yiliaohangyedeICON-2:before { content: "\e610"; } // 病历
 .icon-navicon-pgtcgl:before { content: "\e67f"; } // 套餐
@@ -37,6 +38,11 @@
 
 .icon-yiliaohangyedeICON-3:before { content: "\e611"; } // 智能导诊
 
+.icon-kong:before { content: "\e708"; } // 空盒子
+.icon-moren:before { content: "\e62e"; } // 默认地址
+.icon-location:before { content: "\e614"; } // 地址
+.icon-bianji:before { content: "\e62d"; } // 编辑
+.icon-shanchu:before { content: "\e600"; } // 删除
 
 
 /** 登陆，注册，忘记密码页面的样式--开始 */
@@ -196,7 +202,8 @@ export default class extends wepy.app {
       'pages/login_alterPassword',  // 修改密码
       'pages/login_registered',  // 注册
       'pages/aboutUs', // 关于我们
-      
+      'pages/addressList', // 收货地址列表
+      'pages/newAddress', // 新建收货地址
       'pages/packageList' // 套餐
       
     ],
