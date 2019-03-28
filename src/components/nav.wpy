@@ -103,9 +103,9 @@
       </view>
     </view>
     <view class="ft_item {{navAction[1]}}">
-      <view @tap="goPackageList">
+      <view @tap="goService">
         <view class="iconfont icon-navicon-pgtcgl"></view>
-        <text class="text">套餐</text>
+        <text class="text">服务</text>
       </view>
     </view>
     <view class="ft_item {{navAction[2]}}">
@@ -144,10 +144,10 @@ export default class Nav extends wepy.component {
       this.$emit('childFn', '/pages/index')
     },
     // 套餐购买
-    goPackageList() {
+    goService() {
       // 顶部导航状态初始化
       this.$parent.$parent.globalData.navAction = ['noAction', 'action', 'noAction', 'noAction']
-      this.$emit('childFn', '/pages/packageList')
+      this.$emit('childFn', '/pages/service')
     },
     // 个人中心
     goUser() {

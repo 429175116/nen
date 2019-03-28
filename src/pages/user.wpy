@@ -4,24 +4,48 @@
   }
   .user{
     width: 750rpx;
-    height: 300rpx;
-    background-color: #3498db;
-    padding-top: 100rpx;
+    height: 340rpx;
+    background-color: #43bea9;
+    padding-top: 30rpx;
   }
-  .user view{
+  .img1{
+    width: 750rpx;
+    height: 240rpx;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 750rpx;
-    height: auto;
-    min-height: 80rpx;
-    font-size: 30rpx;
-    color: #ccc;
+  }
+  .img2{
+    width: 240rpx;
+    height: 240rpx;
+    border-radius: 240rpx;
+    background-color: #57c7b6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .img3{
+    width: 210rpx;
+    height: 210rpx;
+    border-radius: 210rpx;
+    background-color: #6fd0c0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .user image{
-    width: 160rpx;
-    height: 160rpx;
-    border-radius: 160rpx;
+    width: 180rpx;
+    height: 180rpx;
+    border-radius: 180rpx;
+  }
+  .userName{
+    width: 750rpx;
+    height: 30rpx;
+    line-height: 30rpx;
+    text-align: center;
+    color: #fff;
+    font-size: 30rpx;
+    margin-top: 10rpx;
   }
   .userInfpList{
     width: 750rpx;
@@ -32,13 +56,12 @@
   }
   .item{
     width: 710rpx;
-    height: auto;
-    margin: 20rpx;
-    padding-top: 20rpx;
+    height: 90rpx;
+    margin: 0 20rpx;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    border-bottom: 1rpx solid #ddd;
+    justify-content: space-between;
+    border-bottom: 1rpx solid #e7e7e7;
     color: #555;
     font-size: 30rpx;
   }
@@ -53,43 +76,27 @@
 <template>
   <view>
     <view class="user">
-      <view class="img">
-        <image src="{{bannerImg}}" />
+      <view class="img1">
+        <view class="img2">
+          <view class="img3">
+            <image @tap="goLogin" src="{{bannerImg}}" />
+          </view>
+        </view>
       </view>
-      <view>name</view>
+      <view class="userName">亦余心之所善兮</view>
     </view>
     <view class="userInfpList">
-      <view class="item">
-        <label>titleName:</label>
-        <input type="text" value="123123" />
+      <view class="item" @tap="goLogin">
+        <view>我的订单</view>
+        <icon class="iconfont icon-yiliaohangyedeICON-5"></icon>
       </view>
-      <view class="item">
-        <label>titleName:</label>
-        <input type="text" value="123123" />
+      <view class="item" @tap="goLogin">
+        <view>我的预约</view>
+        <icon class="iconfont icon-yiliaohangyedeICON-5"></icon>
       </view>
-      <view class="item">
-        <label>titleName:</label>
-        <input type="text" value="123123" />
-      </view>
-      <view class="item">
-        <label>titleName:</label>
-        <input type="text" value="123123" />
-      </view>
-      <view class="item">
-        <label>titleName:</label>
-        <input type="text" value="123123" />
-      </view>
-      <view class="item">
-        <label>titleName:</label>
-        <input type="text" value="123123" />
-      </view>
-      <view class="item">
-        <label>titleName:</label>
-        <input type="text" value="123123" />
-      </view>
-      <view class="item">
-        <label>titleName:</label>
-        <input type="text" value="123123" />
+      <view class="item" @tap="goLogin">
+        <view>我的订单</view>
+        <icon class="iconfont icon-yiliaohangyedeICON-5"></icon>
       </view>
     </view>
     <nav @childFn.user="goPage" />
@@ -125,27 +132,8 @@
         // 销毁当前页{跳转}
         this.$redirect(url)
       },
-      // 控制背景图大小
-      autoImage(e) {
-        // 获取图片的宽高
-        let index = e.currentTarget.dataset.index
-        var imgW = e.detail.width
-        var imgH = e.detail.height
-        // 计算图片比例
-        var imgScale = imgW / imgH
-        // 声明自适应宽高变量
-        var autoW = ''
-        var autoH = ''
-        // 获取屏幕宽度，并将图片设置为屏幕等宽
-        wx.getSystemInfo({
-          success: res => {
-            autoW = res.windowWidth
-            autoH = autoW / imgScale
-            this.autoW = autoW
-            this.autoH = autoH
-            this.$apply()
-          }
-        })
+      goLogin() {
+
       }
     }
 

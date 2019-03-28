@@ -1,0 +1,109 @@
+<style lang="less">
+  page{
+    background-color: #fafafa;
+  }
+  .list{
+    width: 750rpx;
+    height: auto;
+    margin-bottom: 130rpx;
+  }
+  .item{
+    width: 330rpx;
+    height: 450rpx;
+    display: inline-block;
+    margin: 30rpx 0 0 30rpx;
+    background-color: #fff;
+  }
+  .item image{
+    width: 330rpx;
+    height: 330rpx;
+  }
+  .info{
+    width: 330rpx;
+    height: 120rpx;
+  }
+  .info view{
+    width: 290rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+    font-size: 26rpx;
+    margin: 0 20rpx;
+    margin-top: 10rpx;
+  }
+  .info view:nth-child(1){
+    color: #333;
+  }
+  .info view:nth-child(2){
+    color: #ba5556;
+  }
+</style>
+<template>
+  <view>
+    <view class="list">
+      <view class="item">
+        <image src="{{bannerImg}}" />
+        <view class="info">
+          <view>戒烟管理</view>
+          <view>￥ 100</view>
+        </view>
+      </view>
+      <view class="item">
+        <image src="{{bannerImg}}" />
+        <view class="info">
+          <view>戒烟管理</view>
+          <view>￥ 100</view>
+        </view>
+      </view>
+      <view class="item">
+        <image src="{{bannerImg}}" />
+        <view class="info">
+          <view>戒烟管理</view>
+          <view>￥ 100</view>
+        </view>
+      </view>
+    </view>
+    
+    <nav @childFn.user="goPage" />
+  </view>
+  
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import nav from '../components/nav' // 底部导航
+  export default class Service extends wepy.page {
+    config = {
+      navigationBarTitleText: '服务'
+    }
+    components = {
+      nav: nav
+    }
+
+    mixins = []
+
+    data = {
+      autoW: 0,
+      autoH: 0,
+      bannerImg: 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'
+    }
+
+    computed = {
+      
+    }
+
+    methods = {
+      // 底部导航跳转
+      goPage (url, evt) {
+        // 销毁当前页{跳转}
+        this.$redirect(url)
+      }
+    }
+    events = {
+  
+    }
+
+    onLoad() {
+      
+    }
+  }
+</script>
