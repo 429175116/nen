@@ -8,7 +8,7 @@
     margin-bottom: 130rpx;
   }
   .item{
-    width: 330rpx;
+    width: 340rpx;
     height: 450rpx;
     display: inline-block;
     margin: 30rpx 0 0 30rpx;
