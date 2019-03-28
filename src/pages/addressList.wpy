@@ -94,7 +94,7 @@ page{
   
 }
 .moren{
-  width: 130rpx !important;
+  width: 140rpx !important;
 }
 .morenSel, .morenSel icon{
   color: #ca0c16 !important;
@@ -148,7 +148,7 @@ page{
         </view>
         <view class="moren" data-id="" @tap="defaultAddress">
           <icon class="iconfont icon-moren" />
-          默认地址
+          选为默认
         </view>
       </view>
     </view>

@@ -194,11 +194,10 @@ import 'wepy-async-function'
 export default class extends wepy.app {
   config = {
     pages: [
+      'pages/index',  // 首页
       'pages/user', // 个人中心
       'pages/service',  // 服务
-      'pages/index',  // 首页
       'pages/login',  // 登录
-      
       'pages/login_alterPassword',  // 修改密码
       'pages/login_registered',  // 注册
       'pages/aboutUs', // 关于我们

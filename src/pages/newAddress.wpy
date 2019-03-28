@@ -34,7 +34,7 @@ page{
   font-size: 30rpx;
   text-align: center;
   color: #fff;
-  background: linear-gradient(to right, #c0a069, #e9d5ac);
+  background-color: #43bea9;
   position: fixed;
   bottom: 60rpx;
   left: 100rpx;

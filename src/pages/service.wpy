@@ -8,18 +8,18 @@
     margin-bottom: 130rpx;
   }
   .item{
-    width: 340rpx;
+    width: 335rpx;
     height: 450rpx;
     display: inline-block;
     margin: 30rpx 0 0 30rpx;
     background-color: #fff;
   }
   .item image{
-    width: 330rpx;
+    width: 335rpx;
     height: 330rpx;
   }
   .info{
-    width: 330rpx;
+    width: 335rpx;
     height: 120rpx;
   }
   .info view{
