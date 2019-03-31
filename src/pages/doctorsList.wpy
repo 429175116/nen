@@ -1,21 +1,15 @@
 <style lang="less">
 .expertList{
-  // display: flex;
-  // align-items: center;
-  // justify-content: space-between;
-  margin: 15rpx 0;
   background-color: #fff;
-  width:690rpx;
-  padding:30rpx;
-  height:auto;
+  width: 750rpx;
+  // padding: 20rpx;
+  height: auto;
 }
 .item{
   width: 335rpx;
   display: inline-block;
   margin-bottom: 20rpx;
-}
-.item:nth-child(even){
-  margin-left: 25rpx;
+  margin: 20rpx;
 }
 .expertList image{
   width: 335rpx;
