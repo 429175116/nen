@@ -135,7 +135,7 @@
   import nav from '../components/nav' // 底部导航
   export default class DoctorsInfo extends wepy.page {
     config = {
-      navigationBarTitleText: '关于我们'
+      navigationBarTitleText: '医师信息'
     }
     components = {
       nav: nav
