@@ -1,0 +1,130 @@
+<style lang="less">
+.description{
+  width: 690rpx;
+  height: auto;
+  padding: 30rpx;
+  line-height: 40rpx;
+  font-size: 30rpx;
+  color: #333;
+  background-color: #fff;
+}
+.list{
+  width: 690rpx;
+  height: auto;
+  padding: 30rpx;
+  border-top: 1rpx solid #c1c1c1;
+}
+.form-box {
+  width: 100%;
+  background: #fff;
+  padding: 20rpx;
+}
+.row-wrap {
+  width: 690rpx;
+  height: 88rpx;
+  margin: 30rpx 0;
+  font-size: 28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1rpx solid #f1f1f1;
+  font-size: 30rpx;
+}
+.row-wrap label {
+  height: 60rpx;
+  line-height: 60rpx;
+  width: 230rpx;
+}
+.row-wrap input,
+.row-wrap .weui-btn {
+  height: 60rpx;
+  line-height: 60rpx;
+  width: 460rpx;
+}
+.save-btn {
+  width: 550rpx;
+  height: 85rpx;
+  font-size: 30rpx;
+  text-align: center;
+  color: #fff;
+  background-color: #43bea9;
+  position: fixed;
+  bottom: 60rpx;
+  left: 100rpx;
+}
+</style>
+<template>
+<view>
+  <view class="description">预约时间为周一至周日，早上9点到下午8点，变更时间请及时联系诊所</view>
+  <view class="expert">
+    <view class="expertTitle">
+      <view>
+        <icon class="iconfont icon-tubiaozhizuo-"></icon>
+        免费预约挂号
+      </view>
+      <view></view>
+    </view>
+  </view>
+  <view class="list">
+      <view class="row-wrap">
+        <label>日期:</label>
+        <picker class="weui-btn" mode="date" value="{{dateValue}}" start="2019-01-01" end="2020-12-31" bindchange="datePickerBindchange">
+          当前日期选择: {{dateValue}}
+        </picker>
+      </view>
+      <view class="row-wrap">
+        <label>就诊科室:</label>
+        <picker class="weui-btn" bindchange="bindPickerChange" value="{{index}}" range="{{department}}">
+          <view class="picker">
+            当前选择：{{department[index]}}
+          </view>
+        </picker>
+      </view>
+      <view class="row-wrap">
+        <label>就诊人:</label>
+        <input type="digit" placeholder="请输入就诊人" name="mobile" />
+      </view>
+      <view class="row-wrap">
+        <label>联系方式:</label>
+        <input type="text" placeholder="请输入联系方式" name="address" />
+      </view>
+    </view>
+    <button class="save-btn" formType="submit">确认</button>
+</view>
+</template>
+
+<script>
+import wepy from 'wepy';
+export default class Reservation extends wepy.page {
+  config = {
+    navigationBarTitleText: '免费预约'
+  };
+  components = {
+  };
+
+  mixins = [];
+
+  data = {
+    department: ['科室1', '科室2', '科室3', '科室4'],
+    index: 0
+  };
+
+  computed = {}
+
+  methods = {
+    datePickerBindchange(e){
+      this.dateValue = e.detail.value
+    },
+    bindPickerChange(e) {
+      this.index = e.detail.value
+    }
+  }
+
+  events = {}
+
+  onLoad() {
+
+  }
+
+}
+</script>

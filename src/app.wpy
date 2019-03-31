@@ -186,6 +186,36 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
   transform:translate(-50%, -50%) scale(1);
   -webkit-transform:translate(-50%, -50%) scale(1);
 }
+// 公共样式
+page{
+    background-color: #f5f5f5;
+  }
+.expert{
+  margin-top: 20rpx;
+  width: 690rpx;
+  padding: 30rpx;
+  height: auto;
+  background-color: #fafafa;
+}
+.expertTitle{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.expertTitle view:nth-child(1){
+  color: #353535;
+  font-size: 35rpx;
+  font-weight: 600;
+}
+.expertTitle view:nth-child(2){
+  color: #6a6a6a;
+  font-size: 25rpx;
+}
+.expertTitle icon{
+  width: 6rpx;
+  font-size: 35rpx;
+  color: #43beaa;
+}
 </style>
 
 <script>
@@ -194,6 +224,8 @@ import 'wepy-async-function'
 export default class extends wepy.app {
   config = {
     pages: [
+      
+      'pages/reservation',  // 预约输入
       'pages/index',  // 首页
       'pages/user', // 个人中心
       'pages/service',  // 服务
