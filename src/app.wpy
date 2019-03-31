@@ -216,6 +216,34 @@ page{
   font-size: 35rpx;
   color: #43beaa;
 }
+// ----------传说中性感的分割线-------------
+.topNav{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 40rpx 40rpx 30rpx 40rpx;
+  background-color: #fafafa;
+}
+.topNavItem view{
+  font-size: 22rpx;
+  color: #6a6a6a;
+  height: 70rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.topNavItem .iconfont{
+  width: 85rpx;
+  height: 85rpx;
+  border-radius: 85rpx;
+  color: #fff;
+  font-size: 45rpx;
+  margin: auto; 
+}
+.topNav .topNavItem:nth-child(1) .iconfont{background-color: #ffb66c; }
+.topNav .topNavItem:nth-child(2) .iconfont{background-color: #63a7f8; }
+.topNav .topNavItem:nth-child(3) .iconfont{background-color: #ff755e; }
+.topNav .topNavItem:nth-child(4) .iconfont{background-color: #3ccaf2; }
 </style>
 
 <script>
@@ -224,6 +252,8 @@ import 'wepy-async-function'
 export default class extends wepy.app {
   config = {
     pages: [
+      
+      'pages/doctorsInfo',  // 医师详情
       'pages/index',  // 首页
       'pages/reservation',  // 预约输入
       

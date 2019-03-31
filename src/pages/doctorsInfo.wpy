@@ -1,0 +1,130 @@
+<style lang="less">
+.doctorsInfo{
+  width: 750rpx;
+  height: 400rpx;
+  background-color: #588dd6;
+}
+.doctorsInfo image{
+  width: 210rpx;
+  height: 210rpx;
+  margin: 30rpx;
+}
+.doctorsInfo .img,
+.doctorsInfo .name,
+.doctorsInfo .info{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 30rpx;
+}
+.doctorsInfo .info{
+  font-size: 25rpx;
+  margin-top: 15rpx;
+}
+.list view{
+  font-size: 27rpx;
+  color: #666;
+  padding: 15rpx 20rpx;
+  display: inline-block;
+  border: 1rpx solid #c4c4c4;
+  border-radius: 50rpx;
+  margin: 15rpx 20rpx;
+}
+.description{
+  color: #6a6a6a;
+  font-size: 26rpx;
+}
+</style>
+<template>
+<view>
+  <view class="doctorsInfo">
+    <view class="img">
+      <image src="{{bannerImg}}" />
+    </view>
+    <view class="name">杨泽方</view>
+    <view class="info">主治医师·从业18年</view>
+  </view>
+  <view class="topNav">
+    <view class="topNavItem" @tap="registered">
+      <view class="iconfont icon-xwj"></view>
+      <view>预约挂号</view>
+    </view>
+    <view class="topNavItem">
+      <view class="iconfont icon-xwj"></view>
+      <view>诊所概况</view>
+    </view>
+    <view class="topNavItem">
+      <view class="iconfont icon-xwj"></view>
+      <view>在线咨询</view>
+    </view>
+    <view class="topNavItem">
+      <view class="iconfont icon-xwj"></view>
+      <view>来院路线</view>
+    </view>
+  </view>
+  <view class="expert">
+    <view class="expertTitle">
+      <view>
+        <icon class="iconfont icon-tubiaozhizuo-"></icon>
+        擅长疾病
+      </view>
+      <view> </view>
+    </view>
+    <view class="list">
+      <view>儿科</view>
+      <view>儿科</view>
+      <view>儿科</view>
+      <view>儿科</view>
+      <view>儿科</view>
+      <view>儿科</view>
+    </view>
+  </view>
+  <view class="expert">
+    <view class="expertTitle">
+      <view>
+        <icon class="iconfont icon-tubiaozhizuo-"></icon>
+        简介
+      </view>
+      <view> </view>
+    </view>
+    <p class="description">
+      儿科主治医师，18年儿科执行经验，云诊室参与者，国内权威医药生物专业论坛担任专业儿科版主及资深论坛管理员，致力于全科医学及儿科健康管理新模式的不断探索。
+    </p>
+  </view>
+</view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import nav from '../components/nav' // 底部导航
+  export default class DoctorsInfo extends wepy.page {
+    config = {
+      navigationBarTitleText: '关于我们'
+    }
+    components = {
+      nav: nav
+    }
+
+    mixins = []
+
+    data = {
+      bannerImg: 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'
+    }
+
+    computed = {
+      
+    }
+
+    methods = {
+      
+    }
+    events = {
+  
+    }
+
+    onLoad() {
+      
+    }
+  }
+</script>
