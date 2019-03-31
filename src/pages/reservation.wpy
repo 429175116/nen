@@ -69,15 +69,13 @@
       <view class="row-wrap">
         <label>日期:</label>
         <picker class="weui-btn" mode="date" value="{{dateValue}}" start="2019-01-01" end="2020-12-31" bindchange="datePickerBindchange">
-          当前日期选择: {{dateValue}}
+          <view class="picker">{{dateValue}}</view>
         </picker>
       </view>
       <view class="row-wrap">
         <label>就诊科室:</label>
         <picker class="weui-btn" bindchange="bindPickerChange" value="{{index}}" range="{{department}}">
-          <view class="picker">
-            当前选择：{{department[index]}}
-          </view>
+          <view class="picker">{{department[index]}}</view>
         </picker>
       </view>
       <view class="row-wrap">
@@ -105,6 +103,7 @@ export default class Reservation extends wepy.page {
   mixins = [];
 
   data = {
+    dateValue: '日期选择',
     department: ['科室1', '科室2', '科室3', '科室4'],
     index: 0
   };
