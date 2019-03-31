@@ -35,6 +35,37 @@
   color: #6a6a6a;
   font-size: 26rpx;
 }
+.service {
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 90rpx;
+  position: fixed;
+  bottom: 90rpx;
+  right: 10rpx;
+  color: #fff;
+  padding: 0;
+  border: none;
+  background: rgba(29, 28, 28, 0.26);
+  padding: 15rpx;
+}
+.service::after{
+  border: none;
+}
+.service .iconfont{
+  width: 30rpx;
+  height: 30rpx;
+  color: #fff;
+  font-size: 30rpx;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.service view{
+  height: 30rpx;
+  font-size: 23rpx;
+  color: #fff;
+}
 </style>
 <template>
 <view>
@@ -92,6 +123,10 @@
       儿科主治医师，18年儿科执行经验，云诊室参与者，国内权威医药生物专业论坛担任专业儿科版主及资深论坛管理员，致力于全科医学及儿科健康管理新模式的不断探索。
     </p>
   </view>
+  <button class="service" open-type="share" session-from="weapp">
+    <icon class="iconfont icon-yiliaohangyedeICON-5"></icon>
+    <view>分享</view>
+  </button>
 </view>
 </template>
 
@@ -125,6 +160,13 @@
 
     onLoad() {
       
+    }
+    onShareAppMessage() {
+      let positionId = this.data.positionId
+      return {
+          title: '分享医师-杨泽方',
+          path: 'pages/doctorsInfo'
+      }
     }
   }
 </script>
