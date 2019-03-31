@@ -252,7 +252,10 @@ import 'wepy-async-function'
 export default class extends wepy.app {
   config = {
     pages: [
+      
       'pages/index',  // 首页
+      'pages/artileList', // 文章列表
+      'pages/artileDetail',  // 文章详情
       'pages/department',  // 科室详情
       'pages/doctorsInfo',  // 医师详情
       'pages/reservation',  // 预约输入
@@ -265,7 +268,6 @@ export default class extends wepy.app {
       'pages/addressList', // 收货地址列表
       'pages/newAddress', // 新建收货地址
       'pages/packageList' // 套餐
-      
     ],
     window: {
       backgroundTextStyle: 'light',

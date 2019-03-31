@@ -374,11 +374,11 @@
           <icon class="iconfont icon-tubiaozhizuo-"></icon>
           热点关注
         </view>
-        <view>
+        <view @tap="gogoArtileList">
           查看更多
         </view>
       </view>
-      <view class="expertList">
+      <view class="expertList" @tap="goArtileDetail">
         <view class="article">
           <view class="articleTitle">文章标题文章标题</view>
           <view class="articleCon">
@@ -395,7 +395,7 @@
           <image src="{{bannerImg}}" />
         </view>
       </view>
-      <view class="expertList">
+      <view class="expertList" @tap="goArtileDetail">
         <view class="article">
           <view class="articleTitle">文章标题文章标题</view>
           <view class="articleCon">
@@ -562,6 +562,14 @@
       // 查看科室详情
       goDepartment() {
         this.$navigate(`/pages/department`)
+      },
+      // 查看文章详情
+      goArtileDetail() {
+        this.$navigate(`/pages/artileDetail`)
+      },
+      // 进入文章列表
+      gogoArtileList() {
+        this.$navigate(`/pages/artileList`)
       }
     }
 

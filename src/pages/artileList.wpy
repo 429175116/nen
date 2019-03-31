@@ -1,0 +1,107 @@
+<style lang="less">
+.expertList{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 15rpx 0;
+  background-color: #fff;
+  width:690rpx;
+  padding:30rpx;
+  height:auto;
+}
+.expertList image{
+  width: 210rpx;
+  height: 210rpx;
+  border-radius: 20rpx;
+}
+.articleTitle{
+  width: 480rpx;
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #353535;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.articleCon{
+  width: 480rpx;
+  height: 120rpx;
+  color: #6a6a6a;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  font-size: 25rpx;
+  padding:10rpx;
+}
+.views{
+  width: 480rpx;
+  font-size: 20rpx;
+  color: #6a6a6a;
+  height: 30rpx;
+  line-height: 30rpx;
+  margin-top: 20rpx;
+}
+</style>
+<template>
+  <view class="">
+    <view class="expertList" @tap="goArtileDetail">
+      <view class="article">
+        <view class="articleTitle">文章标题文章标题</view>
+        <view class="articleCon">
+          文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+          文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+          文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+          文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+          文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+          文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+        </view>
+        <view class="views">300次浏览</view>
+      </view>
+      <view>
+        <image src="{{bannerImg}}" />
+      </view>
+    </view>
+    <view class="expertList" @tap="goArtileDetail">
+      <view class="article">
+        <view class="articleTitle">文章标题文章标题</view>
+        <view class="articleCon">
+          文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+          文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+          文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+          文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+          文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+          文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+        </view>
+        <view class="views">300次浏览</view>
+      </view>
+      <view>
+        <image src="{{bannerImg}}" />
+      </view>
+    </view>
+  </view>
+</template>
+<script>
+  import wepy from 'wepy'
+  export default class ArtileList extends wepy.page {
+    config = {
+      navigationBarTitleText: '文章列表'
+    }
+    data = {
+      imgRequestUrl: '',
+      artileData: null,
+      autoW: [],
+      autoH: [],
+      bannerImg: 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'
+    }
+    methods = {
+      // 查看文章详情
+      goArtileDetail() {
+        this.$navigate(`/pages/artileDetail`)
+      }
+    }
+    onLoad(parent) {
+      // this.imgRequestUrl = this.$parent.globalData.imgRequestUrl
+      // 获取文章列表数据
+      // this.getArtile(parent.id)
+    }
+  }
+</script>
