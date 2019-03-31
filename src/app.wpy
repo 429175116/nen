@@ -252,9 +252,9 @@ import 'wepy-async-function'
 export default class extends wepy.app {
   config = {
     pages: [
+      'pages/index',  // 首页
       'pages/department',  // 科室详情
       'pages/doctorsInfo',  // 医师详情
-      'pages/index',  // 首页
       'pages/reservation',  // 预约输入
       'pages/user', // 个人中心
       'pages/service',  // 服务

@@ -311,17 +311,17 @@
         </view>
       </view>
       <view class="expertList">
-        <view>
+        <view @tap="goDoctorsInfo">
           <image src="{{bannerImg}}" />
           <view class="expertName">杨泽方</view>
           <view class="expertOffice">主治医师</view>
         </view>
-        <view>
+        <view @tap="goDoctorsInfo">
           <image src="{{bannerImg}}" />
           <view class="expertName">杨泽方</view>
           <view class="expertOffice">主治医师</view>
         </view>
-        <view>
+        <view @tap="goDoctorsInfo">
           <image src="{{bannerImg}}" />
           <view class="expertName">杨泽方</view>
           <view class="expertOffice">主治医师</view>
@@ -339,7 +339,7 @@
         </view>
       </view>
       <view class="expertList departmentList">
-        <view class="department">
+        <view class="department" @tap="goDepartment">
           <view class="departmentCon">
             <view class="iconfont icon-yiliaohangyedeICON-3"></view>
             <view class="departmentInfoCon">
@@ -348,7 +348,7 @@
             </view>
           </view>
         </view>
-        <view class="department">
+        <view class="department" @tap="goDepartment">
           <view class="departmentCon">
             <view class="iconfont icon-yiliaohangyedeICON-3"></view>
             <view class="departmentInfoCon">
@@ -357,7 +357,7 @@
             </view>
           </view>
         </view>
-        <view class="department">
+        <view class="department" @tap="goDepartment">
           <view class="departmentCon">
             <view class="iconfont icon-yiliaohangyedeICON-3"></view>
             <view class="departmentInfoCon">
@@ -554,6 +554,14 @@
       // 挂号
       registered() {
         this.$navigate(`/pages/reservation`)
+      },
+      // 查看医师详情
+      goDoctorsInfo() {
+        this.$navigate(`/pages/doctorsInfo`)
+      },
+      // 查看科室详情
+      goDepartment() {
+        this.$navigate(`/pages/department`)
       }
     }
 

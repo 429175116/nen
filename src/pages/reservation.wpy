@@ -13,6 +13,7 @@
   height: auto;
   padding: 30rpx;
   border-top: 1rpx solid #c1c1c1;
+  background-color: #fafafa;
 }
 .form-box {
   width: 100%;
