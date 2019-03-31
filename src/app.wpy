@@ -254,9 +254,11 @@ export default class extends wepy.app {
     pages: [
       
       'pages/index',  // 首页
+      'pages/surroundings',  // 诊所环境
       'pages/artileList', // 文章列表
       'pages/artileDetail',  // 文章详情
       'pages/department',  // 科室详情
+      'pages/doctorsList',  // 医师列表
       'pages/doctorsInfo',  // 医师详情
       'pages/reservation',  // 预约输入
       'pages/user', // 个人中心

@@ -1,0 +1,111 @@
+<style lang="less">
+.expertList{
+  // display: flex;
+  // align-items: center;
+  // justify-content: space-between;
+  margin: 15rpx 0;
+  background-color: #fff;
+  width:690rpx;
+  padding:30rpx;
+  height:auto;
+}
+.item{
+  width: 335rpx;
+  display: inline-block;
+  margin-bottom: 20rpx;
+}
+.item:nth-child(even){
+  margin-left: 25rpx;
+}
+.expertList image{
+  width: 335rpx;
+  height: 335rpx;
+  border-radius: 20rpx;
+}
+.expertList .expertName,
+.expertList .expertOffice{
+  text-align: center;
+  padding: 12rpx;
+}
+.expertList .expertName{
+  color: #353535;
+  font-size: 30rpx;
+  padding-top: 25rpx;
+}
+.expertList .expertOffice{
+  color: #6a6a6a;
+  font-size: 22rpx;
+}
+</style>
+<template>
+  <view>
+    <view class="expertList">
+      <view class="item" @tap="goDoctorsInfo">
+        <image src="{{bannerImg}}" />
+        <view class="expertName">杨泽方</view>
+        <view class="expertOffice">主治医师</view>
+      </view>
+      <view class="item" @tap="goDoctorsInfo">
+        <image src="{{bannerImg}}" />
+        <view class="expertName">杨泽方</view>
+        <view class="expertOffice">主治医师</view>
+      </view>
+      <view class="item" @tap="goDoctorsInfo">
+        <image src="{{bannerImg}}" />
+        <view class="expertName">杨泽方</view>
+        <view class="expertOffice">主治医师</view>
+      </view>
+      <view class="item" @tap="goDoctorsInfo">
+        <image src="{{bannerImg}}" />
+        <view class="expertName">杨泽方</view>
+        <view class="expertOffice">主治医师</view>
+      </view>
+      <view class="item" @tap="goDoctorsInfo">
+        <image src="{{bannerImg}}" />
+        <view class="expertName">杨泽方</view>
+        <view class="expertOffice">主治医师</view>
+      </view>
+      <view class="item" @tap="goDoctorsInfo">
+        <image src="{{bannerImg}}" />
+        <view class="expertName">杨泽方</view>
+        <view class="expertOffice">主治医师</view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  export default class DoctorsList extends wepy.page {
+    config = {
+      navigationBarTitleText: '医师列表'
+    }
+    components = {
+      
+    }
+
+    mixins = []
+
+    data = {
+      bannerImg: 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'
+    }
+
+    computed = {
+      
+    }
+
+    methods = {
+      // 查看医师详情
+      goDoctorsInfo() {
+        this.$navigate(`/pages/doctorsInfo`)
+      }
+    }
+    events = {
+  
+    }
+
+    onLoad() {
+      
+    }
+  }
+</script>

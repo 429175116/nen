@@ -1,0 +1,54 @@
+<style lang="less">
+image{
+  width: 690rpx;
+  height: 300rpx;
+  border-radius: 30rpx;
+  margin: 30rpx;
+}
+</style>
+<template>
+  <view>
+    <image src="{{bannerImg}}" />
+    <image src="{{bannerImg}}" />
+    <image src="{{bannerImg}}" />
+    <image src="{{bannerImg}}" />
+    <image src="{{bannerImg}}" />
+    <image src="{{bannerImg}}" />
+    <image src="{{bannerImg}}" />
+    <image src="{{bannerImg}}" />
+    <image src="{{bannerImg}}" />
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  export default class Surroundings extends wepy.page {
+    config = {
+      navigationBarTitleText: '诊所环境'
+    }
+    components = {
+      
+    }
+
+    mixins = []
+
+    data = {
+      bannerImg: 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'
+    }
+
+    computed = {
+      
+    }
+
+    methods = {
+      
+    }
+    events = {
+  
+    }
+
+    onLoad() {
+      
+    }
+  }
+</script>
