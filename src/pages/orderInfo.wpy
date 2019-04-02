@@ -42,7 +42,7 @@
   width: 170rpx;
   height: 130rpx;
   font-size: 28rpx;
-  color: #56bca2;
+  color: #43beaa;
 }
 .info{
   width: 690rpx;
@@ -55,7 +55,7 @@
   color: #a6a6a6;
 }
 .remaining{
-  color: #56bca2 !important;
+  color: #43beaa !important;
 }
 </style>
 <template>

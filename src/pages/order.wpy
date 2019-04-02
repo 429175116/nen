@@ -1,12 +1,178 @@
 <style lang="less">
-.list{
+.item{
   width: 750rpx;
+  height: auto;
+  margin-top: 20rpx;
+  background-color: #fff;
+}
+.con,.info{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.con{
+  width: 690rpx;
+  padding: 30rpx;
+  height: 130rpx;
+}
+.con image{
+  width: 130rpx;
+  height: 130rpx;
+}
+.con .content{
+  width: 370rpx;
+  height: 130rpx;
+  margin-left: 20rpx;
+}
+.con .content view{
+  width: 100%;
+  font-size: 23rpx;
+  color: #a6a6a6;
+  height: 40rpx;
+  line-height: 40rpx;
+}
+.con .content .name{
+  font-size: 29rpx;
+  color: #333;
+  height: 50rpx;
+  line-height: 50rpx;
+}
+.con .status{
+  width: 170rpx;
+  height: 130rpx;
+  font-size: 28rpx;
+  color: #43beaa;
+}
+.info{
+  width: 690rpx;
+  height: 70rpx;
+  padding: 0 30rpx;
+  border-top: 1rpx solid #a6a6a6;
+}
+.info view{
+  font-size: 22rpx;
+  color: #a6a6a6;
+}
+.remaining{
+  color: #43beaa !important;
+}
+.QRCode{
+  width: 690rpx;
+  padding: 0 30rpx;
+  margin-top: 20rpx;
+  background-color: #fff;
+}
+.QRCode .name{
+  width: 690rpx;
+  height: 118rpx;
+  border-bottom: 1rpx solid #a6a6a6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 30rpx;
+  color: #a6a6a6;
+}
+.QRCode .name .button{
+  width: 260rpx;
+  height: 70rpx;
+  border-radius: 70rpx;
+  border: 1rpx solid #43beaa;
+  color: #43beaa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.QRCodeImg{
+  width: 550rpx;
+  height: 455rpx;
+  padding: 70rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction:column;
+}
+.QRCodeImg image{
+  width: 370rpx;
+  height: 370rpx;
+  margin: auto;;
+}
+.QRCodeImg view{
+  color: #333;
+  font-size: 24rpx;
+  margin-top: 60rpx;
+}
+.expert{
+  background-color: #fff;
 }
 </style>
 <template>
   <view>
-    <view class="list">
-      <view class="item">Order</view>
+    <view class="item">
+      <view class="con">
+        <image src="{{bannerImg}}" />
+        <view class="content">
+          <view class="name">糖尿病管理</view>
+          <view>数量1</view>
+          <view>￥100</view>
+        </view>
+      </view>
+      <view class="info">
+        <view class="remaining">随时退</view>
+      </view>
+    </view>
+    <view class="QRCode">
+      <view class="name">
+        <view>有效期至：永久有效</view>
+        <view class="button">申请退款</view>
+      </view>
+      <view class="QRCodeImg">
+        <image src="{{bannerImg}}" />
+        <view>3752 1318 1629 1565 575</view>
+      </view>
+    </view>
+    <view class="expert buttonList">
+      <view class="expertTitle">
+        <view>
+          <icon class="iconfont icon-tubiaozhizuo-"></icon>
+          订单详情
+        </view>
+        <view>
+        </view>
+      </view>
+      <view class="expertList listaddress">
+        <view class="infoList">
+          <icon class="iconfont icon-yiliaohangyedeICON-12"></icon>
+          订单号：2019010000033332222666666666659895
+        </view>
+        <view class="infoList">
+          <icon class="iconfont icon-yiliaohangyedeICON-2"></icon>
+          下单时间：2019-01-30
+        </view>
+      </view>
+    </view>
+    <view class="expert buttonList">
+      <view class="expertTitle">
+        <view>
+          <icon class="iconfont icon-tubiaozhizuo-"></icon>
+          联系我们
+        </view>
+        <view>
+        </view>
+      </view>
+      <view class="expertList listaddress">
+        <view class="infoList">
+          <icon class="iconfont icon-yiliaohangyedeICON-12"></icon>
+          地址地址地址地址地址地址地址地址地址地址地址地址
+        </view>
+        <view class="infoList">
+          <icon class="iconfont icon-yiliaohangyedeICON-2"></icon>
+          2019-01-30
+        </view>
+        <view class="infoList">
+          <icon class="iconfont icon-yiliaohangyedeICON-5"></icon>
+          029-888888888
+        </view>
+      </view>
     </view>
   </view>
 </template>
@@ -14,7 +180,7 @@
   import wepy from 'wepy'
   export default class Order extends wepy.page {
     config = {
-      navigationBarTitleText: '订单'
+      navigationBarTitleText: '订单详情'
     }
     data = {
       imgRequestUrl: '',
@@ -24,10 +190,7 @@
       bannerImg: 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'
     }
     methods = {
-      // 查看文章详情
-      goArtileDetail() {
-        this.$navigate(`/pages/artileDetail`)
-      }
+      
     }
     onLoad(parent) {
       // this.imgRequestUrl = this.$parent.globalData.imgRequestUrl

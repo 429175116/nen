@@ -273,8 +273,9 @@ import 'wepy-async-function'
 export default class extends wepy.app {
   config = {
     pages: [
-      'pages/orderInfo',  // 订单列表
       'pages/order',  // 订单
+      'pages/orderInfo',  // 订单列表
+      
       'pages/index',  // 首页
       'pages/surroundings',  // 诊所环境
       'pages/artileList', // 文章列表
