@@ -86,7 +86,7 @@
       <view class="userName">亦余心之所善兮</view>
     </view>
     <view class="userInfpList">
-      <view class="item" @tap="goLogin">
+      <view class="item" @tap="goOrderList">
         <view>我的订单</view>
         <icon class="iconfont icon-jiantou"></icon>
       </view>
@@ -137,6 +137,9 @@
       },
       goAddressList() {
         this.$navigate(`/pages/addressList`)
+      },
+      goOrderList() {
+        this.$navigate(`/pages/orderList`)
       }
     }
 

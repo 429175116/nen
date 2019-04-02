@@ -43,6 +43,7 @@
   height: 130rpx;
   font-size: 28rpx;
   color: #43beaa;
+  text-align: right;
 }
 .info{
   width: 690rpx;
@@ -114,7 +115,7 @@
 </template>
 <script>
   import wepy from 'wepy'
-  export default class OrderInfo extends wepy.page {
+  export default class OrderList extends wepy.page {
     config = {
       navigationBarTitleText: '订单列表'
     }
