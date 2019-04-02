@@ -6,14 +6,14 @@
   height: auto;
 }
 .item{
-  width: 335rpx;
+  width: 230rpx;
   display: inline-block;
   margin-bottom: 20rpx;
-  margin: 20rpx;
+  margin: 10rpx;
 }
 .expertList image{
-  width: 335rpx;
-  height: 335rpx;
+  width: 230rpx;
+  height: 230rpx;
   border-radius: 20rpx;
 }
 .expertList .expertName,
@@ -34,10 +34,12 @@
 <template>
   <view>
     <view class="expertList">
-      <view class="item" @tap="goDoctorsInfo">
-        <image src="{{bannerImg}}" />
-        <view class="expertName">杨泽方</view>
-        <view class="expertOffice">主治医师</view>
+      <view class="expertTitle">
+        <view>
+          <icon class="iconfont icon-tubiaozhizuo-"></icon>
+          儿科
+        </view>
+        <view></view>
       </view>
       <view class="item" @tap="goDoctorsInfo">
         <image src="{{bannerImg}}" />
@@ -48,6 +50,44 @@
         <image src="{{bannerImg}}" />
         <view class="expertName">杨泽方</view>
         <view class="expertOffice">主治医师</view>
+      </view>
+      <view class="item" @tap="goDoctorsInfo">
+        <image src="{{bannerImg}}" />
+        <view class="expertName">杨泽方</view>
+        <view class="expertOffice">主治医师</view>
+      </view>
+    </view>
+    <view class="expertList">
+      <view class="expertTitle">
+        <view>
+          <icon class="iconfont icon-tubiaozhizuo-"></icon>
+          内科
+        </view>
+        <view></view>
+      </view>
+      <view class="item" @tap="goDoctorsInfo">
+        <image src="{{bannerImg}}" />
+        <view class="expertName">杨泽方</view>
+        <view class="expertOffice">主治医师</view>
+      </view>
+      <view class="item" @tap="goDoctorsInfo">
+        <image src="{{bannerImg}}" />
+        <view class="expertName">杨泽方</view>
+        <view class="expertOffice">主治医师</view>
+      </view>
+      <view class="item" @tap="goDoctorsInfo">
+        <image src="{{bannerImg}}" />
+        <view class="expertName">杨泽方</view>
+        <view class="expertOffice">主治医师</view>
+      </view>
+    </view>
+    <view class="expertList">
+      <view class="expertTitle">
+        <view>
+          <icon class="iconfont icon-tubiaozhizuo-"></icon>
+          神经科
+        </view>
+        <view></view>
       </view>
       <view class="item" @tap="goDoctorsInfo">
         <image src="{{bannerImg}}" />

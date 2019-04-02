@@ -72,10 +72,10 @@
       <view class="iconfont icon-xwj"></view>
       <view>诊所概况</view>
     </view>
-    <view class="topNavItem">
+    <button class="topNavItem" open-type="contact" session-from="weapp">
       <view class="iconfont icon-xwj"></view>
       <view>在线咨询</view>
-    </view>
+    </button>
     <view class="topNavItem">
       <view class="iconfont icon-xwj"></view>
       <view>来院路线</view>

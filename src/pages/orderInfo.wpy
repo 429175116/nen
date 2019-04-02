@@ -1,0 +1,140 @@
+<style lang="less">
+
+.item{
+  width: 750rpx;
+  height: auto;
+  margin-top: 20rpx;
+  background-color: #fff;
+}
+.con,.info{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.con{
+  width: 690rpx;
+  padding: 30rpx;
+  height: 130rpx;
+}
+.con image{
+  width: 130rpx;
+  height: 130rpx;
+}
+.con .content{
+  width: 370rpx;
+  height: 130rpx;
+  margin-left: 20rpx;
+}
+.con .content view{
+  width: 100%;
+  font-size: 23rpx;
+  color: #a6a6a6;
+  height: 40rpx;
+  line-height: 40rpx;
+}
+.con .content .name{
+  font-size: 29rpx;
+  color: #333;
+  height: 50rpx;
+  line-height: 50rpx;
+}
+.con .status{
+  width: 170rpx;
+  height: 130rpx;
+  font-size: 28rpx;
+  color: #56bca2;
+}
+.info{
+  width: 690rpx;
+  height: 70rpx;
+  padding: 0 30rpx;
+  border-top: 1rpx solid #a6a6a6;
+}
+.info view{
+  font-size: 22rpx;
+  color: #a6a6a6;
+}
+.remaining{
+  color: #56bca2 !important;
+}
+</style>
+<template>
+  <view>
+    <view class="list">
+      <view class="item" @tap="goOrderInfo">
+        <view class="con">
+          <image src="{{bannerImg}}" />
+          <view class="content">
+            <view class="name">糖尿病管理</view>
+            <view>数量1 | 总价：100</view>
+            <view>有效期至：永久有效</view>
+          </view>
+          <view class="status">支付成功</view>
+        </view>
+        <view class="info">
+          <view class="remaining">待使用1</view>
+          <view>已使用0</view>
+          <view>已退费0</view>
+        </view>
+      </view>
+      <view class="item" @tap="goOrderInfo">
+        <view class="con">
+          <image src="{{bannerImg}}" />
+          <view class="content">
+            <view class="name">糖尿病管理</view>
+            <view>数量1 | 总价：100</view>
+            <view>有效期至：永久有效</view>
+          </view>
+          <view class="status">支付成功</view>
+        </view>
+        <view class="info">
+          <view class="remaining">待使用1</view>
+          <view>已使用0</view>
+          <view>已退费0</view>
+        </view>
+      </view>
+      <view class="item" @tap="goOrderInfo">
+        <view class="con">
+          <image src="{{bannerImg}}" />
+          <view class="content">
+            <view class="name">糖尿病管理</view>
+            <view>数量1 | 总价：100</view>
+            <view>有效期至：永久有效</view>
+          </view>
+          <view class="status">支付成功</view>
+        </view>
+        <view class="info">
+          <view class="remaining">待使用1</view>
+          <view>已使用0</view>
+          <view>已退费0</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+<script>
+  import wepy from 'wepy'
+  export default class OrderInfo extends wepy.page {
+    config = {
+      navigationBarTitleText: '订单列表'
+    }
+    data = {
+      imgRequestUrl: '',
+      artileData: null,
+      autoW: [],
+      autoH: [],
+      bannerImg: 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'
+    }
+    methods = {
+      // 查看文章详情
+      goOrderInfo() {
+        this.$navigate(`/pages/order`)
+      }
+    }
+    onLoad(parent) {
+      // this.imgRequestUrl = this.$parent.globalData.imgRequestUrl
+      // 获取文章列表数据
+      // this.getArtile(parent.id)
+    }
+  }
+</script>

@@ -1,0 +1,38 @@
+<style lang="less">
+.list{
+  width: 750rpx;
+}
+</style>
+<template>
+  <view>
+    <view class="list">
+      <view class="item">Order</view>
+    </view>
+  </view>
+</template>
+<script>
+  import wepy from 'wepy'
+  export default class Order extends wepy.page {
+    config = {
+      navigationBarTitleText: '订单'
+    }
+    data = {
+      imgRequestUrl: '',
+      artileData: null,
+      autoW: [],
+      autoH: [],
+      bannerImg: 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'
+    }
+    methods = {
+      // 查看文章详情
+      goArtileDetail() {
+        this.$navigate(`/pages/artileDetail`)
+      }
+    }
+    onLoad(parent) {
+      // this.imgRequestUrl = this.$parent.globalData.imgRequestUrl
+      // 获取文章列表数据
+      // this.getArtile(parent.id)
+    }
+  }
+</script>

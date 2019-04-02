@@ -162,6 +162,27 @@
 .registered .alter {
   color: #9f9f9f;
 }
+.infoList{
+  width: 690rpx;
+  height: 60rpx;
+  font-size: 25rpx;
+  color: #6a6a6a;
+}
+.infoList icon{
+  font-size: 30rpx;
+  color: #6a6a6a;
+  margin-right: 20rpx;
+}
+.service::after,
+.topNav button::after{
+  border: none;
+}
+.topNav button{
+  line-height: 0rpx;
+  margin: 0;
+  padding: 0;
+  background-color:#fff;
+}
 
 
 // 多选框样式
@@ -252,7 +273,8 @@ import 'wepy-async-function'
 export default class extends wepy.app {
   config = {
     pages: [
-      
+      'pages/orderInfo',  // 订单列表
+      'pages/order',  // 订单
       'pages/index',  // 首页
       'pages/surroundings',  // 诊所环境
       'pages/artileList', // 文章列表

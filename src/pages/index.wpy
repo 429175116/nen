@@ -241,7 +241,8 @@
     border: none;
     background: none !important;
   }
-  .service::after{
+  .service::after,
+  .topNav button::after{
     border: none;
   }
   .service .iconfont{
@@ -259,6 +260,11 @@
     font-size: 23rpx;
     color: #6a6a6a;
   }
+  // .topNav button{
+  //   line-height: 0rpx;
+  //   margin: 0;
+  //   padding: 0;
+  // }
 </style>
 <template>
   <view>
@@ -291,10 +297,10 @@
         <view class="iconfont icon-xwj"></view>
         <view>诊所概况</view>
       </view>
-      <view class="topNavItem">
+      <button class="topNavItem" open-type="contact" session-from="weapp">
         <view class="iconfont icon-xwj"></view>
         <view>在线咨询</view>
-      </view>
+      </button>
       <view class="topNavItem">
         <view class="iconfont icon-xwj"></view>
         <view>来院路线</view>

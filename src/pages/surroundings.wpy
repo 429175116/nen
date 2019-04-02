@@ -17,6 +17,30 @@ image{
     <image src="{{bannerImg}}" />
     <image src="{{bannerImg}}" />
     <image src="{{bannerImg}}" />
+    <view class="expert">
+      <view class="expertTitle">
+        <view>
+          <icon class="iconfont icon-tubiaozhizuo-"></icon>
+          联系我们
+        </view>
+        <view>
+        </view>
+      </view>
+      <view class="expertList listaddress">
+        <view class="infoList">
+          <icon class="iconfont icon-yiliaohangyedeICON-12"></icon>
+          地址地址地址地址地址地址地址地址地址地址地址地址
+        </view>
+        <view class="infoList">
+          <icon class="iconfont icon-yiliaohangyedeICON-2"></icon>
+          2019-01-30
+        </view>
+        <view class="infoList">
+          <icon class="iconfont icon-yiliaohangyedeICON-5"></icon>
+          029-888888888
+        </view>
+      </view>
+    </view>
   </view>
 </template>
 
