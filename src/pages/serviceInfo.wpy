@@ -1,0 +1,200 @@
+<style lang="less">
+  .swiper {
+    width: 750rpx;
+    height: 400rpx;
+    overflow: hidden;
+  }
+  .swiper image {
+    width: 100%;
+    height: 100%;
+  }
+  .serverTitle{
+    width: 690rpx;
+    height: 80rpx;
+    padding: 30rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+  }
+  .serverTitle .price{
+    font-size: 50rpx;
+    color: #ff755e;
+  }
+  .serverTitle text{
+    font-size: 20rpx
+  }
+  .serverTitle .name{
+    font-size: 30rpx;
+    font-weight: 600;
+    color: #333;
+    height: 50rpx;
+  }
+  .serverTitle .attr{
+    font-size: 20rpx;
+    color: #43beaa
+  }
+  .tiemTitle,
+  .tiemCon,
+  .details{
+    min-height: 40rpx;
+    line-height: 40rpx;
+    padding-left: 10rpx;
+  }
+  .tiemTitle{
+    font-size: 20rpx;
+    color: #ccc;
+  }
+  .tiemCon{
+    font-size: 25rpx;
+    color: #666;
+  }
+  .details{
+    font-size: 30rpx;
+    counter-reset: #666;
+  }
+  .expert{
+    margin-bottom: 130rpx;
+  }
+  .nav{
+    position: fixed;
+    bottom: 0;
+    width: 750rpx;
+    height: 95rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    color: #666;
+    font-size: 30rpx;
+  }
+  .nav view{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 95rpx;
+  }
+  .nav view icon{
+    font-size: 40rpx;
+    color: #43beaa;
+    margin: -10rpx 10rpx 0 0;
+  }
+  .nav view:nth-child(1){
+    width: 290rpx;
+  }
+  .nav view:nth-child(2){
+    width: 460rpx;
+    background-color: #ffb037;
+    color: #fff;
+  }
+</style>
+<template>
+  <view>
+    <swiper class='swiper' indicator-dots="true" autoplay='true' interval='5000' duration='2000'>
+      <!-- <repeat for="{{bannerList}}" item="item"> -->
+        <swiper-item>
+          <image src="{{bannerImg}}" />
+        </swiper-item>
+        <swiper-item>
+          <image src="{{bannerImg}}" />
+        </swiper-item>
+        <swiper-item>
+          <image src="{{bannerImg}}" />
+        </swiper-item>
+      <!-- </repeat> -->
+      <!-- <repeat for="{{bannerList}}" item="item">
+        <swiper-item>
+          <image src="{{ imgUrl + item.img }}" />
+        </swiper-item>
+      </repeat> -->
+    </swiper>
+    <view class="serverTitle">
+      <view>
+        <view class="name">糖尿病管理</view>
+        <view class="attr">随时退</view>
+      </view>
+      <view class="price">
+        <text>￥</text>100
+      </view>
+    </view>
+    <view class="expert">
+      <view class="expertTitle">
+        <view>
+          <icon class="iconfont icon-tubiaozhizuo-"></icon>
+          详情
+        </view>
+      </view>
+      <view class="tiemTitle">有效期</view>
+      <view class="tiemCon">有效期</view>
+      <view class="details">套餐内容包括：2次线下面诊，并赠送1台血糖仪和2盒试纸</view>
+      <image src="{{bannerImg}}" style="width:{{autoW}}px;height:{{autoH}}px" bindload='autoImage' />
+      <image src="{{bannerImg}}" style="width:{{autoW}}px;height:{{autoH}}px" bindload='autoImage' />
+      <image src="{{bannerImg}}" style="width:{{autoW}}px;height:{{autoH}}px" bindload='autoImage' />
+    </view>
+    <view class="nav">
+      <view>
+        <icon class="iconfont icon-dianhua"></icon>
+        电话咨询
+      </view>
+      <view @tap="goBuy">立即购买</view>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  export default class ServiceInfo extends wepy.page {
+    config = {
+      navigationBarTitleText: '服务详情'
+    }
+    components = {
+      
+    }
+
+    mixins = []
+
+    data = {
+      autoW: 0,
+      autoH: 0,
+      bannerImg: 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'
+    }
+
+    computed = {
+      
+    }
+
+    methods = {
+      autoImage(e) {
+        // 获取图片的宽高
+        let index = e.currentTarget.dataset.index
+        var imgW = e.detail.width
+        var imgH = e.detail.height
+        // 计算图片比例
+        var imgScale = imgW / imgH
+        // 声明自适应宽高变量
+        var autoW = ''
+        var autoH = ''
+        // 获取屏幕宽度，并将图片设置为屏幕等宽
+        wx.getSystemInfo({
+          success: res => {
+            autoW = res.windowWidth
+            autoH = autoW / imgScale
+            this.autoW = autoW - 30
+            this.autoH = autoH
+            this.$apply()
+          }
+        })
+      },
+      goBuy(e) {
+        this.$navigate(`/pages/buy`)
+      }
+    }
+    events = {
+  
+    }
+
+    onLoad() {
+      
+    }
+  }
+</script>

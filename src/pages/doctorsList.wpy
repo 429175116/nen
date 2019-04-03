@@ -1,18 +1,19 @@
 <style lang="less">
 .expertList{
   background-color: #fff;
-  width: 750rpx;
+  width: 690rpx;
   // padding: 20rpx;
   height: auto;
+  padding: 0 30rpx;
 }
 .item{
-  width: 230rpx;
+  width: 213rpx;
   display: inline-block;
   margin-bottom: 20rpx;
   margin: 10rpx;
 }
 .expertList image{
-  width: 230rpx;
+  width: 213rpx;
   height: 230rpx;
   border-radius: 20rpx;
 }
@@ -40,6 +41,11 @@
           儿科
         </view>
         <view></view>
+      </view>
+      <view class="item" @tap="goDoctorsInfo">
+        <image src="{{bannerImg}}" />
+        <view class="expertName">杨泽方</view>
+        <view class="expertOffice">主治医师</view>
       </view>
       <view class="item" @tap="goDoctorsInfo">
         <image src="{{bannerImg}}" />

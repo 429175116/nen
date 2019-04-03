@@ -1,12 +1,12 @@
 <style lang="less">
 @font-face {
   font-family: 'iconfont';  /* project id 1104556 */
-  src: url('//at.alicdn.com/t/font_1104556_s8xbeu2nwtd.eot');
-  src: url('//at.alicdn.com/t/font_1104556_s8xbeu2nwtd.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_1104556_s8xbeu2nwtd.woff2') format('woff2'),
-  url('//at.alicdn.com/t/font_1104556_s8xbeu2nwtd.woff') format('woff'),
-  url('//at.alicdn.com/t/font_1104556_s8xbeu2nwtd.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_1104556_s8xbeu2nwtd.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_1104556_5xk3sxilkj.eot');
+  src: url('//at.alicdn.com/t/font_1104556_5xk3sxilkj.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1104556_5xk3sxilkj.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1104556_5xk3sxilkj.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1104556_5xk3sxilkj.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1104556_5xk3sxilkj.svg#iconfont') format('svg');
 }
 
 .iconfont {
@@ -17,6 +17,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-dianhua:before { content: "\e62f"; } // 电话
 .icon-jiantou:before { content: "\e621"; } // 箭头
 .icon-yiliaohangyedeICON-7:before { content: "\e61d"; } // 我的
 .icon-yiliaohangyedeICON-2:before { content: "\e610"; } // 病历
@@ -273,6 +274,8 @@ import 'wepy-async-function'
 export default class extends wepy.app {
   config = {
     pages: [
+      'pages/buy',  // 下单购买
+      'pages/serviceInfo',  // 服务详情
       'pages/index',  // 首页
       'pages/order',  // 订单
       'pages/orderList',  // 订单列表
@@ -284,6 +287,7 @@ export default class extends wepy.app {
       'pages/doctorsInfo',  // 医师详情
       'pages/reservation',  // 预约输入
       'pages/user', // 个人中心
+      
       'pages/service',  // 服务
       'pages/login',  // 登录
       'pages/login_alterPassword',  // 修改密码
