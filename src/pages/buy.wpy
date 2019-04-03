@@ -1,9 +1,74 @@
 <style lang="less">
-
+.list{
+  width: 750rpx;
+  height: auto;
+  margin-top: 20rpx;
+  background-color: #fff;
+}
+.item{
+  width: 690rpx;
+  height: 45rpx;
+  padding: 20rpx 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1rpx solid #999;
+  font-size: 26rpx;
+  color: #333;
+}
+.con{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.con view{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1rpx solid #999;
+  padding: 10rpx 20rpx;
+  color: #999;
+  margin: 0 10rpx;
+}
+.price{
+  color: #ff755e !important;
+}
+.sub{
+  width: 690rpx;
+  height: 85rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffaf35;
+  color: #fff;
+  font-size: 30rpx;
+  position: absolute;
+  bottom: 100rpx;
+  left: 30rpx;
+  border-radius: 10rpx;
+}
 </style>
 <template>
   <view>
-
+    <view class="list">
+      <view class="item">
+        <view class="name">糖尿病管理</view>
+        <view class="con">100元</view>
+      </view>
+      <view class="item">
+        <view class="name">数量</view>
+        <view class="con">
+          <view>-</view>
+          <view class="num">11</view>
+          <view>+</view>
+        </view>
+      </view>
+      <view class="item">
+        <view class="name">小计</view>
+        <view class="con price">100元</view>
+      </view>
+    </view>
+    <view class="sub">提交订单</view>
   </view>
 </template>
 

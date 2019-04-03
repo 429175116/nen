@@ -95,6 +95,7 @@
 }
 </style>
 <template>
+<view>
   <view class="footer">
     <view class="ft_item {{navAction[0]}}">
       <view @tap="goIndex">
@@ -121,6 +122,7 @@
       </view>
     </view>
   </view>
+</view>
 </template>
 <script>
 import wepy from 'wepy'

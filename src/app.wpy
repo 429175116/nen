@@ -45,7 +45,9 @@
 .icon-bianji:before { content: "\e62d"; } // 编辑
 .icon-shanchu:before { content: "\e600"; } // 删除
 
-
+scroll-view{
+  height: auto;
+}
 /** 登陆，注册，忘记密码页面的样式--开始 */
 .login .logo{
   width: 750rpx;
@@ -274,8 +276,6 @@ import 'wepy-async-function'
 export default class extends wepy.app {
   config = {
     pages: [
-      'pages/buy',  // 下单购买
-      'pages/serviceInfo',  // 服务详情
       'pages/index',  // 首页
       'pages/order',  // 订单
       'pages/orderList',  // 订单列表
@@ -287,8 +287,9 @@ export default class extends wepy.app {
       'pages/doctorsInfo',  // 医师详情
       'pages/reservation',  // 预约输入
       'pages/user', // 个人中心
-      
       'pages/service',  // 服务
+      'pages/serviceInfo',  // 服务详情
+      'pages/buy',  // 下单购买
       'pages/login',  // 登录
       'pages/login_alterPassword',  // 修改密码
       'pages/login_registered',  // 注册

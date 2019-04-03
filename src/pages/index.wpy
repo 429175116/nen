@@ -267,6 +267,7 @@
   // }
 </style>
 <template>
+<scroll-view scroll-y="hidden">
   <view>
     <view>
       <swiper class='swiper' indicator-dots="true" autoplay='true' interval='5000' duration='2000'>
@@ -507,6 +508,7 @@
     </view> -->
     <nav @childFn.user="goPage" />
   </view>
+</scroll-view>
 </template>
 
 <script>

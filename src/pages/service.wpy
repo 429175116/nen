@@ -40,21 +40,21 @@
 <template>
   <view>
     <view class="list">
-      <view class="item">
+      <view class="item" @tap="goService">
         <image src="{{bannerImg}}" />
         <view class="info">
           <view>戒烟管理</view>
           <view>￥ 100</view>
         </view>
       </view>
-      <view class="item">
+      <view class="item" @tap="goService">
         <image src="{{bannerImg}}" />
         <view class="info">
           <view>戒烟管理</view>
           <view>￥ 100</view>
         </view>
       </view>
-      <view class="item">
+      <view class="item" @tap="goService">
         <image src="{{bannerImg}}" />
         <view class="info">
           <view>戒烟管理</view>
@@ -96,6 +96,9 @@
       goPage (url, evt) {
         // 销毁当前页{跳转}
         this.$redirect(url)
+      },
+      goService(e) {
+        this.$navigate(`/pages/serviceInfo`)
       }
     }
     events = {
