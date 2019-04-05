@@ -193,22 +193,11 @@
   <view>
     <view>
       <swiper class='swiper' indicator-dots="true" autoplay='true' interval='5000' duration='2000'>
-        <!-- <repeat for="{{bannerList}}" item="item"> -->
+        <repeat for="{{bannerImgList}}" item="item">
           <swiper-item>
-            <image src="{{bannerImg}}" />
+            <image data-id="{{item.id}}" src="{{ item.img }}" />
           </swiper-item>
-          <swiper-item>
-            <image src="{{bannerImg}}" />
-          </swiper-item>
-          <swiper-item>
-            <image src="{{bannerImg}}" />
-          </swiper-item>
-        <!-- </repeat> -->
-        <!-- <repeat for="{{bannerList}}" item="item">
-          <swiper-item>
-            <image src="{{ imgUrl + item.img }}" />
-          </swiper-item>
-        </repeat> -->
+        </repeat>
       </swiper>
     </view>
     <view class="topNav">
@@ -240,21 +229,13 @@
         </view>
       </view>
       <view class="expertList">
-        <view @tap="goDoctorsInfo">
-          <image src="{{bannerImg}}" />
-          <view class="expertName">杨泽方</view>
-          <view class="expertOffice">主治医师</view>
-        </view>
-        <view @tap="goDoctorsInfo">
-          <image src="{{bannerImg}}" />
-          <view class="expertName">杨泽方</view>
-          <view class="expertOffice">主治医师</view>
-        </view>
-        <view @tap="goDoctorsInfo">
-          <image src="{{bannerImg}}" />
-          <view class="expertName">杨泽方</view>
-          <view class="expertOffice">主治医师</view>
-        </view>
+        <repeat for="{{doctorsList}}" item="item">
+          <view data-id="{{item.id}}" @tap="goDoctorsInfo">
+            <image src="{{item.img}}" />
+            <view class="expertName">{{item.name}}</view>
+            <view class="expertOffice">{{item.position}}</view>
+          </view>
+        </repeat>
       </view>
     </view>
     <view class="expert">
@@ -268,33 +249,17 @@
         </view>
       </view>
       <view class="expertList departmentList">
-        <view class="department" @tap="goDepartment">
-          <view class="departmentCon">
-            <view class="iconfont icon-yiliaohangyedeICON-3"></view>
-            <view class="departmentInfoCon">
-              <view class="departmentName">儿科</view>
-              <view class="departmentInfo">小儿发烧、咳嗽</view>
+        <repeat for="{{departmentList}}" item="item">
+          <view class="department" data-id="{{item.id}}" @tap="goDepartment">
+            <view class="departmentCon">
+              <view class="iconfont icon-{{item.icon}}"></view>
+              <view class="departmentInfoCon">
+                <view class="departmentName">{{item.name}}</view>
+                <view class="departmentInfo">{{item.position}}</view>
+              </view>
             </view>
           </view>
-        </view>
-        <view class="department" @tap="goDepartment">
-          <view class="departmentCon">
-            <view class="iconfont icon-yiliaohangyedeICON-3"></view>
-            <view class="departmentInfoCon">
-              <view class="departmentName">儿科</view>
-              <view class="departmentInfo">小儿发烧、咳嗽</view>
-            </view>
-          </view>
-        </view>
-        <view class="department" @tap="goDepartment">
-          <view class="departmentCon">
-            <view class="iconfont icon-yiliaohangyedeICON-3"></view>
-            <view class="departmentInfoCon">
-              <view class="departmentName">儿科</view>
-              <view class="departmentInfo">小儿发烧、咳嗽</view>
-            </view>
-          </view>
-        </view>
+        </repeat>
       </view>
     </view>
     <view class="expert">
@@ -307,40 +272,18 @@
           查看更多
         </view>
       </view>
-      <view class="expertList" @tap="goArtileDetail">
-        <view class="article">
-          <view class="articleTitle">文章标题文章标题</view>
-          <view class="articleCon">
-            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
-            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
-            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
-            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
-            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
-            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+      <repeat for="{{articleList}}" item="item">
+        <view class="expertList" data-id="{{item.id}}" @tap="goArtileDetail">
+          <view class="article">
+            <view class="articleTitle">{{item.name}}</view>
+            <view class="articleCon">{{item.con}}</view>
+            <view class="views">{{item.browse}}</view>
           </view>
-          <view class="views">300次浏览</view>
-        </view>
-        <view>
-          <image src="{{bannerImg}}" />
-        </view>
-      </view>
-      <view class="expertList" @tap="goArtileDetail">
-        <view class="article">
-          <view class="articleTitle">文章标题文章标题</view>
-          <view class="articleCon">
-            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
-            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
-            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
-            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
-            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
-            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+          <view>
+            <image src="{{item.img}}" />
           </view>
-          <view class="views">300次浏览</view>
         </view>
-        <view>
-          <image src="{{bannerImg}}" />
-        </view>
-      </view>
+      </repeat>
     </view>
     <view class="expert">
       <view class="expertTitle">
@@ -353,15 +296,11 @@
         </view>
       </view>
       <view class="expertList">
-        <view>
-          <image src="{{bannerImg}}" />
-        </view>
-        <view>
-          <image src="{{bannerImg}}" />
-        </view>
-        <view>
-          <image src="{{bannerImg}}" />
-        </view>
+        <repeat for="{{surroundingsList}}" item="item">
+          <view>
+            <image src="{{item.img}}" />
+          </view>
+        </repeat>
       </view>
     </view>
     <view class="expert buttonList">
@@ -376,15 +315,15 @@
       <view class="expertList listaddress">
         <view class="infoList">
           <icon class="iconfont icon-yiliaohangyedeICON-12"></icon>
-          地址地址地址地址地址地址地址地址地址地址地址地址
+          {{contactData.address}}
         </view>
         <view class="infoList">
           <icon class="iconfont icon-yiliaohangyedeICON-2"></icon>
-          2019-01-30
+          {{contactData.time}}
         </view>
         <view class="infoList">
           <icon class="iconfont icon-yiliaohangyedeICON-5"></icon>
-          029-888888888
+          {{contactData.phone}}
         </view>
       </view>
     </view>
@@ -411,6 +350,12 @@
     mixins = []
 
     data = {
+      bannerImgList: new Array(), // banner轮播图数据
+      doctorsList: new Array(), // 专家推荐列表数据
+      departmentList: new Array(), // 常见筑症状列表
+      articleList: new Array(), // 文章列表
+      surroundingsList: new Array(), // 诊所环境
+      contactData: new Object(), // 创建联系地址对象
       bannerImg: 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'
     }
 
@@ -433,12 +378,12 @@
         this.$navigate(`/pages/doctorsList`)
       },
       // 查看医师详情
-      goDoctorsInfo() {
-        this.$navigate(`/pages/doctorsInfo`)
+      goDoctorsInfo(e) {
+        this.$navigate(`/pages/doctorsInfo?id=${e.currentTarget.dataset.id}`)
       },
       // 查看科室详情
       goDepartment() {
-        this.$navigate(`/pages/department`)
+        this.$navigate(`/pages/department?id=${e.currentTarget.dataset.id}`)
       },
       // 查看文章详情
       goArtileDetail() {
@@ -459,7 +404,106 @@
     }
 
     onLoad() {
-      
+      // 获取banner轮播图数据
+      this.getBannerList()
+      // 获取专家推荐列表数据
+      this.getDoctorsList()
+      // 获取常见筑症状列表
+      this.getDepartmentList()
+      // 获取文章列表数据
+      this.getArticleList()
+      // 获取诊所环境图片列表
+      this.getSurroundingsList()
+      // 获取诊所联系方式信息
+      this.getcontactData()
+    }
+    // 获取banner轮播图数据
+    getBannerList() {
+      this.bannerImgList = [
+        {'id': '1', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
+        {'id': '1', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
+        {'id': '1', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
+        {'id': '1', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'}
+      ]
+      this.$apply()
+    }
+    // 获取专家推荐列表数据
+    getDoctorsList() {
+      this.doctorsList = [
+        {'id': '1', 'name': '杨泽方', 'position': '主治医师', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
+        {'id': '2', 'name': '杨泽方', 'position': '主治医师', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
+        {'id': '3', 'name': '杨泽方', 'position': '主治医师', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'}
+      ]
+      if (this.doctorsList.length > 3) {
+        this.doctorsList = this.doctorsList.slice(0, 3)
+      }
+      this.$apply()
+    }
+    // 获取常见筑症状列表
+    getDepartmentList() {
+      this.departmentList = [
+        {'id': '1', 'name': '儿科', 'position': '小儿发烧、咳嗽', 'icon': 'yiliaohangyedeICON-3'},
+        {'id': '2', 'name': '儿科', 'position': '小儿发烧、咳嗽', 'icon': 'yiliaohangyedeICON-3'},
+        {'id': '3', 'name': '儿科', 'position': '小儿发烧、咳嗽', 'icon': 'yiliaohangyedeICON-3'}
+      ]
+      this.$apply()
+    }
+    // 获取文章列表数据
+    getArticleList() {
+      this.articleList = [
+        {
+          'id': '1', 
+          'name': '杨泽方', 
+          'browse': '1301浏览', 
+          'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png',
+          'con': '文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容'
+        },
+        {
+          'id': '1', 
+          'name': '杨泽方', 
+          'browse': '533浏览', 
+          'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png',
+          'con': `文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，`
+        },
+        {
+          'id': '1', 
+          'name': '杨泽方', 
+          'browse': '341浏览', 
+          'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png',
+          'con': `文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，`
+        }
+      ]
+      this.$apply()
+    }
+    // 获取诊所环境图片列表
+    getSurroundingsList() {
+      this.surroundingsList = [
+        {'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
+        {'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
+        {'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'}
+      ]
+      if (this.surroundingsList.length > 3) {
+        this.surroundingsList = this.doctorsList.slice(0, 3)
+      }
+      this.$apply()
+    }
+    getcontactData() {
+      this.contactData = {
+        'address': '软件新城',
+        'time': '2019-01-30',
+        'phone': '029-888888888',
+      }
+      this.$apply()
     }
   }
 </script>
