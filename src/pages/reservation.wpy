@@ -81,11 +81,11 @@
       </view>
       <view class="row-wrap">
         <label>就诊人:</label>
-        <input type="digit" placeholder="请输入就诊人" name="mobile" />
+        <input type="digit" placeholder="请输入就诊人" bindinput="searchBook" />
       </view>
       <view class="row-wrap">
         <label>联系方式:</label>
-        <input type="text" placeholder="请输入联系方式" name="address" />
+        <input type="text" placeholder="请输入联系方式" bindinput="getMobile" />
       </view>
     </view>
     <button class="save-btn" formType="submit">确认</button>
@@ -94,6 +94,7 @@
 
 <script>
 import wepy from 'wepy';
+import check from '../mixins/check'
 export default class Reservation extends wepy.page {
   config = {
     navigationBarTitleText: '免费预约'
@@ -101,12 +102,13 @@ export default class Reservation extends wepy.page {
   components = {
   };
 
-  mixins = [];
+  mixins = [check];
 
   data = {
     dateValue: '日期选择',
-    department: ['科室1', '科室2', '科室3', '科室4'],
-    index: 0
+    department: new Array(), // 诊所科室数据
+    index: 0,
+    updata: new Object() // 接口提交数据
   };
 
   computed = {}
@@ -117,14 +119,44 @@ export default class Reservation extends wepy.page {
     },
     bindPickerChange(e) {
       this.index = e.detail.value
+    },
+    // 获取名称
+    getName(e) {
+      this.updata.name = e.detail.value
+    },
+    // 获取电话
+    getMobile(e) {
+      this.updata.mobile = e.detail.value
     }
   }
 
   events = {}
 
   onLoad() {
-
+    // 获取诊所科室数据
+    this.getdepartmentArray()
   }
-
+  // 获取诊所科室数据
+  getdepartmentArray() {
+    this.department = ['科室1', '科室2', '科室3', '科室4']
+    this.$apply()
+  }
+  updata() {
+    if (this.check.isNull(this.updata.name)) {
+      wx.showModal({
+        title: '',
+        content: '请输入就诊人'
+      })
+      return ''
+    }
+    if (this.check.isNull(this.updata.mobile)) {
+      wx.showModal({
+        title: '',
+        content: '请输入联系方式'
+      })
+      return ''
+    }
+    // setData
+  }
 }
 </script>
