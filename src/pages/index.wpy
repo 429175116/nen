@@ -341,7 +341,7 @@
   import nav from '../components/nav' // 底部导航
   export default class Index extends wepy.page {
     config = {
-      navigationBarTitleText: 'XXX诊所'
+      navigationBarTitleText: '一诺尔云平台'
     }
     components = {
       nav: nav
@@ -350,13 +350,13 @@
     mixins = []
 
     data = {
+      clinicInfo: new Array(), // 诊所信息
       bannerImgList: new Array(), // banner轮播图数据
       doctorsList: new Array(), // 专家推荐列表数据
       departmentList: new Array(), // 常见筑症状列表
       articleList: new Array(), // 文章列表
       surroundingsList: new Array(), // 诊所环境
-      contactData: new Object(), // 创建联系地址对象
-      bannerImg: 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'
+      contactData: new Object() // 创建联系地址对象
     }
 
     computed = {
@@ -382,7 +382,7 @@
         this.$navigate(`/pages/doctorsInfo?id=${e.currentTarget.dataset.id}`)
       },
       // 查看科室详情
-      goDepartment() {
+      goDepartment(e) {
         this.$navigate(`/pages/department?id=${e.currentTarget.dataset.id}`)
       },
       // 查看文章详情
@@ -403,7 +403,15 @@
   
     }
 
-    onLoad() {
+    onLoad(option) {
+      // 获取诊所ID和诊所名称
+      // this.clinicInfo.id = option.id
+      // this.clinicInfo.name = option.name
+      this.clinicInfo.id = '10'
+      this.clinicInfo.name = '长安区第一诊所'
+      wx.setNavigationBarTitle({
+        title: this.clinicInfo.name
+      })
       // 获取banner轮播图数据
       this.getBannerList()
       // 获取专家推荐列表数据
@@ -452,16 +460,16 @@
     getArticleList() {
       this.articleList = [
         {
-          'id': '1', 
-          'name': '杨泽方', 
-          'browse': '1301浏览', 
+          'id': '1',
+          'name': '杨泽方',
+          'browse': '1301浏览',
           'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png',
           'con': '文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容'
         },
         {
-          'id': '1', 
-          'name': '杨泽方', 
-          'browse': '533浏览', 
+          'id': '1',
+          'name': '杨泽方',
+          'browse': '533浏览',
           'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png',
           'con': `文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
             文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
@@ -471,9 +479,9 @@
             文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，`
         },
         {
-          'id': '1', 
-          'name': '杨泽方', 
-          'browse': '341浏览', 
+          'id': '1',
+          'name': '杨泽方',
+          'browse': '341浏览',
           'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png',
           'con': `文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
             文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
@@ -501,7 +509,7 @@
       this.contactData = {
         'address': '软件新城',
         'time': '2019-01-30',
-        'phone': '029-888888888',
+        'phone': '029-888888888'
       }
       this.$apply()
     }
