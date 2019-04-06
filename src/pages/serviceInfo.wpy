@@ -91,30 +91,19 @@
 <template>
   <view>
     <swiper class='swiper' indicator-dots="true" autoplay='true' interval='5000' duration='2000'>
-      <!-- <repeat for="{{bannerList}}" item="item"> -->
+      <repeat for="{{bannerImgList}}" item="item">
         <swiper-item>
-          <image src="{{bannerImg}}" />
+          <image src="{{item.img}}" />
         </swiper-item>
-        <swiper-item>
-          <image src="{{bannerImg}}" />
-        </swiper-item>
-        <swiper-item>
-          <image src="{{bannerImg}}" />
-        </swiper-item>
-      <!-- </repeat> -->
-      <!-- <repeat for="{{bannerList}}" item="item">
-        <swiper-item>
-          <image src="{{ imgUrl + item.img }}" />
-        </swiper-item>
-      </repeat> -->
+      </repeat>
     </swiper>
     <view class="serverTitle">
       <view>
-        <view class="name">糖尿病管理</view>
-        <view class="attr">随时退</view>
+        <view class="name">{{serviceInfo.name}}</view>
+        <view class="attr">{{serviceInfo.titleDescription}}</view>
       </view>
       <view class="price">
-        <text>￥</text>100
+        <text>￥</text>{{serviceInfo.price}}
       </view>
     </view>
     <view class="expert">
@@ -125,11 +114,11 @@
         </view>
       </view>
       <view class="tiemTitle">有效期</view>
-      <view class="tiemCon">有效期</view>
-      <view class="details">套餐内容包括：2次线下面诊，并赠送1台血糖仪和2盒试纸</view>
-      <image src="{{bannerImg}}" style="width:{{autoW}}px;height:{{autoH}}px" bindload='autoImage' />
-      <image src="{{bannerImg}}" style="width:{{autoW}}px;height:{{autoH}}px" bindload='autoImage' />
-      <image src="{{bannerImg}}" style="width:{{autoW}}px;height:{{autoH}}px" bindload='autoImage' />
+      <view class="tiemCon">{{serviceInfo.valid}}</view>
+      <view class="details">{{serviceInfo.description}}</view>
+      <repeat for="{{serviceInfo.imgList}}" item="item">
+        <image src="{{item}}" data-index="{{index}}" style="width:{{autoW[index]}}px;height:{{autoH[index]}}px" bindload='autoImage' />
+      </repeat>
     </view>
     <view class="nav">
       <view>
@@ -154,8 +143,10 @@
     mixins = []
 
     data = {
-      autoW: 0,
-      autoH: 0,
+      autoW: new Array(),
+      autoH: new Array(),
+      bannerImgList: new Array(), // banner轮播图数据
+      serviceInfo: new Object(), // 服务信息
       bannerImg: 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'
     }
 
@@ -179,8 +170,8 @@
           success: res => {
             autoW = res.windowWidth
             autoH = autoW / imgScale
-            this.autoW = autoW - 30
-            this.autoH = autoH
+            this.autoW[index] = autoW - 30
+            this.autoH[index] = autoH
             this.$apply()
           }
         })
@@ -194,7 +185,36 @@
     }
 
     onLoad() {
-      
+      // 获取banner轮播图数据
+      this.getBannerList()
+      // 获取服务的信息
+      this.getServiceInfo()
+    }
+    // 获取banner轮播图数据
+    getBannerList() {
+      this.bannerImgList = [
+        {'id': '1', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
+        {'id': '1', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
+        {'id': '1', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
+        {'id': '1', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'}
+      ]
+      this.$apply()
+    }
+    getServiceInfo() {
+      this.serviceInfo = {
+        'name': '糖尿病管理',
+        'price': '100',
+        'titleDescription': '随时退',
+        'valid': '2019-10-01',
+        'description': '套餐内容包括：2次线下面诊，并赠送1台血糖仪和2盒试纸',
+        'imgList': [
+          'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png',
+          'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png',
+          'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png',
+          'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'
+        ]
+      }
+      this.$apply()
     }
   }
 </script>
