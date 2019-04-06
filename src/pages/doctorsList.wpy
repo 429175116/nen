@@ -34,83 +34,24 @@
 </style>
 <template>
   <view>
-    <view class="expertList">
-      <view class="expertTitle">
-        <view>
-          <icon class="iconfont icon-tubiaozhizuo-"></icon>
-          儿科
+    <repeat for="{{doctorsList}}" item="item">
+      <view class="expertList">
+        <view class="expertTitle">
+          <view>
+            <icon class="iconfont icon-tubiaozhizuo-"></icon>
+            {{item.departmentName}}
+          </view>
+          <view></view>
         </view>
-        <view></view>
+        <repeat for="{{item.departmentList}}" item="sonItem">
+          <view class="item" data-id="{{sonItem.id}}" @tap="goDoctorsInfo">
+            <image src="{{sonItem.img}}" />
+            <view class="expertName">{{sonItem.name}}</view>
+            <view class="expertOffice">{{sonItem.expertOffice}}</view>
+          </view>
+        </repeat>
       </view>
-      <view class="item" @tap="goDoctorsInfo">
-        <image src="{{bannerImg}}" />
-        <view class="expertName">杨泽方</view>
-        <view class="expertOffice">主治医师</view>
-      </view>
-      <view class="item" @tap="goDoctorsInfo">
-        <image src="{{bannerImg}}" />
-        <view class="expertName">杨泽方</view>
-        <view class="expertOffice">主治医师</view>
-      </view>
-      <view class="item" @tap="goDoctorsInfo">
-        <image src="{{bannerImg}}" />
-        <view class="expertName">杨泽方</view>
-        <view class="expertOffice">主治医师</view>
-      </view>
-      <view class="item" @tap="goDoctorsInfo">
-        <image src="{{bannerImg}}" />
-        <view class="expertName">杨泽方</view>
-        <view class="expertOffice">主治医师</view>
-      </view>
-    </view>
-    <view class="expertList">
-      <view class="expertTitle">
-        <view>
-          <icon class="iconfont icon-tubiaozhizuo-"></icon>
-          内科
-        </view>
-        <view></view>
-      </view>
-      <view class="item" @tap="goDoctorsInfo">
-        <image src="{{bannerImg}}" />
-        <view class="expertName">杨泽方</view>
-        <view class="expertOffice">主治医师</view>
-      </view>
-      <view class="item" @tap="goDoctorsInfo">
-        <image src="{{bannerImg}}" />
-        <view class="expertName">杨泽方</view>
-        <view class="expertOffice">主治医师</view>
-      </view>
-      <view class="item" @tap="goDoctorsInfo">
-        <image src="{{bannerImg}}" />
-        <view class="expertName">杨泽方</view>
-        <view class="expertOffice">主治医师</view>
-      </view>
-    </view>
-    <view class="expertList">
-      <view class="expertTitle">
-        <view>
-          <icon class="iconfont icon-tubiaozhizuo-"></icon>
-          神经科
-        </view>
-        <view></view>
-      </view>
-      <view class="item" @tap="goDoctorsInfo">
-        <image src="{{bannerImg}}" />
-        <view class="expertName">杨泽方</view>
-        <view class="expertOffice">主治医师</view>
-      </view>
-      <view class="item" @tap="goDoctorsInfo">
-        <image src="{{bannerImg}}" />
-        <view class="expertName">杨泽方</view>
-        <view class="expertOffice">主治医师</view>
-      </view>
-      <view class="item" @tap="goDoctorsInfo">
-        <image src="{{bannerImg}}" />
-        <view class="expertName">杨泽方</view>
-        <view class="expertOffice">主治医师</view>
-      </view>
-    </view>
+    </repeat>
   </view>
 </template>
 
@@ -127,7 +68,7 @@
     mixins = []
 
     data = {
-      bannerImg: 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'
+      doctorsList:  new Object()
     }
 
     computed = {
@@ -136,8 +77,8 @@
 
     methods = {
       // 查看医师详情
-      goDoctorsInfo() {
-        this.$navigate(`/pages/doctorsInfo`)
+      goDoctorsInfo(e) {
+        this.$navigate(`/pages/doctorsInfo?id=${e.currentTarget.dataset.id}`)
       }
     }
     events = {
@@ -145,7 +86,37 @@
     }
 
     onLoad() {
-      
+      // 根据诊所ID获取医师列表
+      this.getDoctorsList()
+    }
+    getDoctorsList() {
+      this.doctorsList = [
+        {'departmentName': '科室1',
+        'departmentList': [
+          {'id': '10', 'name': '杨泽方', 'expertOffice': '主治医师', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
+          {'id': '10', 'name': '杨泽方', 'expertOffice': '主治医师', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
+          {'id': '10', 'name': '杨泽方', 'expertOffice': '主治医师', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
+          {'id': '10', 'name': '杨泽方', 'expertOffice': '主治医师', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
+          {'id': '10', 'name': '杨泽方', 'expertOffice': '主治医师', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'}
+        ]},
+        {'departmentName': '科室1',
+        'departmentList': [
+          {'id': '10', 'name': '杨泽方', 'expertOffice': '主治医师', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
+          {'id': '10', 'name': '杨泽方', 'expertOffice': '主治医师', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
+          {'id': '10', 'name': '杨泽方', 'expertOffice': '主治医师', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
+          {'id': '10', 'name': '杨泽方', 'expertOffice': '主治医师', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
+          {'id': '10', 'name': '杨泽方', 'expertOffice': '主治医师', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'}
+        ]},
+        {'departmentName': '科室1',
+        'departmentList': [
+          {'id': '10', 'name': '杨泽方', 'expertOffice': '主治医师', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
+          {'id': '10', 'name': '杨泽方', 'expertOffice': '主治医师', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
+          {'id': '10', 'name': '杨泽方', 'expertOffice': '主治医师', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
+          {'id': '10', 'name': '杨泽方', 'expertOffice': '主治医师', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
+          {'id': '10', 'name': '杨泽方', 'expertOffice': '主治医师', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'}
+        ]}
+      ]
+      this.$apply()
     }
   }
 </script>
