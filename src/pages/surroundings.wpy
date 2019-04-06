@@ -8,15 +8,9 @@ image{
 </style>
 <template>
   <view>
-    <image src="{{bannerImg}}" />
-    <image src="{{bannerImg}}" />
-    <image src="{{bannerImg}}" />
-    <image src="{{bannerImg}}" />
-    <image src="{{bannerImg}}" />
-    <image src="{{bannerImg}}" />
-    <image src="{{bannerImg}}" />
-    <image src="{{bannerImg}}" />
-    <image src="{{bannerImg}}" />
+    <repeat for="{{surroundingsList}}" item="item">
+      <image src="{{item}}" />
+    </repeat>
     <view class="expert">
       <view class="expertTitle">
         <view>
@@ -29,15 +23,15 @@ image{
       <view class="expertList listaddress">
         <view class="infoList">
           <icon class="iconfont icon-yiliaohangyedeICON-12"></icon>
-          地址地址地址地址地址地址地址地址地址地址地址地址
+          {{contactData.address}}
         </view>
         <view class="infoList">
           <icon class="iconfont icon-yiliaohangyedeICON-2"></icon>
-          2019-01-30
+          {{contactData.time}}
         </view>
         <view class="infoList">
           <icon class="iconfont icon-yiliaohangyedeICON-5"></icon>
-          029-888888888
+          {{contactData.phone}}
         </view>
       </view>
     </view>
@@ -57,7 +51,8 @@ image{
     mixins = []
 
     data = {
-      bannerImg: 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'
+      contactData: new Object(),
+      surroundingsList: new Array()
     }
 
     computed = {
@@ -71,8 +66,9 @@ image{
   
     }
 
-    onLoad() {
-      
+    onLoad(option) {
+      this.contactData = this.$parent.globalData.contactData
+      this.surroundingsList = option.list.split(',')
     }
   }
 </script>

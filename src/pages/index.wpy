@@ -298,7 +298,7 @@
       <view class="expertList">
         <repeat for="{{surroundingsList}}" item="item">
           <view>
-            <image src="{{item.img}}" />
+            <image src="{{item}}" />
           </view>
         </repeat>
       </view>
@@ -355,7 +355,8 @@
       doctorsList: new Array(), // 专家推荐列表数据
       departmentList: new Array(), // 常见筑症状列表
       articleList: new Array(), // 文章列表
-      surroundingsList: new Array(), // 诊所环境
+      surroundingsListAll: new Array(), // 诊所环境--所有数据
+      surroundingsList: new Array(), // 诊所环境--当页显示数据
       contactData: new Object() // 创建联系地址对象
     }
 
@@ -395,7 +396,7 @@
       },
       // 查看诊所环境
       goSurroundings() {
-        this.$navigate(`/pages/surroundings`)
+        this.$navigate(`/pages/surroundings?list=${this.surroundingsListAll}`)
       }
     }
 
@@ -495,22 +496,26 @@
     }
     // 获取诊所环境图片列表
     getSurroundingsList() {
-      this.surroundingsList = [
-        {'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
-        {'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
-        {'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'}
+      this.surroundingsListAll = [
+        'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png',
+        'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png',
+        'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'
       ]
-      if (this.surroundingsList.length > 3) {
-        this.surroundingsList = this.doctorsList.slice(0, 3)
+      if (this.surroundingsListAll.length > 3) {
+        this.surroundingsList = this.surroundingsListAll.slice(0, 3)
+      } else {
+        this.surroundingsList = this.surroundingsListAll
       }
       this.$apply()
     }
+    // 获取联系我们信息
     getcontactData() {
       this.contactData = {
         'address': '软件新城',
         'time': '2019-01-30',
         'phone': '029-888888888'
       }
+      this.$parent.globalData.contactData = this.contactData
       this.$apply()
     }
   }
