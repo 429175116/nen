@@ -43,40 +43,18 @@
 </style>
 <template>
   <view class="">
-    <view class="expertList" @tap="goArtileDetail">
-      <view class="article">
-        <view class="articleTitle">文章标题文章标题</view>
-        <view class="articleCon">
-          文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
-          文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
-          文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
-          文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
-          文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
-          文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+    <repeat for="{{artileList}}" item="item">
+        <view class="expertList" data-id="{{item.id}}" @tap="goArtileDetail">
+          <view class="article">
+            <view class="articleTitle">{{item.name}}</view>
+            <view class="articleCon">{{item.con}}</view>
+            <view class="views">{{item.browse}}</view>
+          </view>
+          <view>
+            <image src="{{item.img}}" />
+          </view>
         </view>
-        <view class="views">300次浏览</view>
-      </view>
-      <view>
-        <image src="{{bannerImg}}" />
-      </view>
-    </view>
-    <view class="expertList" @tap="goArtileDetail">
-      <view class="article">
-        <view class="articleTitle">文章标题文章标题</view>
-        <view class="articleCon">
-          文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
-          文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
-          文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
-          文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
-          文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
-          文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
-        </view>
-        <view class="views">300次浏览</view>
-      </view>
-      <view>
-        <image src="{{bannerImg}}" />
-      </view>
-    </view>
+      </repeat>
   </view>
 </template>
 <script>
@@ -86,22 +64,70 @@
       navigationBarTitleText: '文章列表'
     }
     data = {
-      imgRequestUrl: '',
-      artileData: null,
-      autoW: [],
-      autoH: [],
-      bannerImg: 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'
+      artileList: new Array()
     }
     methods = {
       // 查看文章详情
       goArtileDetail() {
-        this.$navigate(`/pages/artileDetail`)
+        this.$navigate(`/pages/artileDetail?id=${e.currentTarget.dataset.id}`)
       }
     }
     onLoad(parent) {
-      // this.imgRequestUrl = this.$parent.globalData.imgRequestUrl
       // 获取文章列表数据
-      // this.getArtile(parent.id)
+      this.getArtileList(parent.id)
+    }
+    getArtileList(id) {
+      this.artileList = [
+        {
+          'id': '1',
+          'name': '杨泽方',
+          'browse': '533浏览',
+          'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png',
+          'con': `文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，`
+        },
+        {
+          'id': '1',
+          'name': '杨泽方',
+          'browse': '533浏览',
+          'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png',
+          'con': `文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，`
+        },
+        {
+          'id': '1',
+          'name': '杨泽方',
+          'browse': '533浏览',
+          'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png',
+          'con': `文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，`
+        },
+        {
+          'id': '1',
+          'name': '杨泽方',
+          'browse': '533浏览',
+          'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png',
+          'con': `文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
+            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，`
+        }
+      ]
+      this.$apply()
     }
   }
 </script>

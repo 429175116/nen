@@ -387,7 +387,7 @@
       },
       // 查看文章详情
       goArtileDetail() {
-        this.$navigate(`/pages/artileDetail`)
+        this.$navigate(`/pages/artileDetail?id=${e.currentTarget.dataset.id}`)
       },
       // 进入文章列表
       gogoArtileList() {
