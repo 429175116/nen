@@ -71,10 +71,10 @@
 <view>
   <view class="doctorsInfo">
     <view class="img">
-      <image src="{{bannerImg}}" />
+      <image src="{{doctorsInfo.img}}" />
     </view>
-    <view class="name">杨泽方</view>
-    <view class="info">主治医师·从业18年</view>
+    <view class="name">{{doctorsInfo.name}}</view>
+    <view class="info">{{doctorsInfo.info}}</view>
   </view>
   <view class="topNav">
     <view class="topNavItem" @tap="registered">
@@ -103,12 +103,9 @@
       <view> </view>
     </view>
     <view class="list">
-      <view>儿科</view>
-      <view>儿科</view>
-      <view>儿科</view>
-      <view>儿科</view>
-      <view>儿科</view>
-      <view>儿科</view>
+      <repeat for="{{doctorsInfo.department}}" item="item">
+        <view>{{item}}</view>
+      </repeat>
     </view>
   </view>
   <view class="expert">
@@ -119,9 +116,7 @@
       </view>
       <view> </view>
     </view>
-    <p class="description">
-      儿科主治医师，18年儿科执行经验，云诊室参与者，国内权威医药生物专业论坛担任专业儿科版主及资深论坛管理员，致力于全科医学及儿科健康管理新模式的不断探索。
-    </p>
+    <p class="description">{{doctorsInfo.description}}</p>
   </view>
   <button class="service" open-type="share" session-from="weapp">
     <icon class="iconfont icon-yiliaohangyedeICON-5"></icon>
@@ -132,19 +127,17 @@
 
 <script>
   import wepy from 'wepy'
-  import nav from '../components/nav' // 底部导航
   export default class DoctorsInfo extends wepy.page {
     config = {
       navigationBarTitleText: '医师信息'
     }
     components = {
-      nav: nav
     }
 
     mixins = []
 
     data = {
-      bannerImg: 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'
+      doctorsInfo: new Object()
     }
 
     computed = {
@@ -158,8 +151,22 @@
   
     }
 
-    onLoad() {
-      
+    onLoad(option) {
+      // 获取医师信息
+      this.getDoctorsInfo(option.id)
+    }
+    // 获取医师信息
+    getDoctorsInfo(id) {
+      // 根据ID请求医师信息
+      this.doctorsInfo = {
+        'id': '11',
+        'name': '杨泽方',
+        'info': '主治医师·从业18年',
+        'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png',
+        'description': '儿科主治医师，18年儿科执行经验，云诊室参与者，国内权威医药生物专业论坛担任专业儿科版主及资深论坛管理员，致力于全科医学及儿科健康管理新模式的不断探索。',
+        'department': ['儿科', '儿科', '儿科', '儿科', '儿科', '儿科']
+      }
+      this.$apply()
     }
     onShareAppMessage() {
       let positionId = this.data.positionId

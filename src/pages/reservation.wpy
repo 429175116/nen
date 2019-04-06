@@ -107,7 +107,7 @@ export default class Reservation extends wepy.page {
   data = {
     department: new Array(), // 诊所科室数据
     index: 0,
-    updata: {'name': '', 'mobile': '', 'dateValue': '日期选择', 'department': '', } // 接口提交数据
+    updata: {'name': '', 'mobile': '', 'dateValue': '日期选择', 'department': ''} // 接口提交数据
   };
 
   computed = {}
