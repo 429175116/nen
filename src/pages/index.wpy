@@ -387,7 +387,7 @@
         this.$navigate(`/pages/department?id=${e.currentTarget.dataset.id}`)
       },
       // 查看文章详情
-      goArtileDetail() {
+      goArtileDetail(e) {
         this.$navigate(`/pages/artileDetail?id=${e.currentTarget.dataset.id}`)
       },
       // 进入文章列表
@@ -395,7 +395,7 @@
         this.$navigate(`/pages/artileList`)
       },
       // 查看诊所环境
-      goSurroundings() {
+      goSurroundings(e) {
         this.$navigate(`/pages/surroundings?list=${this.surroundingsListAll}`)
       }
     }

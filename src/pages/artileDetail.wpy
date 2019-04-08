@@ -71,22 +71,16 @@
 <template>
   <view>
     <import src="../wxParse/wxParse.wxml"/>
-    <block wx:for="{{bannerImg}}" key="indexImg" index="indexImg" item="item">
-      <image class="mallImg" src="{{imgRequestUrl + item.img}}" data-index="{{index}}" style="width:{{autoW[index]}}px;height:{{autoH[index]}}px" bindload='autoImage' />
-    </block>
+    <image class="mallImg" src="{{artileData.bannerImg}}" style="width:{{autoW}}px;height:{{autoH}}px" bindload='autoImage' />
     <view class="title">
-      <view>{{'文章名称'}}</view>
+      <view>{{artileData.name}}</view>
     </view>
     <view class="con">
       <!-- 文章内容 -->
       <!-- <template is="wxParse" data="{{wxParseData:article.nodes}}" /> -->
     </view>
     <view class="con">
-      完善功能时使用插件，转义代码，自带样式部分。。 文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容
-      文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容
-      文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容
-      文章内容文章内容文章内容文章内容文章内容文章内容
-      文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容
+      {{artileData.content}}
       <!-- 文章内容 -->
       <!-- <template is="wxParse" data="{{wxParseData:article.nodes}}" /> -->
     </view>
@@ -100,21 +94,25 @@
       navigationBarTitleText: '文章详情'
     }
     data = {
-      imgRequestUrl: '',
-      artileData: null,
-      autoW: [],
-      autoH: [],
-      bannerImg: [{'img':'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'}]
+      autoW: 0,
+      autoH: 0,
+      artileData: null
     }
     methods = {
     }
     onLoad(parent) {
       // this.imgRequestUrl = this.$parent.globalData.imgRequestUrl
       // 获取文章列表数据
-      // this.getArtile(parent.id)
+      this.getArtile(parent.id)
     }
     // 获取文章列表数据
     getArtile(id) {
+      this.artileData = {
+        'name': '文章名称',
+        'bannerImg': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png',
+        'content': '完善功能时使用插件，转义代码，自带样式部分。。 文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容章内容文章内容文章内容文章内容文章内容文章内容'
+      }
+      return ''
       wx.request({
         url: `${this.$parent.globalData.requestUrl}/api/artileDetail/${id}`,
         method: 'GET',
@@ -133,7 +131,6 @@
       })
     }
     autoImage(e) {
-      let index = e.target.dataset.index
       // 获取图片的狂傲
       var imgW = e.detail.width
       var imgH = e.detail.height
@@ -147,8 +144,8 @@
         success: res => {
           autoW = res.windowWidth
           autoH = autoW / imgScale
-          this.autoW[index] = autoW
-          this.autoH[index] = autoH
+          this.autoW = autoW
+          this.autoH = autoH
           this.$apply()
         }
       })
