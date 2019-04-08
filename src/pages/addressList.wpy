@@ -104,85 +104,35 @@ page{
 <!-- 收货地址列表页面 -->
   <view class="all">
     <!-- 地址显示列表 -->
-    <view class="itemAddress">
-      <view class="name">
-        <icon class="iconfont icon-location" />
-        地址地址地址地址地址地址地址地址地址地址
-      </view>
-      <view class="info">
-        <view>姓名: 收货人</view>
-        <view>联系电话:18888888888</view>
-      </view>
-      <view class="open">
-        <view data-index="" @tap="goNewAddress">
-          <icon class="iconfont icon-bianji" />
-          编辑
+    <repeat for="{{addressListData}}" item="item">
+      <view class="itemAddress">
+        <view class="name">
+          <icon class="iconfont icon-location" />
+          {{item.address}}
         </view>
-        <view data-id="" @tap="deleteList">
-          <icon class="iconfont icon-shanchu" />
-          删除
+        <view class="info">
+          <view>姓名: {{item.people}}</view>
+          <view>联系电话:{{item.mobile}}</view>
         </view>
-        <view class="moren morenSel" data-id="" @tap="defaultAddress">
-          <icon class="iconfont icon-moren" />
-          默认地址
-        </view>
-      </view>
-    </view>
-    <view class="itemAddress">
-      <view class="name">
-        <icon class="iconfont icon-location" />
-        地址地址地址地址地址地址地址地址地址地址
-      </view>
-      <view class="info">
-        <view>姓名: 收货人</view>
-        <view>联系电话:18888888888</view>
-      </view>
-      <view class="open">
-        <view data-index="" @tap="goNewAddress">
-          <icon class="iconfont icon-bianji" />
-          编辑
-        </view>
-        <view data-id="" @tap="deleteList">
-          <icon class="iconfont icon-shanchu" />
-          删除
-        </view>
-        <view class="moren" data-id="" @tap="defaultAddress">
-          <icon class="iconfont icon-moren" />
-          选为默认
+        <view class="open">
+          <view data-index="{{index}}" @tap="goNewAddress">
+            <icon class="iconfont icon-bianji" />
+            编辑
+          </view>
+          <view data-id="{{item.id}}" @tap="deleteList">
+            <icon class="iconfont icon-shanchu" />
+            删除
+          </view>
+          <view class="moren morenSel" data-id="{{item.id}}" @tap="defaultAddress">
+            <icon class="iconfont icon-moren" />
+            默认地址
+          </view>
         </view>
       </view>
-    </view>
+    </repeat>
     <view class="noCommodity" wx:if="{{ addressList.length==0 }}">
       <icon class="iconfont icon-kong"></icon>
       暂无收货地址
-    </view>
-    <view wx:else>
-      <!-- <block wx:for="{{addressList}}" key="index" index="index" item="item" wx:if="{{addressList.length > 0}}">
-        <view class="itemAddress">
-          <view class="name">
-            <icon class="iconfont icon-location" />
-            {{item.area + item.address}}
-          </view>
-          <view class="info">
-            <view>姓名:{{item.real_name}}</view>
-            <view>联系电话:{{item.mobile}}</view>
-          </view>
-          <view class="open">
-            <view data-index="{{index}}" @tap="modifyAddress">
-              <icon class="iconfont icon-bianji" />
-              编辑
-            </view>
-            <view data-id="{{item.id}}" @tap="deleteList">
-              <icon class="iconfont icon-shanchu" />
-              删除
-            </view>
-            <view class="moren {{ item.status == '默认地址'?'morenSel':''}}" data-id="{{item.id}}" @tap="defaultAddress">
-              <icon class="iconfont icon-moren" />
-              默认地址
-            </view>
-          </view>
-        </view>
-      </block> -->
     </view>
     <!-- 新增地址按钮 -->
     <view @tap="goNewAddress">
@@ -202,17 +152,8 @@ export default class AddressList extends wepy.page {
     
   };
   data = {
-    addressList: [],
-    addssList: [],
-    bookList: 0,
-    id: [],
-    totalPrice: 0,
-    type: '',
-    name: '',
-    prompt: true,
-    getUrl: '',
-    total: '',
-    indexs: ''
+    userInfo: new Object(), // 用户信息
+    addressList: new Array() // 地址列表
   };
   methods = {
     bindViewTap() {
@@ -224,122 +165,142 @@ export default class AddressList extends wepy.page {
     }
   }
 
-  // 删除地址
-  deleteList(e) {
-    var id = e.currentTarget.dataset.id
-    var that = this
-    wx.showModal({
-      title: '提示',
-      content: '您确定要删除这条地址吗？',
-      success: function(res) {
-        if (res.confirm) {
-          wx.request({
-            url: `${that.$parent.globalData.requestUrl}/deleteShipment/${id}`,
-            method: 'DELETE',
-            header: {
-              AuthrizeOpenId: that.$parent.globalData.open_id
-            },
-            success: data => {
-              if (data.data.success) {
-                wx.showToast({
-                  title: '删除地址成功',
-                  duration: 2000,
-                  mask: true,
-                  icon: 'success'
-                })
-                that.getShipmentList()
-              } else {
-                wx.showModal({
-                  title: '',
-                  content: data.data.errmsg
-                })
-              }
-            }
-          })
-        } else if (res.cancel) {}
-      }
-    })
-  }
-
-  // 默认收货地址
-  defaultAddress(e) {
-    var id = e.currentTarget.dataset.id
-    // console.log(id)
-    wx.request({
-      url: `${this.$parent.globalData.requestUrl}/setDefaultShipment/${id}`,
-      method: 'PUT',
-      header: {
-        AuthrizeOpenId: this.$parent.globalData.open_id
-      },
-      success: data => {
-        if (data.data.success) {
-          wx.showToast({
-            title: '设置默认地址成功',
-            duration: 2000,
-            mask: true,
-            icon: 'success'
-          })
-          this.getShipmentList()
-        } else {
-          wx.showModal({
-            title: '',
-            content: data.data.errmsg
-          })
-        }
-      }
-    })
-  }
-  async onReachBottom() {
-    if (!this.getUrl) {
-      this.prompt = false
-      this.$apply()
-      return
-    }
-    await wx.request({
-      url: this.getUrl,
-      method: 'GET',
-      header: {
-        AuthrizeOpenId: this.$parent.globalData.open_id
-      },
-      success: data => {
-        if (data.statusCode === 200) {
-          let addressList = data.data.data.user_shipments.data
-          // 将新的请求结果加入原有数组  concat连接两个或更多的数组，并返回结果。
-          this.addressList = this.addressList.concat(addressList)
-          // 更新下一页请求地址
-          this.getUrl = data.data.data.orders.data.meta.pagination.links.next
-        }
-      }
-    })
-  };
-  getShipmentList() {
-    wepy.login().then(res => {
-      wx.request({
-        url: `${this.$parent.globalData.requestUrl}/shipmentList`,
-        method: 'GET',
-        header: {
-          AuthrizeOpenId: this.$parent.globalData.open_id
-        },
-        success: data => {
-          if (data.data.success) {
-            data = data.data.data.user_shipments
-            this.addressList = data.data
-            this.$apply()
-            this.getUrl = data.data.data.orders.meta.pagination.links.next
-            this.indexs = data.data.data.orders.meta.pagination.current_page
-          } else {
-            wx.showModal({
-              title: '',
-              content: data.data.errmsg
-            })
-          }
-        }
-      })
-    })
-  }
-
   onLoad(options) {
-    
+    // 获取保存在全局的用户信息
+    this.userInfo = this.$parent.globalData.userInfo
+    this.getAddressList()
   }
+  getAddressList() {
+    this.addressListData = [
+      {
+        'id': '1',
+        'address': '软件新城1',
+        'people': '二狗子1',
+        'mobile': '18888888888',
+      },
+      {
+        'id': '1',
+        'address': '软件新城2',
+        'people': '二狗子2',
+        'mobile': '18888888888',
+      },
+      {
+        'id': '1',
+        'address': '软件新城3',
+        'people': '二狗子3',
+        'mobile': '18888888888',
+      }
+    ]
+    this.$apply()
+  }
+  // // 删除地址
+  // deleteList(e) {
+  //   var id = e.currentTarget.dataset.id
+  //   var that = this
+  //   wx.showModal({
+  //     title: '提示',
+  //     content: '您确定要删除这条地址吗？',
+  //     success: function(res) {
+  //       if (res.confirm) {
+  //         wx.request({
+  //           url: `${that.$parent.globalData.requestUrl}/deleteShipment/${id}`,
+  //           method: 'DELETE',
+  //           header: {
+  //             AuthrizeOpenId: that.$parent.globalData.open_id
+  //           },
+  //           success: data => {
+  //             if (data.data.success) {
+  //               wx.showToast({
+  //                 title: '删除地址成功',
+  //                 duration: 2000,
+  //                 mask: true,
+  //                 icon: 'success'
+  //               })
+  //               that.getShipmentList()
+  //             } else {
+  //               wx.showModal({
+  //                 title: '',
+  //                 content: data.data.errmsg
+  //               })
+  //             }
+  //           }
+  //         })
+  //       } else if (res.cancel) {}
+  //     }
+  //   })
+  // }
+
+  // // 默认收货地址
+  // defaultAddress(e) {
+  //   var id = e.currentTarget.dataset.id
+  //   // console.log(id)
+  //   wx.request({
+  //     url: `${this.$parent.globalData.requestUrl}/setDefaultShipment/${id}`,
+  //     method: 'PUT',
+  //     header: {
+  //       AuthrizeOpenId: this.$parent.globalData.open_id
+  //     },
+  //     success: data => {
+  //       if (data.data.success) {
+  //         wx.showToast({
+  //           title: '设置默认地址成功',
+  //           duration: 2000,
+  //           mask: true,
+  //           icon: 'success'
+  //         })
+  //         this.getShipmentList()
+  //       } else {
+  //         wx.showModal({
+  //           title: '',
+  //           content: data.data.errmsg
+  //         })
+  //       }
+  //     }
+  //   })
+  // }
+  // async onReachBottom() {
+  //   await wx.request({
+  //     url: this.getUrl,
+  //     method: 'GET',
+  //     header: {
+  //       AuthrizeOpenId: this.$parent.globalData.open_id
+  //     },
+  //     success: data => {
+  //       if (data.statusCode === 200) {
+  //         let addressList = data.data.data.user_shipments.data
+  //         // 将新的请求结果加入原有数组  concat连接两个或更多的数组，并返回结果。
+  //         this.addressList = this.addressList.concat(addressList)
+  //         // 更新下一页请求地址
+  //         this.getUrl = data.data.data.orders.data.meta.pagination.links.next
+  //       }
+  //     }
+  //   })
+  // };
+  // getShipmentList() {
+  //   wepy.login().then(res => {
+  //     wx.request({
+  //       url: `${this.$parent.globalData.requestUrl}/shipmentList`,
+  //       method: 'GET',
+  //       header: {
+  //         AuthrizeOpenId: this.$parent.globalData.open_id
+  //       },
+  //       success: data => {
+  //         if (data.data.success) {
+  //           data = data.data.data.user_shipments
+  //           this.addressList = data.data
+  //           this.$apply()
+  //           this.getUrl = data.data.data.orders.meta.pagination.links.next
+  //           this.indexs = data.data.data.orders.meta.pagination.current_page
+  //         } else {
+  //           wx.showModal({
+  //             title: '',
+  //             content: data.data.errmsg
+  //           })
+  //         }
+  //       }
+  //     })
+  //   })
+  // }
+
 }
 </script>
