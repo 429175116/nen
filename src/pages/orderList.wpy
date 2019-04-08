@@ -62,54 +62,24 @@
 <template>
   <view>
     <view class="list">
-      <view class="item" @tap="goOrderInfo">
-        <view class="con">
-          <image src="{{bannerImg}}" />
-          <view class="content">
-            <view class="name">糖尿病管理</view>
-            <view>数量1 | 总价：100</view>
-            <view>有效期至：永久有效</view>
+      <repeat for="{{orderListData}}" item="item">
+        <view class="item" data-id="{{item.id}}" @tap="goOrderInfo">
+          <view class="con">
+            <image src="{{item.img}}" />
+            <view class="content">
+              <view class="name">{{item.name}}</view>
+              <view>数量{{item.num}} | 总价：{{item.price}}</view>
+              <view>有效期至：{{item.valid}}</view>
+            </view>
+            <view class="status">{{item.status}}</view>
           </view>
-          <view class="status">支付成功</view>
-        </view>
-        <view class="info">
-          <view class="remaining">待使用1</view>
-          <view>已使用0</view>
-          <view>已退费0</view>
-        </view>
-      </view>
-      <view class="item" @tap="goOrderInfo">
-        <view class="con">
-          <image src="{{bannerImg}}" />
-          <view class="content">
-            <view class="name">糖尿病管理</view>
-            <view>数量1 | 总价：100</view>
-            <view>有效期至：永久有效</view>
+          <view class="info">
+            <view class="remaining">待使用{{item.use}}</view>
+            <view>已使用{{item.alreadyUse}}</view>
+            <view>已退费{{item.refund}}</view>
           </view>
-          <view class="status">支付成功</view>
         </view>
-        <view class="info">
-          <view class="remaining">待使用1</view>
-          <view>已使用0</view>
-          <view>已退费0</view>
-        </view>
-      </view>
-      <view class="item" @tap="goOrderInfo">
-        <view class="con">
-          <image src="{{bannerImg}}" />
-          <view class="content">
-            <view class="name">糖尿病管理</view>
-            <view>数量1 | 总价：100</view>
-            <view>有效期至：永久有效</view>
-          </view>
-          <view class="status">支付成功</view>
-        </view>
-        <view class="info">
-          <view class="remaining">待使用1</view>
-          <view>已使用0</view>
-          <view>已退费0</view>
-        </view>
-      </view>
+      </repeat>
     </view>
   </view>
 </template>
@@ -120,22 +90,59 @@
       navigationBarTitleText: '订单列表'
     }
     data = {
-      imgRequestUrl: '',
-      artileData: null,
-      autoW: [],
-      autoH: [],
-      bannerImg: 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'
+      orderListData: new Array() // 订单列表
     }
     methods = {
       // 查看文章详情
       goOrderInfo() {
-        this.$navigate(`/pages/order`)
+        this.$navigate(`/pages/order?id=${this.surroundingsListAll}`)
       }
     }
     onLoad(parent) {
       // this.imgRequestUrl = this.$parent.globalData.imgRequestUrl
-      // 获取文章列表数据
-      // this.getArtile(parent.id)
+      // 获取订单列表数据
+      this.getListData()
+    }
+    getListData() {
+      this.orderListData = [
+        {
+          'name': '糖尿病管理',
+          'id': '1',
+          'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png',
+          'num': '10',
+          'price': '100',
+          'status': '支付成功',
+          'use': '1',
+          'alreadyUse': '1',
+          'refund': '1',
+          'valid': '2019-10-01'
+        },
+        {
+          'name': '糖尿病管理',
+          'id': '1',
+          'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png',
+          'num': '10',
+          'price': '100',
+          'status': '支付成功',
+          'use': '1',
+          'alreadyUse': '1',
+          'refund': '1',
+          'valid': '2019-10-01'
+        },
+        {
+          'name': '糖尿病管理',
+          'id': '1',
+          'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png',
+          'num': '10',
+          'price': '100',
+          'status': '支付成功',
+          'use': '1',
+          'alreadyUse': '1',
+          'refund': '1',
+          'valid': '2019-10-01'
+        }
+      ]
+      this.$apply()
     }
   }
 </script>

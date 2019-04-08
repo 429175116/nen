@@ -109,11 +109,11 @@
   <view>
     <view class="item">
       <view class="con">
-        <image src="{{bannerImg}}" />
+        <image src="{{orderData.img}}" />
         <view class="content">
-          <view class="name">糖尿病管理</view>
-          <view>数量1</view>
-          <view>￥100</view>
+          <view class="name">{{orderData.name}}</view>
+          <view>数量{{orderData.num}}</view>
+          <view>￥{{orderData.price}}</view>
         </view>
       </view>
       <view class="info">
@@ -122,12 +122,12 @@
     </view>
     <view class="QRCode">
       <view class="name">
-        <view>有效期至：永久有效</view>
-        <view class="button">申请退款</view>
+        <view>有效期至：{{orderData.valid}}</view>
+        <view class="button" data-id="{{orderData.id}}">申请退款</view>
       </view>
       <view class="QRCodeImg">
-        <image src="{{bannerImg}}" />
-        <view>3752 1318 1629 1565 575</view>
+        <image src="{{orderData.QRCode}}" />
+        <view>{{orderData.QRCodeNum}}</view>
       </view>
     </view>
     <view class="expert buttonList">
@@ -142,11 +142,11 @@
       <view class="expertList listaddress">
         <view class="infoList">
           <icon class="iconfont icon-yiliaohangyedeICON-12"></icon>
-          订单号：2019010000033332222666666666659895
+          订单号：{{orderData.orderNum}}
         </view>
         <view class="infoList">
           <icon class="iconfont icon-yiliaohangyedeICON-2"></icon>
-          下单时间：2019-01-30
+          下单时间：{{orderData.orderTime}}
         </view>
       </view>
     </view>
@@ -162,15 +162,15 @@
       <view class="expertList listaddress">
         <view class="infoList">
           <icon class="iconfont icon-yiliaohangyedeICON-12"></icon>
-          地址地址地址地址地址地址地址地址地址地址地址地址
+          {{contactData.address}}
         </view>
         <view class="infoList">
           <icon class="iconfont icon-yiliaohangyedeICON-2"></icon>
-          2019-01-30
+          {{contactData.time}}
         </view>
         <view class="infoList">
           <icon class="iconfont icon-yiliaohangyedeICON-5"></icon>
-          029-888888888
+          {{contactData.phone}}
         </view>
       </view>
     </view>
@@ -183,19 +183,31 @@
       navigationBarTitleText: '订单详情'
     }
     data = {
-      imgRequestUrl: '',
-      artileData: null,
-      autoW: [],
-      autoH: [],
-      bannerImg: 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'
+      contactData: new Object(), // 创建联系地址对象
+      orderData: new Object() // 订单数据
     }
     methods = {
       
     }
     onLoad(parent) {
-      // this.imgRequestUrl = this.$parent.globalData.imgRequestUrl
-      // 获取文章列表数据
-      // this.getArtile(parent.id)
+      // 获取保存在全局的联系我们数据
+      this.contactData = this.$parent.globalData.contactData
+      this.getOrderData()
+    }
+    getOrderData() {
+      this.orderData = {
+        'name': '糖尿病管理',
+        'id': '1',
+        'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png',
+        'num': '10',
+        'price': '100',
+        'status': '支付成功',
+        'valid': '2019-10-01',
+        'QRCode': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png',
+        'QRCodeNum': '3752 1318 1629 1565 575',
+        'orderNum': '2019010000033332222666666666659895',
+        'orderTime': '2019-10-01'
+      }
     }
   }
 </script>
