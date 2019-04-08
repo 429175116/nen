@@ -54,14 +54,11 @@
     <view class="expertTitle">
       <view>
         <icon class="iconfont icon-tubiaozhizuo-"></icon>
-        儿科
+        {{doctorsInfo.name}}
       </view>
       <view> </view>
     </view>
-    <text class="description">
-      提供儿科初级诊疗（Pediatric Primary Care）服务。坚持循证诊疗和标准化治疗，突出人文关怀，反对过度医疗，注重和家庭形成伙伴关系，提供持续和稳定的儿科服务。
-      特色业务：儿科常见疾病诊疗、生长发育评估、疫苗和遗传咨询、过敏性疾病（哮喘、鼻炎、湿疹）、新生儿门诊、行为和发育问题早期识别（多动症、孤独症、抽动症）、母亲产后抑郁筛查。
-    </text>
+    <text class="description">{{doctorsInfo.description}}</text>
   </view>
   <view class="topNav">
     <view class="topNavItem" @tap="registered">
@@ -93,15 +90,15 @@
     <view class="expertList listaddress">
       <view class="infoList">
         <icon class="iconfont icon-yiliaohangyedeICON-12"></icon>
-        地址地址地址地址地址地址地址地址地址地址地址地址
+        {{contactData.address}}
       </view>
       <view class="infoList">
         <icon class="iconfont icon-yiliaohangyedeICON-2"></icon>
-        2019-01-30
+        {{contactData.time}}
       </view>
       <view class="infoList">
         <icon class="iconfont icon-yiliaohangyedeICON-5"></icon>
-        029-888888888
+        {{contactData.phone}}
       </view>
     </view>
   </view>
@@ -122,7 +119,8 @@
     mixins = []
 
     data = {
-      bannerImg: 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'
+      contactData: new Object(), // 创建联系地址对象
+      doctorsInfo: new Object() // 获取科室信息
     }
 
     computed = {
@@ -137,13 +135,15 @@
     }
 
     onLoad() {
-      
+      // 获取保存在全局的联系我们数据
+      this.contactData = this.$parent.globalData.contactData
+      // 获取科室信息
+      this.getDoctorsInfo()
     }
-    onShareAppMessage() {
-      let positionId = this.data.positionId
-      return {
-          title: '分享医师-杨泽方',
-          path: 'pages/doctorsInfo'
+    getDoctorsInfo() {
+      this.doctorsInfo = {
+        'name': '儿科',
+        'description': '提供儿科初级诊疗（Pediatric Primary Care）服务。坚持循证诊疗和标准化治疗，突出人文关怀，反对过度医疗，注重和家庭形成伙伴关系，提供持续和稳定的儿科服务。 特色业务：儿科常见疾病诊疗、生长发育评估、疫苗和遗传咨询、过敏性疾病（哮喘、鼻炎、湿疹）、新生儿门诊、行为和发育问题早期识别（多动症、孤独症、抽动症）、母亲产后抑郁筛查。'
       }
     }
   }
