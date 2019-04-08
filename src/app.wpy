@@ -308,7 +308,8 @@ export default class extends wepy.app {
 
   globalData = {
     userInfo: new Object(),
-    contactData: new Object()
+    contactData: new Object(),
+    requestUrl: 'https://serverUrl'
   }
 
   constructor () {
@@ -317,21 +318,21 @@ export default class extends wepy.app {
   }
 
   onLaunch() {
-    this.testAsync()
+    // this.testAsync()
   }
 
-  sleep (s) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve('promise resolved')
-      }, s * 1000)
-    })
-  }
+  // sleep (s) {
+  //   return new Promise((resolve, reject) => {
+  //     setTimeout(() => {
+  //       resolve('promise resolved')
+  //     }, s * 1000)
+  //   })
+  // }
 
-  async testAsync () {
-    const data = await this.sleep(3)
-    console.log(data)
-  }
+  // async testAsync () {
+  //   const data = await this.sleep(3)
+  //   console.log(data)
+  // }
 
   getUserInfo(cb) {
     const that = this
