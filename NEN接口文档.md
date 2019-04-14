@@ -8,7 +8,7 @@ _日期：2019-04-08_
 #### 接口请求地址
 `[URL_PREFIX]/api/v1/setUserInfo`
 #### 请求地址示例
-http://localhost:3000/api/v1/setUserInfo
+https://localhost:3000/api/v1/setUserInfo
 #### 请求路径说明
 
 参数名  | 参数说明
@@ -73,7 +73,7 @@ country | String | 所在国家
 #### 接口请求地址
 `[URL_PREFIX]/api/v1/getClinicInfo`
 #### 请求地址示例
-http://localhost:3000/api/v1/getClinicInfo
+https://localhost:3000/api/v1/getClinicInfo
 #### 请求路径说明
 
 参数名  | 参数说明
@@ -127,7 +127,7 @@ latitude | String | 纬度
 #### 接口请求地址
 `[URL_PREFIX]/api/v1/getBannerList`
 #### 请求地址示例
-http://localhost:3000/api/v1/getBannerList
+https://localhost:3000/api/v1/getBannerList
 #### 请求路径说明
 
 参数名  | 参数说明
@@ -172,7 +172,7 @@ bannerList | Array | 图片地址列表
 #### 接口请求地址
 `[URL_PREFIX]/api/v1/getDoctorsList`
 #### 请求地址示例
-http://localhost:3000/api/v1/getDoctorsList
+https://localhost:3000/api/v1/getDoctorsList
 #### 请求路径说明
 
 参数名  | 参数说明
@@ -220,7 +220,7 @@ img | String | 医师头像
 #### 接口请求地址
 `[URL_PREFIX]/api/v1/getDoctorsListAll`
 #### 请求地址示例
-http://localhost:3000/api/v1/getDoctorsListAll
+https://localhost:3000/api/v1/getDoctorsListAll
 #### 请求路径说明
 
 参数名  | 参数说明
@@ -276,8 +276,8 @@ img | String | 医师头像
     }
   ],
   "pageNum": {
-    "previousPage": "上一页地址（http://localhost:3000/api/v1/getDoctorsListAll?page=2）"
-    "nextPage": "下一页地址（http://localhost:3000/api/v1/getDoctorsListAll?page=2）"
+    "previousPage": "上一页地址（https://localhost:3000/api/v1/getDoctorsListAll?page=2）"
+    "nextPage": "下一页地址（https://localhost:3000/api/v1/getDoctorsListAll?page=2）"
   }
 }
 ```
@@ -287,7 +287,7 @@ img | String | 医师头像
 #### 接口请求地址
 `[URL_PREFIX]/api/v1/getDoctorsInfo`
 #### 请求地址示例
-http://localhost:3000/api/v1/getDoctorsInfo
+https://localhost:3000/api/v1/getDoctorsInfo
 #### 请求路径说明
 
 参数名  | 参数说明
@@ -344,7 +344,7 @@ department | String | 擅长科室
 #### 接口请求地址
 `[URL_PREFIX]/api/v1/getDepartmentList`
 #### 请求地址示例
-http://localhost:3000/api/v1/getDepartmentList
+https://localhost:3000/api/v1/getDepartmentList
 #### 请求路径说明
 
 参数名  | 参数说明
@@ -392,7 +392,7 @@ selected | int | 是否选中显示 1-显示 0-不显示
 #### 接口请求地址
 `[URL_PREFIX]/api/v1/getDepartmentInfo`
 #### 请求地址示例
-http://localhost:3000/api/v1/getDepartmentInfo
+https://localhost:3000/api/v1/getDepartmentInfo
 #### 请求路径说明
 
 参数名  | 参数说明
@@ -435,7 +435,7 @@ description | String | 科室描述信息
 #### 接口请求地址
 `[URL_PREFIX]/api/v1/getArticleList`
 #### 请求地址示例
-http://localhost:3000/api/v1/getArticleList
+https://localhost:3000/api/v1/getArticleList
 #### 请求路径说明
 
 参数名  | 参数说明
@@ -504,7 +504,7 @@ department | String | 文章内容
 #### 接口请求地址
 `[URL_PREFIX]/api/v1/getArticleListAll`
 #### 请求地址示例
-http://localhost:3000/api/v1/getArticleListAll
+https://localhost:3000/api/v1/getArticleListAll
 #### 请求路径说明
 
 参数名  | 参数说明
@@ -568,8 +568,8 @@ department | String | 文章内容
     }
   ],
   "pageNum": {
-    "previousPage": "上一页地址（http://localhost:3000/api/v1/getArticleListAll?page=2）"
-    "nextPage": "下一页地址（http://localhost:3000/api/v1/getArticleListAll?page=2）"
+    "previousPage": "上一页地址（https://localhost:3000/api/v1/getArticleListAll?page=2）"
+    "nextPage": "下一页地址（https://localhost:3000/api/v1/getArticleListAll?page=2）"
   }
 }
 ```
@@ -579,7 +579,7 @@ department | String | 文章内容
 #### 接口请求地址
 `[URL_PREFIX]/api/v1/getSurroundingsList`
 #### 请求地址示例
-http://localhost:3000/api/v1/getSurroundingsList
+https://localhost:3000/api/v1/getSurroundingsList
 #### 请求路径说明
 
 参数名  | 参数说明
@@ -624,7 +624,7 @@ SurroundingsList | Array | 环境图片
 #### 接口请求地址
 `[URL_PREFIX]/api/v1/getSurroundingsListAll`
 #### 请求地址示例
-http://localhost:3000/api/v1/getSurroundingsListAll
+https://localhost:3000/api/v1/getSurroundingsListAll
 #### 请求路径说明
 
 参数名  | 参数说明
@@ -669,8 +669,8 @@ SurroundingsList | Array | 环境图片
     "http://www.enuoe.cn/enuoe/upload/201807/1532076107.png"
   ]
   "pageNum": {
-    "previousPage": "上一页地址（http://localhost:3000/api/v1/getSurroundingsListAll?page=2）"
-    "nextPage": "下一页地址（http://localhost:3000/api/v1/getSurroundingsListAll?page=2）"
+    "previousPage": "上一页地址（https://localhost:3000/api/v1/getSurroundingsListAll?page=2）"
+    "nextPage": "下一页地址（https://localhost:3000/api/v1/getSurroundingsListAll?page=2）"
   }
 }
 ```
