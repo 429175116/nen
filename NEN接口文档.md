@@ -59,6 +59,60 @@ userInfo | Object | 用户信息（openid，昵称，头像等基本信息及业
 }
 ```
 
+### 获取诊所信息
+`获取诊所信息`
+#### 接口请求地址
+`[URL_PREFIX]/api/v1/getClinicInfo`
+#### 请求地址示例
+http://localhost:3000/api/v1/getClinicInfo
+#### 请求路径说明
+
+参数名  | 参数说明
+-----  | --------
+api    | 服务
+v1    　| 版本号
+setUserInfo| 接口名称
+
+#### 请求参数说明
+参数名  |  数据类型 | 参数说明
+-----  | -------- | --------
+clinicId | String | 诊所ID
+
+#### 返回参数说明
+
+参数名  | 返回值类型 | 参数说明 |
+------ | ------ | ----------
+result | String | 操作结果
+errcode | int | 错误状态码
+errmsg | String | 错误提示信息
+clinicInfo | Object | 诊所信息（基本信息及业余相关信息）
+id | String | 诊所ID
+name | String | 诊所名称
+address | String | 诊所地址
+mobile | String | 联系电话
+longitude | String | 经度
+latitude | String | 纬度
+
+#### 返回值示例
+```
+{"result": true}表示成功
+{"result": false}表示失败
+
+{
+  "result":true,
+  "errcode":0,
+  "errmsg":"错误信息提示",
+  "clinicInfo":{
+    "id":17,
+    "name":"诊所名称",
+    "address":"诊所地址",
+    "mobile":"18888888888",
+    "longitude":"经度",
+    "latitude":"纬度",
+  }
+}
+```
+
 ### 首页顶部banner轮播图获取
 `获取图片地址`
 #### 接口请求地址
@@ -91,8 +145,8 @@ bannerList | Array | 图片地址列表
   "errcode":0,
   "errmsg":"",
   "bannerList":[
-    {"img":"https地址", "id": "1"},
-    {"img":"https地址", "id": "1"},
+    "https地址",
+    "https地址"
   ]
 }
 ```
@@ -119,44 +173,10 @@ result | String | 操作结果
 errcode | int | 错误状态码
 errmsg | String | 错误提示信息
 doctorsList | Array | 医师列表
-
-#### 返回值示例
-```
-{"result": true}表示成功
-{"result": false}表示失败
-
-{
-  "result":true,
-  "errcode":0,
-  "errmsg":"",
-  "doctorsList":[
-    {'id': '1', 'name': '杨泽方', 'position': '主治医师', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
-    {'id': '1', 'name': '杨泽方', 'position': '主治医师', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'}
-  ]
-}
-```
-
-### 首页专家推荐展示
-`获取三个推荐医师的信息`
-#### 接口请求地址
-`[URL_PREFIX]/api/v1/getDoctorsList`
-#### 请求地址示例
-http://localhost:3000/api/v1/getDoctorsList
-#### 请求路径说明
-
-#### 请求参数说明
-参数名  |  数据类型 | 参数说明
------  | -------- | --------
-clinicId | String | 诊所ID
-
-#### 返回参数说明
-
-参数名  | 返回值类型 | 参数说明 |
------- | ------ | ----------
-result | String | 操作结果
-errcode | int | 错误状态码
-errmsg | String | 错误提示信息
-doctorsList | Array | 医师列表
+id | String | 医师ID
+name | String | 医师名称
+position | String | 医师职位
+img | String | 医师头像
 
 #### 返回值示例
 ```
@@ -194,7 +214,14 @@ clinicId | String | 诊所ID
 result | String | 操作结果
 errcode | int | 错误状态码
 errmsg | String | 错误提示信息
+pageNum | Object | 列表翻页信息
+previousPage | String | 上一页地址
+nextPage | String | 下一页地址
 departmentListAll | Array | 医师列表
+id | String | 医师ID
+name | String | 医师名称
+position | String | 医师职位
+img | String | 医师头像
 
 #### 返回值示例
 ```
@@ -209,21 +236,21 @@ departmentListAll | Array | 医师列表
     {
       'departmentName': '科室1',
         'departmentList': [
-          {'id': '10', 'name': '杨泽方', 'expertOffice': '主治医师', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
-          {'id': '10', 'name': '杨泽方', 'expertOffice': '主治医师', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'}
+          {'id': '10', 'name': '杨泽方', 'position': '主治医师', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
+          {'id': '10', 'name': '杨泽方', 'position': '主治医师', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'}
       ]
     },
     {
       'departmentName': '科室1',
         'departmentList': [
-          {'id': '10', 'name': '杨泽方', 'expertOffice': '主治医师', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
-          {'id': '10', 'name': '杨泽方', 'expertOffice': '主治医师', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'}
+          {'id': '10', 'name': '杨泽方', 'position': '主治医师', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
+          {'id': '10', 'name': '杨泽方', 'position': '主治医师', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'}
       ]
     }
   ],
   "pageNum": {
-    "previousPage": "上一页地址（http://localhost:3000/api/v1/getDoctorsListAll?clinicid=2）"
-    "nextPage": "下一页地址（http://localhost:3000/api/v1/getDoctorsListAll?clinicid=4）"
+    "previousPage": "上一页地址（http://localhost:3000/api/v1/getDoctorsListAll?page=2）"
+    "nextPage": "下一页地址（http://localhost:3000/api/v1/getDoctorsListAll?page=2）"
   }
 }
 ```
@@ -248,8 +275,14 @@ doctorsId | String | 医师ID
 ------ | ------ | ----------
 result | String | 操作结果
 errcode | int | 错误状态码
-errmsg | Object | 错误提示信息
-doctorsInfo | Array | 医师 信息
+errmsg | String | 错误提示信息
+doctorsInfo | Object | 医师 信息
+id | String | 医师ID
+name | String | 医师名称
+position | String | 医师职位
+img | String | 医师头像
+description | String | 医师描述信息
+department | String | 擅长科室
 
 #### 返回值示例
 ```
@@ -264,7 +297,7 @@ doctorsInfo | Array | 医师 信息
     {
       'id': '11',
       'name': '杨泽方',
-      'info': '主治医师·从业18年',
+      'position': '主治医师·从业18年',
       'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png',
       'description': '儿科主治医师，18年儿科执行经验，云诊室参与者，国内权威医药生物专业论坛担任专业儿科版主及资深论坛管理员，致力于全科医学及儿科健康管理新模式的不断探索。',
       'department': ['儿科', '儿科', '儿科', '儿科', '儿科', '儿科']
@@ -274,7 +307,7 @@ doctorsInfo | Array | 医师 信息
 ```
 
 ### 获取诊所科室列表
-`获取诊所科室列表--数量不限制，包含所有`
+`获取诊所科室列表--数量不限制，包含所有（客户预先定义，使用者选择显示）`
 #### 接口请求地址
 `[URL_PREFIX]/api/v1/getDepartmentList`
 #### 请求地址示例
@@ -375,6 +408,7 @@ errmsg | String | 错误提示信息
 articleList | Array | 文章列表
 id | String | 文章ID
 name | String | 文章名
+img | String | 图片
 views | int | 浏览量
 department | String | 文章内容
 
@@ -391,25 +425,187 @@ department | String | 文章内容
     {
       'id': '11',
       'name': '文章名',
-      'views': 300
+      'views': 300,
+      'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png',
       'department': '文章内容文章内容文章内容文章内容文章内容文章内容'
     },
     {
       'id': '11',
       'name': '文章名',
-      'views': 300
+      'views': 300,
+      'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png',
       'department': '文章内容文章内容文章内容文章内容文章内容文章内容'
     },
     {
       'id': '11',
       'name': '文章名',
-      'views': 300
+      'views': 300,
+      'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png',
       'department': '文章内容文章内容文章内容文章内容文章内容文章内容'
     }
   ]
 }
 ```
+
+
+### 获取文章所有列表
+`获取文章列表--所有`
+#### 接口请求地址
+`[URL_PREFIX]/api/v1/getArticleListAll`
+#### 请求地址示例
+http://localhost:3000/api/v1/getArticleListAll
+#### 请求路径说明
+
+#### 请求参数说明
+参数名  |  数据类型 | 参数说明
+-----  | -------- | --------
+clinicId | String | 诊所ID
+
+#### 返回参数说明
+
+参数名  | 返回值类型 | 参数说明 |
+------ | ------ | ----------
+result | String | 操作结果
+errcode | int | 错误状态码
+errmsg | String | 错误提示信息
+pageNum | Object | 列表翻页信息
+previousPage | String | 上一页地址
+nextPage | String | 下一页地址
+articleList | Array | 文章列表
+id | String | 文章ID
+name | String | 文章名
+img | String | 图片
+views | int | 浏览量
+department | String | 文章内容
+
+#### 返回值示例
+```
+{"result": true}表示成功
+{"result": false}表示失败
+
+{
+  "result":true,
+  "errcode":0,
+  "errmsg":"",
+  "departmentList":[
+    {
+      'id': '11',
+      'name': '文章名',
+      'views': 300,
+      'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png',
+      'department': '文章内容文章内容文章内容文章内容文章内容文章内容'
+    },
+    {
+      'id': '11',
+      'name': '文章名',
+      'views': 300,
+      'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png',
+      'department': '文章内容文章内容文章内容文章内容文章内容文章内容'
+    },
+    {
+      'id': '11',
+      'name': '文章名',
+      'views': 300,
+      'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png',
+      'department': '文章内容文章内容文章内容文章内容文章内容文章内容'
+    }
+  ],
+  "pageNum": {
+    "previousPage": "上一页地址（http://localhost:3000/api/v1/getArticleListAll?page=2）"
+    "nextPage": "下一页地址（http://localhost:3000/api/v1/getArticleListAll?page=2）"
+  }
+}
+```
+
+### 获取首页就医环境
+`获取首页就医环境--三张图`
+#### 接口请求地址
+`[URL_PREFIX]/api/v1/getSurroundingsList`
+#### 请求地址示例
+http://localhost:3000/api/v1/getSurroundingsList
+#### 请求路径说明
+
+#### 请求参数说明
+参数名  |  数据类型 | 参数说明
+-----  | -------- | --------
+clinicId | String | 诊所ID
+
+#### 返回参数说明
+
+参数名  | 返回值类型 | 参数说明 |
+------ | ------ | ----------
+result | String | 操作结果
+errcode | int | 错误状态码
+errmsg | String | 错误提示信息
+SurroundingsList | Array | 环境图片
+
+#### 返回值示例
+```
+{"result": true}表示成功
+{"result": false}表示失败
+
+{
+  "result":true,
+  "errcode":0,
+  "errmsg":"",
+  "SurroundingsList":[
+    "http://www.enuoe.cn/enuoe/upload/201807/1532076107.png",
+    "http://www.enuoe.cn/enuoe/upload/201807/1532076107.png",
+    "http://www.enuoe.cn/enuoe/upload/201807/1532076107.png"
+  ]
+}
+```
+
+### 获取首页就医环境
+`获取首页就医环境--所有图`
+#### 接口请求地址
+`[URL_PREFIX]/api/v1/getSurroundingsListAll`
+#### 请求地址示例
+http://localhost:3000/api/v1/getSurroundingsListAll
+#### 请求路径说明
+
+#### 请求参数说明
+参数名  |  数据类型 | 参数说明
+-----  | -------- | --------
+clinicId | String | 诊所ID
+
+#### 返回参数说明
+
+参数名  | 返回值类型 | 参数说明 |
+------ | ------ | ----------
+result | String | 操作结果
+errcode | int | 错误状态码
+errmsg | String | 错误提示信息
+pageNum | Object | 列表翻页信息
+previousPage | String | 上一页地址
+nextPage | String | 下一页地址
+SurroundingsList | Array | 环境图片
+
+#### 返回值示例
+```
+{"result": true}表示成功
+{"result": false}表示失败
+
+{
+  "result":true,
+  "errcode":0,
+  "errmsg":"",
+  "SurroundingsList":[
+    "http://www.enuoe.cn/enuoe/upload/201807/1532076107.png",
+    "http://www.enuoe.cn/enuoe/upload/201807/1532076107.png",
+    "http://www.enuoe.cn/enuoe/upload/201807/1532076107.png",
+    "http://www.enuoe.cn/enuoe/upload/201807/1532076107.png",
+    "http://www.enuoe.cn/enuoe/upload/201807/1532076107.png",
+    "http://www.enuoe.cn/enuoe/upload/201807/1532076107.png",
+    "http://www.enuoe.cn/enuoe/upload/201807/1532076107.png"
+  ]
+  "pageNum": {
+    "previousPage": "上一页地址（http://localhost:3000/api/v1/getSurroundingsListAll?page=2）"
+    "nextPage": "下一页地址（http://localhost:3000/api/v1/getSurroundingsListAll?page=2）"
+  }
+}
+```
 ## 更新日志
 时间      | 操作人 | 详情
 -----     | ----- | ----
-2019-04-14  | LuoW  | bosaInfo,deviceInfo,labelInfo表的数据写入和读取的接口更新
+2019-04-14  | LuoW  | 接口文档更新--主显示
