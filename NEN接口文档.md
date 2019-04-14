@@ -600,7 +600,7 @@ clinicId | String | 诊所ID
 result | String | 操作结果
 errcode | int | 错误状态码
 errmsg | String | 错误提示信息
-SurroundingsList | Array | 环境图片
+surroundingsList | Array | 环境图片
 
 #### 返回值示例
 ```
@@ -611,7 +611,7 @@ SurroundingsList | Array | 环境图片
   "result":true,
   "errcode":0,
   "errmsg":"",
-  "SurroundingsList":[
+  "surroundingsList":[
     "http://www.enuoe.cn/enuoe/upload/201807/1532076107.png",
     "http://www.enuoe.cn/enuoe/upload/201807/1532076107.png",
     "http://www.enuoe.cn/enuoe/upload/201807/1532076107.png"
@@ -648,7 +648,7 @@ errmsg | String | 错误提示信息
 pageNum | Object | 列表翻页信息
 previousPage | String | 上一页地址
 nextPage | String | 下一页地址
-SurroundingsList | Array | 环境图片
+surroundingsList | Array | 环境图片
 
 #### 返回值示例
 ```
@@ -659,7 +659,7 @@ SurroundingsList | Array | 环境图片
   "result":true,
   "errcode":0,
   "errmsg":"",
-  "SurroundingsList":[
+  "surroundingsList":[
     "http://www.enuoe.cn/enuoe/upload/201807/1532076107.png",
     "http://www.enuoe.cn/enuoe/upload/201807/1532076107.png",
     "http://www.enuoe.cn/enuoe/upload/201807/1532076107.png",
