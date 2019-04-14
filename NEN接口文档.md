@@ -36,6 +36,14 @@ result | String | 操作结果
 errcode | int | 错误状态码
 errmsg | String | 错误提示信息
 userInfo | Object | 用户信息（openid，昵称，头像等基本信息及业余相关信息）
+id | String | 用户ID
+openId | String | 该小程序中用户绝对唯一的ID--通过code获得
+nickName | String | 昵称
+avatarUrl | String | 头像
+gender | String | 性别
+city | String | 所在城市
+province | String | 所在省份
+country | String | 所在国家
 
 #### 返回值示例
 ```
@@ -55,6 +63,7 @@ userInfo | Object | 用户信息（openid，昵称，头像等基本信息及业
     "city":"西安",
     "province":"陕西",
     "country":"中国"
+    ···业务相关信息
   }
 }
 ```
@@ -71,7 +80,7 @@ http://localhost:3000/api/v1/getClinicInfo
 -----  | --------
 api    | 服务
 v1    　| 版本号
-setUserInfo| 接口名称
+getClinicInfo | 接口名称
 
 #### 请求参数说明
 参数名  |  数据类型 | 参数说明
@@ -108,7 +117,7 @@ latitude | String | 纬度
     "address":"诊所地址",
     "mobile":"18888888888",
     "longitude":"经度",
-    "latitude":"纬度",
+    "latitude":"纬度"
   }
 }
 ```
@@ -120,6 +129,12 @@ latitude | String | 纬度
 #### 请求地址示例
 http://localhost:3000/api/v1/getBannerList
 #### 请求路径说明
+
+参数名  | 参数说明
+-----  | --------
+api    | 服务
+v1    　| 版本号
+getBannerList | 接口名称
 
 #### 请求参数说明
 参数名  |  数据类型 | 参数说明
@@ -159,6 +174,12 @@ bannerList | Array | 图片地址列表
 #### 请求地址示例
 http://localhost:3000/api/v1/getDoctorsList
 #### 请求路径说明
+
+参数名  | 参数说明
+-----  | --------
+api    | 服务
+v1    　| 版本号
+getDoctorsList | 接口名称
 
 #### 请求参数说明
 参数名  |  数据类型 | 参数说明
@@ -201,6 +222,12 @@ img | String | 医师头像
 #### 请求地址示例
 http://localhost:3000/api/v1/getDoctorsListAll
 #### 请求路径说明
+
+参数名  | 参数说明
+-----  | --------
+api    | 服务
+v1    　| 版本号
+getDoctorsListAll | 接口名称
 
 #### 请求参数说明
 参数名  |  数据类型 | 参数说明
@@ -263,6 +290,12 @@ img | String | 医师头像
 http://localhost:3000/api/v1/getDoctorsInfo
 #### 请求路径说明
 
+参数名  | 参数说明
+-----  | --------
+api    | 服务
+v1    　| 版本号
+getDoctorsInfo | 接口名称
+
 #### 请求参数说明
 参数名  |  数据类型 | 参数说明
 -----  | -------- | --------
@@ -314,6 +347,12 @@ department | String | 擅长科室
 http://localhost:3000/api/v1/getDepartmentList
 #### 请求路径说明
 
+参数名  | 参数说明
+-----  | --------
+api    | 服务
+v1    　| 版本号
+getDepartmentList | 接口名称
+
 #### 请求参数说明
 参数名  |  数据类型 | 参数说明
 -----  | -------- | --------
@@ -356,6 +395,12 @@ selected | int | 是否选中显示 1-显示 0-不显示
 http://localhost:3000/api/v1/getDepartmentInfo
 #### 请求路径说明
 
+参数名  | 参数说明
+-----  | --------
+api    | 服务
+v1    　| 版本号
+getDepartmentInfo | 接口名称
+
 #### 请求参数说明
 参数名  |  数据类型 | 参数说明
 -----  | -------- | --------
@@ -392,6 +437,12 @@ description | String | 科室描述信息
 #### 请求地址示例
 http://localhost:3000/api/v1/getArticleList
 #### 请求路径说明
+
+参数名  | 参数说明
+-----  | --------
+api    | 服务
+v1    　| 版本号
+getArticleList | 接口名称
 
 #### 请求参数说明
 参数名  |  数据类型 | 参数说明
@@ -455,6 +506,12 @@ department | String | 文章内容
 #### 请求地址示例
 http://localhost:3000/api/v1/getArticleListAll
 #### 请求路径说明
+
+参数名  | 参数说明
+-----  | --------
+api    | 服务
+v1    　| 版本号
+getArticleListAll | 接口名称
 
 #### 请求参数说明
 参数名  |  数据类型 | 参数说明
@@ -525,6 +582,12 @@ department | String | 文章内容
 http://localhost:3000/api/v1/getSurroundingsList
 #### 请求路径说明
 
+参数名  | 参数说明
+-----  | --------
+api    | 服务
+v1    　| 版本号
+getSurroundingsList | 接口名称
+
 #### 请求参数说明
 参数名  |  数据类型 | 参数说明
 -----  | -------- | --------
@@ -563,6 +626,12 @@ SurroundingsList | Array | 环境图片
 #### 请求地址示例
 http://localhost:3000/api/v1/getSurroundingsListAll
 #### 请求路径说明
+
+参数名  | 参数说明
+-----  | --------
+api    | 服务
+v1    　| 版本号
+getSurroundingsListAll | 接口名称
 
 #### 请求参数说明
 参数名  |  数据类型 | 参数说明
