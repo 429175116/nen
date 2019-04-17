@@ -119,7 +119,7 @@
     data = {
       autoW: 0,
       autoH: 0,
-      bannerImg: 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'
+      bannerImg: 'http://img.52z.com/upload/news/image/20180528/20180528111620_98806.jpg'
     }
 
     computed = {

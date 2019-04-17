@@ -205,7 +205,7 @@
         <view class="iconfont icon-xwj"></view>
         <view>预约挂号</view>
       </view>
-      <view class="topNavItem">
+      <view class="topNavItem" @tap="goSurroundings">
         <view class="iconfont icon-xwj"></view>
         <view>诊所概况</view>
       </view>
@@ -277,7 +277,7 @@
           <view class="article">
             <view class="articleTitle">{{item.name}}</view>
             <view class="articleCon">{{item.con}}</view>
-            <view class="views">{{item.browse}}</view>
+            <view class="views">{{item.browse}}浏览</view>
           </view>
           <view>
             <image src="{{item.img}}" />
@@ -429,19 +429,19 @@
     // 获取banner轮播图数据
     getBannerList() {
       this.bannerImgList = [
-        {'id': '1', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
-        {'id': '1', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
-        {'id': '1', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
-        {'id': '1', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'}
+        {'id': '1', 'img': 'http://www.hysyzs.com/images/news_img/1.jpg'},
+        {'id': '1', 'img': 'http://www.hysyzs.com/images/news_img/2.jpg'},
+        // {'id': '1', 'img': 'http://www.hysyzs.com/images/news_img/3.jpg'},
+        {'id': '1', 'img': 'http://www.hysyzs.com/images/news_img/4.jpg'}
       ]
       this.$apply()
     }
     // 获取专家推荐列表数据
     getDoctorsList() {
       this.doctorsList = [
-        {'id': '1', 'name': '杨泽方', 'position': '主治医师', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
-        {'id': '2', 'name': '杨泽方', 'position': '主治医师', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
-        {'id': '3', 'name': '杨泽方', 'position': '主治医师', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'}
+        {'id': '1', 'name': '胡大一', 'position': '心血管病专家', 'img': 'https://gss1.bdstatic.com/9vo3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=831fce44b7096b63811959563408e079/c2fdfc039245d6885d66bbcfadc27d1ed21b2470.jpg'},
+        {'id': '2', 'name': '姚学华', 'position': '副主任医师', 'img': 'https://img.rxys.com/99/appask/head/218911.jpg'},
+        {'id': '3', 'name': '林民辉', 'position': '住院医师', 'img': 'https://img.rxys.com/99/ask/classimg/1015333272.jpg'}
       ]
       if (this.doctorsList.length > 3) {
         this.doctorsList = this.doctorsList.slice(0, 3)
@@ -451,9 +451,19 @@
     // 获取常见筑症状列表
     getDepartmentList() {
       this.departmentList = [
-        {'id': '1', 'name': '儿科', 'position': '小儿发烧、咳嗽', 'icon': 'yiliaohangyedeICON-3'},
+        {'id': '1', 'name': '内科', 'position': '呼吸,消化,内分泌', 'icon': 'yiliaohangyedeICON-3'},
+        {'id': '2', 'name': '外科', 'position': '骨科,心胸,脑,肝胆,泌尿', 'icon': 'yiliaohangyedeICON-3'},
         {'id': '2', 'name': '儿科', 'position': '小儿发烧、咳嗽', 'icon': 'yiliaohangyedeICON-3'},
-        {'id': '3', 'name': '儿科', 'position': '小儿发烧、咳嗽', 'icon': 'yiliaohangyedeICON-3'}
+        {'id': '2', 'name': '神经科', 'position': '小儿发烧、咳嗽', 'icon': 'yiliaohangyedeICON-3'},
+        {'id': '2', 'name': '精神科', 'position': '小儿发烧、咳嗽', 'icon': 'yiliaohangyedeICON-3'},
+
+        {'id': '2', 'name': '眼科', 'position': '小儿发烧、咳嗽', 'icon': 'yiliaohangyedeICON-3'},
+        {'id': '2', 'name': '肿瘤科', 'position': '小儿发烧、咳嗽', 'icon': 'yiliaohangyedeICON-3'},
+        {'id': '2', 'name': '皮肤科', 'position': '小儿发烧、咳嗽', 'icon': 'yiliaohangyedeICON-3'},
+        {'id': '2', 'name': '口腔科', 'position': '小儿发烧、咳嗽', 'icon': 'yiliaohangyedeICON-3'},
+        {'id': '2', 'name': '检验科', 'position': '小儿发烧、咳嗽', 'icon': 'yiliaohangyedeICON-3'},
+        {'id': '2', 'name': '中医', 'position': '小儿发烧、咳嗽', 'icon': 'yiliaohangyedeICON-3'},
+        {'id': '3', 'name': '妇科', 'position': '小儿发烧、咳嗽', 'icon': 'yiliaohangyedeICON-3'}
       ]
       this.$apply()
     }
@@ -462,34 +472,24 @@
       this.articleList = [
         {
           'id': '1',
-          'name': '杨泽方',
-          'browse': '1301浏览',
-          'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png',
-          'con': '文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容'
+          'name': ' 领导对我院信息和影像科室进行专题行政查房',
+          'browse': '1301',
+          'img': 'http://www.spph-sx.com/__local/7/03/98/BB68EFB46C13DE2DA46A05CAD45_4FDADE3D_887F.png',
+          'con': '2018年11月9日、11月14日上午，院长带领院领导班子及相关部门负责人，分别对我院信息处以及B超室、CT室、核磁共振室及放射科四大影像科室进行专题查房，通过听取汇报、现场调研，对我院信息建设和影像运行及发展进行了深入了解和探讨。'
         },
         {
           'id': '1',
-          'name': '杨泽方',
-          'browse': '533浏览',
-          'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png',
-          'con': `文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
-            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
-            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
-            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
-            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
-            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，`
+          'name': 'Gregory David到我院访问交流',
+          'browse': '533',
+          'img': 'http://www.spph-sx.com/__local/2/9E/ED/437172A8017DBC013D3E82AF9C3_10AE6925_8FB8.png',
+          'con': `3月21日下午，美国驻华大使馆副领事Gregory David、助理哈斌一行到访我院并举行座谈，徐永刚院长及院办、医务处、保健办、急救与应急管理处、急诊外科负责人参加座谈。座谈会由院办周延萍副主任主持。`
         },
         {
           'id': '1',
-          'name': '杨泽方',
-          'browse': '341浏览',
-          'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png',
-          'con': `文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
-            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
-            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
-            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
-            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，
-            文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，文章内容，`
+          'name': ' 护理部召开第一季度工作总结暨第二季度工作部署会议',
+          'browse': '341',
+          'img': 'http://www.spph-sx.com/__local/A/F5/89/AEC01201B3AB03AF944F07B52B2_7937CCEE_1382C8.png',
+          'con': `为了进一步推进护理工作，确保年度各项重点工作如期完成，4月16日下午，我院护理部在新大楼国际会议厅组织召开2019年第一季度护理工作总结暨第二季度护理工作部署会议。张玉莲副院长、护理部全体人员、全院总护士长、护士长及病区负责人参加此次会议。`
         }
       ]
       this.$apply()
@@ -497,9 +497,9 @@
     // 获取诊所环境图片列表
     getSurroundingsList() {
       this.surroundingsListAll = [
-        'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png',
-        'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png',
-        'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'
+        'http://www.96120.org/imagesn/jhz1.jpg',
+        'http://www.96120.org/imagesn/jhz2.jpg',
+        'http://www.96120.org/imagesn/jhz3.jpg'
       ]
       if (this.surroundingsListAll.length > 3) {
         this.surroundingsList = this.surroundingsListAll.slice(0, 3)

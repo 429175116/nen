@@ -91,29 +91,29 @@
     }
     getDoctorsList() {
       this.doctorsList = [
-        {'departmentName': '科室1',
+        {'departmentName': '肿瘤科',
         'departmentList': [
-          {'id': '10', 'name': '杨泽方', 'expertOffice': '主治医师', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
-          {'id': '10', 'name': '杨泽方', 'expertOffice': '主治医师', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
-          {'id': '10', 'name': '杨泽方', 'expertOffice': '主治医师', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
-          {'id': '10', 'name': '杨泽方', 'expertOffice': '主治医师', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
-          {'id': '10', 'name': '杨泽方', 'expertOffice': '主治医师', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'}
+          {'id': '10', 'name': '胡大一', 'expertOffice': '主治医师', 'img': 'https://gss1.bdstatic.com/9vo3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=831fce44b7096b63811959563408e079/c2fdfc039245d6885d66bbcfadc27d1ed21b2470.jpg'},
+          {'id': '10', 'name': '姚学华', 'expertOffice': '主治医师', 'img': 'https://img.rxys.com/99/appask/head/218911.jpg'},
+          {'id': '10', 'name': '杨泽方', 'expertOffice': '主治医师', 'img': 'https://img.rxys.com/99/ask/classimg/1015333272.jpg'},
+          {'id': '10', 'name': '姚学华', 'expertOffice': '主治医师', 'img': 'https://img.rxys.com/99/appask/head/218911.jpg'},
+          {'id': '10', 'name': '杨泽方', 'expertOffice': '主治医师', 'img': 'https://img.rxys.com/99/ask/classimg/1015333272.jpg'}
         ]},
-        {'departmentName': '科室1',
+        {'departmentName': '皮肤科',
         'departmentList': [
-          {'id': '10', 'name': '杨泽方', 'expertOffice': '主治医师', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
-          {'id': '10', 'name': '杨泽方', 'expertOffice': '主治医师', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
-          {'id': '10', 'name': '杨泽方', 'expertOffice': '主治医师', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
-          {'id': '10', 'name': '杨泽方', 'expertOffice': '主治医师', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
-          {'id': '10', 'name': '杨泽方', 'expertOffice': '主治医师', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'}
+          {'id': '10', 'name': '杨泽方', 'expertOffice': '主治医师', 'img': 'https://img.rxys.com/99/ask/classimg/1015333272.jpg'},
+          {'id': '10', 'name': '胡大一', 'expertOffice': '主治医师', 'img': 'https://gss1.bdstatic.com/9vo3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=831fce44b7096b63811959563408e079/c2fdfc039245d6885d66bbcfadc27d1ed21b2470.jpg'},
+          {'id': '10', 'name': '姚学华', 'expertOffice': '主治医师', 'img': 'https://img.rxys.com/99/appask/head/218911.jpg'},
+          {'id': '10', 'name': '胡大一', 'expertOffice': '主治医师', 'img': 'https://gss1.bdstatic.com/9vo3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=831fce44b7096b63811959563408e079/c2fdfc039245d6885d66bbcfadc27d1ed21b2470.jpg'},
+          {'id': '10', 'name': '姚学华', 'expertOffice': '主治医师', 'img': 'https://img.rxys.com/99/appask/head/218911.jpg'}
         ]},
-        {'departmentName': '科室1',
+        {'departmentName': '口腔科',
         'departmentList': [
-          {'id': '10', 'name': '杨泽方', 'expertOffice': '主治医师', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
-          {'id': '10', 'name': '杨泽方', 'expertOffice': '主治医师', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
-          {'id': '10', 'name': '杨泽方', 'expertOffice': '主治医师', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
-          {'id': '10', 'name': '杨泽方', 'expertOffice': '主治医师', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
-          {'id': '10', 'name': '杨泽方', 'expertOffice': '主治医师', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'}
+          {'id': '10', 'name': '胡大一', 'expertOffice': '主治医师', 'img': 'https://gss1.bdstatic.com/9vo3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=831fce44b7096b63811959563408e079/c2fdfc039245d6885d66bbcfadc27d1ed21b2470.jpg'},
+          {'id': '10', 'name': '姚学华', 'expertOffice': '主治医师', 'img': 'https://img.rxys.com/99/appask/head/218911.jpg'},
+          {'id': '10', 'name': '林民辉', 'expertOffice': '主治医师', 'img': 'https://img.rxys.com/99/ask/classimg/1015333272.jpg'},
+          {'id': '10', 'name': '杨泽方', 'expertOffice': '主治医师', 'img': 'https://img.rxys.com/99/appask/head/218911.jpg'},
+          {'id': '10', 'name': '林民辉', 'expertOffice': '主治医师', 'img': 'https://img.rxys.com/99/ask/classimg/1015333272.jpg'}
         ]}
       ]
       this.$apply()

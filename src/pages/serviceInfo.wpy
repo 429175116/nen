@@ -193,10 +193,10 @@
     // 获取banner轮播图数据
     getBannerList() {
       this.bannerImgList = [
-        {'id': '1', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
-        {'id': '1', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
-        {'id': '1', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
-        {'id': '1', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'}
+        {'id': '1', 'img': 'https://image.dnurse.com/shop/U1552882041261_thumb.png'},
+        {'id': '1', 'img': 'http://image.dnurse.com/web/F1430295762339268.jpg'},
+        {'id': '1', 'img': 'http://image.dnurse.com/web/F1430362125900647.jpg'},
+        {'id': '1', 'img': 'https://image.dnurse.com/shop/U1526606500998.jpg'}
       ]
       this.$apply()
     }
@@ -208,10 +208,10 @@
         'valid': '2019-10-01',
         'description': '套餐内容包括：2次线下面诊，并赠送1台血糖仪和2盒试纸',
         'imgList': [
-          'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png',
-          'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png',
-          'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png',
-          'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'
+          'https://image.dnurse.com/shop/U1552882041261_thumb.png',
+          'http://image.dnurse.com/web/F1430295762339268.jpg',
+          'http://image.dnurse.com/web/F1430362125900647.jpg',
+          'https://image.dnurse.com/shop/U1526606500998.jpg'
         ]
       }
       this.$apply()

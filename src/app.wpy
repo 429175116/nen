@@ -246,7 +246,7 @@ page{
   align-items: center;
   justify-content: space-around;
   padding: 40rpx 40rpx 30rpx 40rpx;
-  background-color: #fafafa;
+  background-color: #fff;
 }
 .topNavItem view{
   font-size: 22rpx;

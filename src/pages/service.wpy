@@ -97,12 +97,36 @@
     // 获取服务列表
     getServiceList() {
       this.serviceList = [
-        {'id': '1', 'name': '戒烟管理', 'price': '100', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
-        {'id': '1', 'name': '戒烟管理', 'price': '100', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
-        {'id': '1', 'name': '戒烟管理', 'price': '100', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
-        {'id': '1', 'name': '戒烟管理', 'price': '100', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
-        {'id': '1', 'name': '戒烟管理', 'price': '100', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'},
-        {'id': '1', 'name': '戒烟管理', 'price': '100', 'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png'}
+        {
+          'id': '1',
+          'name': '糖尿病管理',
+          'price': '100',
+          'img': 'https://image.dnurse.com/shop/U1552882041261_thumb.png'
+        },
+        {
+          'id': '1',
+          'name': '糖尿病管理',
+          'price': '100',
+          'img': 'http://image.dnurse.com/web/F1430295762339268.jpg'
+        },
+        {
+          'id': '1',
+          'name': '糖尿病管理',
+          'price': '100',
+          'img': 'http://image.dnurse.com/web/F1430362125900647.jpg'
+        },
+        {
+          'id': '1',
+          'name': '糖尿病管理',
+          'price': '100',
+          'img': 'https://image.dnurse.com/shop/U1526606500998.jpg'
+        },
+        {
+          'id': '1',
+          'name': '糖尿病管理',
+          'price': '100',
+          'img': 'https://image.dnurse.com/shop/U1552882041261_thumb.png'
+        }
       ]
       this.$apply()
     }

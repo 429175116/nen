@@ -160,11 +160,11 @@
       // 根据ID请求医师信息
       this.doctorsInfo = {
         'id': '11',
-        'name': '杨泽方',
-        'info': '主治医师·从业18年',
-        'img': 'http://www.enuoe.cn/enuoe/upload/201807/1532076107.png',
+        'name': '姚学华',
+        'info': '副主任医师',
+        'img': 'https://img.rxys.com/99/appask/head/218911.jpg',
         'description': '儿科主治医师，18年儿科执行经验，云诊室参与者，国内权威医药生物专业论坛担任专业儿科版主及资深论坛管理员，致力于全科医学及儿科健康管理新模式的不断探索。',
-        'department': ['儿科', '儿科', '儿科', '儿科', '儿科', '儿科']
+        'department': ['儿科', '神经科', '眼科', '儿科', '儿科', '精神科']
       }
       this.$apply()
     }
