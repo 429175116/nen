@@ -99,6 +99,14 @@
         <view>收货地址</view>
         <icon class="iconfont icon-jiantou"></icon>
       </view>
+      <view class="item" @tap="goAddressList">
+        <view>患者方案</view>
+        <icon class="iconfont icon-jiantou"></icon>
+      </view>
+      <view class="item" @tap="goAddressList">
+        <view>检验检查</view>
+        <icon class="iconfont icon-jiantou"></icon>
+      </view>
     </view>
     <nav @childFn.user="goPage" />
   </view>
