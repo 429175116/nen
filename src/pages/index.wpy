@@ -202,19 +202,19 @@
     </view>
     <view class="topNav">
       <view class="topNavItem" @tap="registered">
-        <view class="iconfont icon-xwj"></view>
+        <view class="iconfont icon-guahao"></view>
         <view>预约挂号</view>
       </view>
       <view class="topNavItem" @tap="goSurroundings">
-        <view class="iconfont icon-xwj"></view>
+        <view class="iconfont icon-yiliaohangyedeICON-18"></view>
         <view>诊所概况</view>
       </view>
       <button class="topNavItem" open-type="contact" session-from="weapp">
-        <view class="iconfont icon-xwj"></view>
+        <view class="iconfont icon-yiliaohangyedeICON-5"></view>
         <view>在线咨询</view>
       </button>
-      <view class="topNavItem">
-        <view class="iconfont icon-xwj"></view>
+      <view class="topNavItem" @tap="addressShow">
+        <view class="iconfont icon-yiliaohangyedeICON-12"></view>
         <view>来院路线</view>
       </view>
     </view>
@@ -397,9 +397,21 @@
       // 查看诊所环境
       goSurroundings(e) {
         this.$navigate(`/pages/surroundings?list=${this.surroundingsListAll}`)
-      }
-    }
+      },
+      
 
+    }
+    addressShow() {
+      // wx.getLocation({
+      //   type: 'wgs84',
+      //   success(res) {
+      //     const latitude = res.latitude
+      //     const longitude = res.longitude
+      //     const speed = res.speed
+      //     const accuracy = res.accuracy
+      //   }
+      // })
+    }
     events = {
   
     }
@@ -511,7 +523,7 @@
     // 获取联系我们信息
     getcontactData() {
       this.contactData = {
-        'address': '软件新城',
+        'address': '陕西省西安市沣东新城协同创新港研发办公楼A座8层-60号',
         'time': '2019-01-30',
         'phone': '029-888888888'
       }

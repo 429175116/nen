@@ -99,8 +99,8 @@
   <view class="footer">
     <view class="ft_item {{navAction[0]}}">
       <view @tap="goIndex">
-        <view class="iconfont icon-yiliaohangyedeICON-2"></view>
-        <text class="text">病历</text>
+        <view class="iconfont icon-yiliaohangyedeICON-6"></view>
+        <text class="text">首页</text>
       </view>
     </view>
     <view class="ft_item {{navAction[1]}}">

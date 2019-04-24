@@ -74,6 +74,7 @@
   }
 </style>
 <template>
+<scroll-view scroll-y="hidden">
   <view>
     <view class="user">
       <view class="img1">
@@ -101,6 +102,7 @@
     </view>
     <nav @childFn.user="goPage" />
   </view>
+</scroll-view>
 </template>
 
 <script>

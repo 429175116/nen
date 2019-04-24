@@ -5,7 +5,7 @@
   .list{
     width: 750rpx;
     height: auto;
-    margin-bottom: 130rpx;
+    margin-bottom: 200rpx;
   }
   .item{
     width: 335rpx;
@@ -38,6 +38,7 @@
   }
 </style>
 <template>
+<scroll-view scroll-y="hidden">
   <view>
     <view class="list">
       <repeat for="{{serviceList}}" item="item">
@@ -52,7 +53,7 @@
     </view>
     <nav @childFn.user="goPage" />
   </view>
-  
+</scroll-view>
 </template>
 
 <script>

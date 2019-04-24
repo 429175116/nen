@@ -16,7 +16,11 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.icon-yiliaohangyedeICON-5:before { content: "\e61b"; } // 在线咨询
+.icon-yiliaohangyedeICON-18:before { content: "\e633"; } // 医院
+.icon-guahao:before { content: "\e60a"; } // 挂号
 
+.icon-yiliaohangyedeICON-6:before { content: "\e61c"; } // 首页
 .icon-dianhua:before { content: "\e62f"; } // 电话
 .icon-jiantou:before { content: "\e621"; } // 箭头
 .icon-yiliaohangyedeICON-7:before { content: "\e61d"; } // 我的
@@ -298,12 +302,14 @@ export default class extends wepy.app {
       'pages/newAddress', // 新建收货地址
       'pages/packageList' // 套餐
     ],
+
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
       navigationBarTitleText: 'WeChat',
       navigationBarTextStyle: 'black'
-    }
+    },
+
   }
 
   globalData = {
@@ -312,27 +318,28 @@ export default class extends wepy.app {
     requestUrl: 'https://serverUrl'
   }
 
+
   constructor () {
     super()
     this.use('requestfix')
   }
 
   onLaunch() {
-    // this.testAsync()
+    this.testAsync()
   }
 
-  // sleep (s) {
-  //   return new Promise((resolve, reject) => {
-  //     setTimeout(() => {
-  //       resolve('promise resolved')
-  //     }, s * 1000)
-  //   })
-  // }
+  sleep (s) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve('promise resolved')
+      }, s * 1000)
+    })
+  }
 
-  // async testAsync () {
-  //   const data = await this.sleep(3)
-  //   console.log(data)
-  // }
+  async testAsync () {
+    const data = await this.sleep(3)
+    console.log(data)
+  }
 
   getUserInfo(cb) {
     const that = this
@@ -345,6 +352,10 @@ export default class extends wepy.app {
         cb && cb(res.userInfo)
       }
     })
+  }
+  // 时间戳转时间
+  getLocalTime(nS) {     
+    return new Date(parseInt(nS) * 1000).toLocaleString().replace(/:\d{1,2}$/,' ');     
   }
 }
 </script>
