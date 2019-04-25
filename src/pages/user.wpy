@@ -100,7 +100,7 @@
         <icon class="iconfont icon-jiantou"></icon>
       </view>
       <view class="item" @tap="goAddressList">
-        <view>患者方案</view>
+        <view>患者档案</view>
         <icon class="iconfont icon-jiantou"></icon>
       </view>
       <view class="item" @tap="goAddressList">
