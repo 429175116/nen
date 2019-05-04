@@ -74,8 +74,8 @@
   }
 </style>
 <template>
-<scroll-view scroll-y="hidden">
-  <view>
+<view>
+  <scroll-view scroll-y="hidden">
     <view class="user">
       <view class="img1">
         <view class="img2">
@@ -109,8 +109,8 @@
       </view>
     </view>
     <nav @childFn.user="goPage" />
-  </view>
-</scroll-view>
+  </scroll-view>
+</view>
 </template>
 
 <script>
