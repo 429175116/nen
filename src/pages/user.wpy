@@ -108,8 +108,8 @@
         <icon class="iconfont icon-jiantou"></icon>
       </view>
     </view>
-    <nav @childFn.user="goPage" />
   </scroll-view>
+  <nav @childFn.user="goPage" />
 </view>
 </template>
 
