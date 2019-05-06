@@ -315,7 +315,8 @@ export default class extends wepy.app {
   globalData = {
     userInfo: new Object(),
     contactData: new Object(),
-    requestUrl: 'https://serverUrl'
+    requestUrl: 'https://www.enehis.com',
+    numCode: '000003'
   }
 
 
@@ -335,7 +336,14 @@ export default class extends wepy.app {
       }, s * 1000)
     })
   }
-
+  async login() {
+    await wx.login({
+      success: res => {
+        console.log(res.code)
+        return res.code
+      }
+    })
+  }
   async testAsync () {
     const data = await this.sleep(3)
     console.log(data)

@@ -187,6 +187,16 @@
   //   margin: 0;
   //   padding: 0;
   // }
+  #getUserInfo{
+    position: fixed;
+    top: 0;
+    width: 100% !important;
+    height: 100% !important;
+    padding: 0rpx !important;
+    z-index: 999;
+    background-color:rgba(255, 255, 255, 0);
+    color: #fff;
+  }
 </style>
 <template>
 <scroll-view scroll-y="hidden">
@@ -331,6 +341,7 @@
       <icon class="iconfont icon-yiliaohangyedeICON-5"></icon>
       <view>在线客服</view>
     </button>
+    <button open-type="getUserInfo" wx:if='{{getUserInfoButShow}}' id='getUserInfo' lang="zh_CN" @getuserinfo="onGetUserInfo"></button>
     <nav @childFn.user="goPage" />
   </view>
 </scroll-view>
@@ -350,6 +361,7 @@
     mixins = []
 
     data = {
+      getUserInfoButShow: true,
       clinicInfo: new Array(), // 诊所信息
       bannerImgList: new Array(), // banner轮播图数据
       doctorsList: new Array(), // 专家推荐列表数据
@@ -425,6 +437,10 @@
       wx.setNavigationBarTitle({
         title: this.clinicInfo.name
       })
+      // 获取诊所信息
+      this.getClinicInfo()
+      // 获取用户信息
+      this.getUserInfo()
       // 获取banner轮播图数据
       this.getBannerList()
       // 获取专家推荐列表数据
@@ -437,6 +453,98 @@
       this.getSurroundingsList()
       // 获取诊所联系方式信息
       this.getcontactData()
+    }
+    onGetUserInfo() {
+
+    }
+    getUserInfo() {
+      wx.login({
+        success: res => {
+          console.log(res.code)
+          // return 
+          wx.request({
+            url: `${this.$parent.globalData.requestUrl}/ehis/weChat/weChatCtrl.htm?BLHMI=save`,
+            method: 'GET',
+            data: {
+              'dto.orgCode': '000003',
+              'dto.crmPatient.wechat': 'ogQnm5YGm15Aa3USqivPeFYMbPFs',
+              'dto.crmPatient.patName': '',
+              'dto.crmPatient.papersCode': '612501199101113929',
+              'dto.crmPatient.phoneNumber': '13798765678'
+            },
+            success: data => {
+              if (data.data.code === '1') {
+                this.openid = data.data.data
+                this.$parent.globalData.openid = this.openid
+              } else {
+                // wx.showModal({
+                //   title: '',
+                //   content: data.data.msg
+                // })
+              }
+            }
+          })
+        }
+      })
+    }
+    // 获取诊所信息
+    getClinicInfo() {
+      wx.login({
+        success: res => {
+          console.log(res.code)
+          // return 
+          wx.request({
+            url: `${this.$parent.globalData.requestUrl}//ehis/weChat/weChatCtrl.htm?BLHMI=listForWechat`,
+            method: 'POST',
+            data: {
+              'dto.orgCode': '000003',
+              'dto.appid': 'wx3db271e272559bb5',
+              'dto.appsecret': '89d2cd40a7a2347a75cdde1b78bfc7eb',
+              'dto.wechatCode': res.code
+              // 'dto.wechatCode': this.$parent.login()
+            },
+            success: data => {
+              if (data.data.code === '1') {
+                this.openid = data.data.data
+                this.$parent.globalData.openid = this.openid
+              } else {
+                // wx.showModal({
+                //   title: '',
+                //   content: data.data.msg
+                // })
+              }
+            }
+          })
+        }
+      })
+      
+    }
+    async onGetUserInfo() {
+      wx.getUserInfo({
+        success: res => {
+          console.log(res)
+          this.userInfo = res.userInfo
+          this.$parent.globalData.userInfo = this.userInfo
+          console.log(this.userInfo)
+          this.getUserInfoButShow = false
+          // this.setUserInfo(this.userInfo)
+          // // 数据生效
+          this.$apply()
+        }
+      })
+      // return ''
+      // // 获取用户信息
+      // this.userInfo = await wepy.getUserInfo()
+      // console.log(this.userInfo)
+      // this.userInfo = this.userInfo.rawData
+      // // 判断用户信息是否为空
+      // if (this.userInfo) {
+      //   this.getUserInfoButShow = false
+      //   // 数据生效
+      //   this.$apply()
+      //   // 提交用户信息
+      //   this.setUserInfo(this.userInfo)
+      // }
     }
     // 获取banner轮播图数据
     getBannerList() {
