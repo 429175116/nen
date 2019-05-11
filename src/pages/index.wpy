@@ -362,6 +362,7 @@
 
     data = {
       getUserInfoButShow: true,
+      orgCode: '', // 诊所ID
       clinicInfo: new Array(), // 诊所信息
       bannerImgList: new Array(), // banner轮播图数据
       doctorsList: new Array(), // 专家推荐列表数据
@@ -432,6 +433,9 @@
       // 获取诊所ID和诊所名称
       // this.clinicInfo.id = option.id
       // this.clinicInfo.name = option.name
+
+      // 获取诊所ID
+      this.orgCode = this.$parent.globalData.orgCode
       this.clinicInfo.id = '10'
       this.clinicInfo.name = '长安区第一诊所'
       wx.setNavigationBarTitle({
@@ -463,14 +467,11 @@
           console.log(res.code)
           // return 
           wx.request({
-            url: `${this.$parent.globalData.requestUrl}/ehis/weChat/weChatCtrl.htm?BLHMI=save`,
+            url: `${this.$parent.globalData.requestUrl}listForWechat`,
             method: 'GET',
             data: {
-              'dto.orgCode': '000003',
-              'dto.crmPatient.wechat': 'ogQnm5YGm15Aa3USqivPeFYMbPFs',
-              'dto.crmPatient.patName': '',
-              'dto.crmPatient.papersCode': '612501199101113929',
-              'dto.crmPatient.phoneNumber': '13798765678'
+              'dto.orgCode': this.orgCode,
+              'dto.wechatCode': res.code
             },
             success: data => {
               if (data.data.code === '1') {
@@ -494,14 +495,16 @@
           console.log(res.code)
           // return 
           wx.request({
-            url: `${this.$parent.globalData.requestUrl}//ehis/weChat/weChatCtrl.htm?BLHMI=listForWechat`,
-            method: 'POST',
+            // url: `${this.$parent.globalData.requestUrl}save`,
+            url: 'https://www.enehis.com/ehis/weChat/weChatCtrl.htm?BLHMI=save',
+            
+            method: 'GET',
             data: {
-              'dto.orgCode': '000003',
-              'dto.appid': 'wx3db271e272559bb5',
-              'dto.appsecret': '89d2cd40a7a2347a75cdde1b78bfc7eb',
-              'dto.wechatCode': res.code
-              // 'dto.wechatCode': this.$parent.login()
+              'dto.orgCode': this.orgCode,
+              'dto.crmPatient.wechat': '111',
+              'dto.crmPatient.patName': '89d2cd40a7a2347a75cdde1b78bfc7eb',
+              'dto.crmPatient.papersCode': res.code,
+              'dto.crmPatient.phoneNumber': '18888888888'
             },
             success: data => {
               if (data.data.code === '1') {

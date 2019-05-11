@@ -315,8 +315,8 @@ export default class extends wepy.app {
   globalData = {
     userInfo: new Object(),
     contactData: new Object(),
-    requestUrl: 'https://www.enehis.com',
-    numCode: '000003'
+    requestUrl: 'https://www.enehis.com/ehis/weChat/weChatCtrl.htm?BLHMI=',
+    orgCode: '000003'
   }
 
 
