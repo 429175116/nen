@@ -477,12 +477,19 @@
             success: data => {
               data = this.$parent.null2str(data)
               data = data.data.dto
-              this.userInfo = data.crmPatient
-              this.$parent.globalData.userInfo = this.userInfo
-              if (this.userInfo.patientKey === '') {
+              if (data.result === '0') {
+                this.userInfo = data.listPatient[0]
+                this.$parent.globalData.userInfo = this.userInfo
+              } else {
+                this.userInfo = data.crmPatient
+                this.$parent.globalData.userInfo = this.userInfo
                 wx.showModal({
                   title: '',
-                  content: '是否注册'
+                  content: '是否注册',
+                  success: res => {
+                    console.log(1)
+                    this.$redirect('/pages/setUserInfo')
+                  }
                 })
               }
             }
