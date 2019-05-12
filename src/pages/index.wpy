@@ -341,7 +341,7 @@
       <icon class="iconfont icon-yiliaohangyedeICON-5"></icon>
       <view>在线客服</view>
     </button>
-    <button open-type="getUserInfo" wx:if='{{getUserInfoButShow}}' id='getUserInfo' lang="zh_CN" @getuserinfo="onGetUserInfo"></button>
+    <!-- <button open-type="getUserInfo" wx:if='{{getUserInfoButShow}}' id='getUserInfo' lang="zh_CN" @getuserinfo="onGetUserInfo"></button> -->
     <nav @childFn.user="goPage" />
   </view>
 </scroll-view>
@@ -361,6 +361,7 @@
     mixins = []
 
     data = {
+      userInfo: new Object(),
       getUserInfoButShow: true,
       orgCode: '', // 诊所ID
       clinicInfo: new Array(), // 诊所信息
@@ -474,14 +475,15 @@
               'dto.wechatCode': res.code
             },
             success: data => {
-              if (data.data.code === '1') {
-                this.openid = data.data.data
-                this.$parent.globalData.openid = this.openid
-              } else {
-                // wx.showModal({
-                //   title: 'sss',
-                //   content: data.data.msg
-                // })
+              data = this.$parent.null2str(data)
+              data = data.data.dto
+              this.userInfo = data.crmPatient
+              this.$parent.globalData.userInfo = this.userInfo
+              if (this.userInfo.patientKey === '') {
+                wx.showModal({
+                  title: '',
+                  content: '是否注册'
+                })
               }
             }
           })
@@ -490,36 +492,34 @@
     }
     // 获取诊所信息
     getClinicInfo() {
-      wx.login({
-        success: res => {
-          console.log(res.code)
-          // return 
-          wx.request({
-            // url: `${this.$parent.globalData.requestUrl}save`,
-            url: 'https://www.enehis.com/ehis/weChat/weChatCtrl.htm?BLHMI=save',
-            
-            method: 'GET',
-            data: {
-              'dto.orgCode': this.orgCode,
-              'dto.crmPatient.wechat': '111',
-              'dto.crmPatient.patName': '89d2cd40a7a2347a75cdde1b78bfc7eb',
-              'dto.crmPatient.papersCode': res.code,
-              'dto.crmPatient.phoneNumber': '18888888888'
-            },
-            success: data => {
-              if (data.data.code === '1') {
-                this.openid = data.data.data
-                this.$parent.globalData.openid = this.openid
-              } else {
-                // wx.showModal({
-                //   title: '',
-                //   content: data.data.msg
-                // })
-              }
-            }
-          })
-        }
-      })
+      // wx.login({
+      //   success: res => {
+      //     console.log(res.code)
+      //     // return 
+      //     // wx.request({
+      //     //   url: `${this.$parent.globalData.requestUrl}save`,
+      //     //   method: 'GET',
+      //     //   data: {
+      //     //     'dto.orgCode': this.orgCode,
+      //     //     'dto.crmPatient.wechat': '111',
+      //     //     'dto.crmPatient.patName': '89d2cd40a7a2347a75cdde1b78bfc7eb',
+      //     //     'dto.crmPatient.papersCode': res.code,
+      //     //     'dto.crmPatient.phoneNumber': '18888888888'
+      //     //   },
+      //     //   success: data => {
+      //     //     if (data.data.code === '1') {
+      //     //       this.openid = data.data.data
+      //     //       this.$parent.globalData.openid = this.openid
+      //     //     } else {
+      //     //       // wx.showModal({
+      //     //       //   title: '',
+      //     //       //   content: data.data.msg
+      //     //       // })
+      //     //     }
+      //     //   }
+      //     // })
+      //   }
+      // })
       
     }
     async onGetUserInfo() {

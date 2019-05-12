@@ -1,4 +1,26 @@
 <style lang="less">
+// 取消按钮默认样式
+button {
+  position:relative;
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+  padding-left:14px;
+  padding-right:14px;
+  box-sizing:border-box;
+  font-size:18px;
+  text-align:center;
+  text-decoration:none;
+  line-height:2.55555556;
+  border-radius:5px;
+  -webkit-tap-highlight-color:transparent;
+  overflow:hidden;
+  color:#000000;
+  background-color:#fff;
+}
+button::after {
+  border: none;
+}
 @font-face {
   font-family: 'iconfont';  /* project id 1104556 */
   src: url('//at.alicdn.com/t/font_1104556_5xk3sxilkj.eot');
@@ -300,7 +322,8 @@ export default class extends wepy.app {
       'pages/aboutUs', // 关于我们
       'pages/addressList', // 收货地址列表
       'pages/newAddress', // 新建收货地址
-      'pages/packageList' // 套餐
+      'pages/packageList', // 套餐
+      'pages/setUserInfo' // 用户信息录入
     ],
 
     window: {
@@ -364,6 +387,28 @@ export default class extends wepy.app {
   // 时间戳转时间
   getLocalTime(nS) {     
     return new Date(parseInt(nS) * 1000).toLocaleString().replace(/:\d{1,2}$/,' ');     
+  }
+
+  /**
+  * null => ''  数据中null转为""
+  * @param {*} data 要处理的数据
+  */
+  null2str(data) {
+    for (let x in data) {
+      if (data[x] === null) { // 如果是null 把直接内容转为 ''
+        data[x] = ''
+      } else {
+        if (Array.isArray(data[x])) { // 是数组遍历数组 递归继续处理
+          data[x] = data[x].map(z => {
+            return this.null2str(z)
+          })
+        }
+        if(typeof(data[x]) === 'object'){ // 是json 递归继续处理
+          data[x] = this.null2str(data[x])
+        }
+      }
+    }
+    return data
   }
 }
 </script>

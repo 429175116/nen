@@ -136,16 +136,17 @@ export default class Nav extends wepy.component {
     name: '',
     phone: '',
     id: '',
-    navAction: ['action', 'noAction', 'noAction', 'noAction']
+    navAction: ['action', 'noAction', 'noAction', 'noAction'],
+    userInfo: new Object()
   };
   props = {};
   methods = {
-    // 病历
+    // 首页
     goIndex() {
       this.$parent.$parent.globalData.navAction = ['action', 'noAction', 'noAction', 'noAction']
       this.$emit('childFn', '/pages/index')
     },
-    // 套餐购买
+    // 套餐
     goService() {
       // 顶部导航状态初始化
       this.$parent.$parent.globalData.navAction = ['noAction', 'action', 'noAction', 'noAction']
@@ -154,7 +155,14 @@ export default class Nav extends wepy.component {
     // 个人中心
     goUser() {
       this.$parent.$parent.globalData.navAction = ['noAction', 'noAction', 'action', 'noAction']
-      this.$emit('childFn', '/pages/user')
+      this.userInfo = this.$parent.$parent.globalData.userInfo
+      if (this.userInfo.patientKey === '') {
+        // 未注册进入注册页
+        this.$emit('childFn', '/pages/setUserInfo')
+      } else {
+        // 用户已注册，进入个人中心
+        this.$emit('childFn', '/pages/user')
+      }
     },
     // 关于我们
     goAboutUs() {
@@ -166,5 +174,6 @@ export default class Nav extends wepy.component {
     this.navAction = this.$parent.$parent.globalData.navAction
     this.$apply()
   };
+  
 }
 </script>
