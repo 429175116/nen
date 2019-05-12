@@ -479,7 +479,7 @@
                 this.$parent.globalData.openid = this.openid
               } else {
                 // wx.showModal({
-                //   title: '',
+                //   title: 'sss',
                 //   content: data.data.msg
                 // })
               }
