@@ -386,6 +386,16 @@
       },
       // 挂号
       registered() {
+        if (this.userInfo.patientKey === '') {
+          wx.showModal({
+            title: '',
+            content: '是否注册',
+            success: res => {
+              this.$redirect('/pages/setUserInfo')
+            }
+          })
+          return ''
+        }
         this.$navigate(`/pages/reservation`)
       },
       // 查看医师列表
@@ -487,7 +497,6 @@
                   title: '',
                   content: '是否注册',
                   success: res => {
-                    console.log(1)
                     this.$redirect('/pages/setUserInfo')
                   }
                 })
