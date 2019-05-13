@@ -105,16 +105,13 @@
         align-items: center;
         justify-content: center;
       }
-      .infoList{
+      .infoLength{
         width:330rpx;
       }
       .info{
         margin-left: 30rpx;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-direction: column;
         .name{
+          height: 40rpx;
           width: 100%;
           font-size: 30rpx;
           color: #343434;
@@ -134,6 +131,7 @@
           }
         }
         .department{
+          height: 40rpx;
           width: 100%;
           font-size: 28rpx;
           color: #555555;
@@ -234,12 +232,12 @@
       <view class="item">
         <view class="doctorsInfo">
           <icon class="iconfont icon-yiliaohangyedeICON-7"></icon>
-          <view class="info infoList">
+          <view class="info infoLength">
             <view class="name">
               {{item.drName}}
               <view class="position">{{item.deptName}}</view>
             </view>
-            <view class="department">{{item.registerTypeName}}</view>
+            <view class="department">{{item.deptName}}   {{item.registerTypeName}}</view>
           </view>
           <view class="info">
             <view class="department">可预约：{{item.limitAppAmount}}</view>
@@ -248,7 +246,7 @@
         </view>
         <view class="reservationTime">
           <view>{{item.timeName}}</view>
-          <view class="go" data-id="{{item.dayKey}}">可预约(￥{{item.price}})</view>
+          <view class="go" data-id="{{item.dayKey}}" @tap="goReservation">可预约(￥{{item.price}})</view>
         </view>
       </view>
     </repeat>
@@ -281,21 +279,30 @@ export default class Reservation extends wepy.page {
   computed = {}
 
   methods = {
-    datePickerBindchange(e){
-      this.dateValue = e.detail.value
-      this.updata['dateValue'] = e.detail.value
-    },
-    bindPickerChange(e) {
-      this.index = e.detail.value
-      this.updata['department'] = this.department[e.detail.value]
-    },
-    // 获取名称
-    getName(e) {
-      this.updata['name'] = e.detail.value
-    },
-    // 获取电话
-    getMobile(e) {
-      this.updata['mobile'] = e.detail.value
+    // datePickerBindchange(e){
+    //   this.dateValue = e.detail.value
+    //   this.updata['dateValue'] = e.detail.value
+    // },
+    // bindPickerChange(e) {
+    //   this.index = e.detail.value
+    //   this.updata['department'] = this.department[e.detail.value]
+    // },
+    // // 获取名称
+    // getName(e) {
+    //   this.updata['name'] = e.detail.value
+    // },
+    // // 获取电话
+    // getMobile(e) {
+    //   this.updata['mobile'] = e.detail.value
+    // }
+    goReservation(e) {
+      wx.showModal({
+        title: '',
+        content: '是否预约',
+        success: res => {
+          this.runReservation(e)
+        }
+      })
     }
   }
 
@@ -343,6 +350,31 @@ export default class Reservation extends wepy.page {
       }
     })
     
+  }
+  // 发起预约
+  runReservation(e) {
+    wx.request({
+      url: `${this.$parent.globalData.requestUrl}appointmentDoctor`,
+      method: 'GET',
+      data: {
+        'dto.orgCode': this.orgCode,
+        'dto.rsDaySchedule.dayKey': e.currentTarget.dataset.id,
+        'dto.crmPatient.patientKey': this.userInfo.patientKey,
+      },
+      success: data => {
+        data = this.$parent.null2str(data)
+        data = data.data.dto
+        if (data.result === '0') {
+          wx.showModal({
+            title: '',
+            content: '预约成功'
+          })
+          this.getdepartmentArray()
+
+          // this.$apply()
+        }
+      }
+    })
   }
   setdata() {
     this.updata['department'] = this.department[this.index]
