@@ -71,6 +71,9 @@ button::after {
 .icon-bianji:before { content: "\e62d"; } // 编辑
 .icon-shanchu:before { content: "\e600"; } // 删除
 
+.icon-mingyizhuanjia:before { content: "\e606"; } // 医生
+
+
 scroll-view{
   height: auto;
 }
@@ -323,6 +326,7 @@ export default class extends wepy.app {
       'pages/addressList', // 收货地址列表
       'pages/newAddress', // 新建收货地址
       'pages/packageList', // 套餐
+      'pages/reservationList', // 预约列表
       'pages/setUserInfo' // 用户信息录入
     ],
 
@@ -337,6 +341,7 @@ export default class extends wepy.app {
 
   globalData = {
     userInfo: new Object(),
+    userInfoShow: new Object(),
     contactData: new Object(),
     requestUrl: 'https://www.enehis.com/ehis/weChat/weChatCtrl.htm?BLHMI=',
     orgCode: '000003'

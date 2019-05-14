@@ -80,18 +80,18 @@
       <view class="img1">
         <view class="img2">
           <view class="img3">
-            <image @tap="goLogin" src="{{bannerImg}}" />
+            <image @tap="goLogin" src="{{userInfoShow.avatarUrl}}" />
           </view>
         </view>
       </view>
-      <view class="userName">亦余心之所善兮</view>
+      <view class="userName">{{userInfoShow.nickName}}</view>
     </view>
     <view class="userInfpList">
       <view class="item" @tap="goOrderList">
         <view>我的订单</view>
         <icon class="iconfont icon-jiantou"></icon>
       </view>
-      <view class="item" @tap="goLogin">
+      <view class="item" @tap="goReservationList">
         <view>我的预约</view>
         <icon class="iconfont icon-jiantou"></icon>
       </view>
@@ -127,6 +127,7 @@
     mixins = []
 
     data = {
+      userInfoShow: new Object(),
       autoW: 0,
       autoH: 0,
       bannerImg: 'http://img.52z.com/upload/news/image/20180528/20180528111620_98806.jpg'
@@ -150,6 +151,9 @@
       },
       goOrderList() {
         this.$navigate(`/pages/orderList`)
+      },
+      goReservationList() {
+        this.$navigate(`/pages/reservationList`)
       }
     }
 
@@ -158,7 +162,7 @@
     }
 
     onLoad() {
-      
+      this.userInfoShow = this.$parent.globalData.userInfoShow
     }
   }
 </script>

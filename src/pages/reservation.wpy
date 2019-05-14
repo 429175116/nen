@@ -231,7 +231,7 @@
     <repeat for="{{doctorsList}}" item="item">
       <view class="item">
         <view class="doctorsInfo">
-          <icon class="iconfont icon-yiliaohangyedeICON-7"></icon>
+          <icon class="iconfont icon-mingyizhuanjia"></icon>
           <view class="info infoLength">
             <view class="name">
               {{item.drName}}

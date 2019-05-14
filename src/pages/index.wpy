@@ -341,7 +341,7 @@
       <icon class="iconfont icon-yiliaohangyedeICON-5"></icon>
       <view>在线客服</view>
     </button>
-    <!-- <button open-type="getUserInfo" wx:if='{{getUserInfoButShow}}' id='getUserInfo' lang="zh_CN" @getuserinfo="onGetUserInfo"></button> -->
+    <button open-type="getUserInfo" wx:if='{{getUserInfoButShow}}' id='getUserInfo' lang="zh_CN" @getuserinfo="onGetUserInfoShow"></button>
     <nav @childFn.user="goPage" />
   </view>
 </scroll-view>
@@ -468,9 +468,26 @@
       this.getSurroundingsList()
       // 获取诊所联系方式信息
       this.getcontactData()
-    }
-    onGetUserInfo() {
 
+      this.onGetUserInfoShow()
+    }
+    onGetUserInfoShow() {
+      // 查看是否授权
+      wx.getSetting({
+        success: res => {
+          if (res.authSetting['scope.userInfo']) {
+            this.getUserInfoButShow = false
+            this.$apply()
+            // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+            wx.getUserInfo({
+              success: res => {
+                // this.userInfoShow = res.userInfo
+                this.$parent.globalData.userInfoShow = res.userInfo
+              }
+            })
+          }
+        }
+      })
     }
     getUserInfo() {
       wx.login({
@@ -538,33 +555,33 @@
       // })
       
     }
-    async onGetUserInfo() {
-      wx.getUserInfo({
-        success: res => {
-          console.log(res)
-          this.userInfo = res.userInfo
-          this.$parent.globalData.userInfo = this.userInfo
-          console.log(this.userInfo)
-          this.getUserInfoButShow = false
-          // this.setUserInfo(this.userInfo)
-          // // 数据生效
-          this.$apply()
-        }
-      })
-      // return ''
-      // // 获取用户信息
-      // this.userInfo = await wepy.getUserInfo()
-      // console.log(this.userInfo)
-      // this.userInfo = this.userInfo.rawData
-      // // 判断用户信息是否为空
-      // if (this.userInfo) {
-      //   this.getUserInfoButShow = false
-      //   // 数据生效
-      //   this.$apply()
-      //   // 提交用户信息
-      //   this.setUserInfo(this.userInfo)
-      // }
-    }
+    // async onGetUserInfoShow() {
+    //   wx.getUserInfo({
+    //     success: res => {
+    //       console.log(res)
+    //       this.userInfo = res.userInfo
+    //       this.$parent.globalData.userInfo = this.userInfo
+    //       console.log(this.userInfo)
+    //       this.getUserInfoButShow = false
+    //       // this.setUserInfo(this.userInfo)
+    //       // // 数据生效
+    //       this.$apply()
+    //     }
+    //   })
+    //   // return ''
+    //   // // 获取用户信息
+    //   // this.userInfo = await wepy.getUserInfo()
+    //   // console.log(this.userInfo)
+    //   // this.userInfo = this.userInfo.rawData
+    //   // // 判断用户信息是否为空
+    //   // if (this.userInfo) {
+    //   //   this.getUserInfoButShow = false
+    //   //   // 数据生效
+    //   //   this.$apply()
+    //   //   // 提交用户信息
+    //   //   this.setUserInfo(this.userInfo)
+    //   // }
+    // }
     // 获取banner轮播图数据
     getBannerList() {
       this.bannerImgList = [

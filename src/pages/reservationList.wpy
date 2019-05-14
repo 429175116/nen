@@ -1,0 +1,192 @@
+<style lang="less">
+.reservationList{
+  width: 750rpx;
+  height: auto;
+  .item{
+    width: 630rpx;
+    padding: 30rpx;
+    margin: 30rpx;
+    background-color: #fff;
+    border-radius: 20rpx;
+    margin-bottom: 30rpx;
+    // display: flex;
+    // align-items: center;
+    // justify-content: space-between;
+    color: #343434;
+    .info{
+      display: flex;
+      justify-content: space-between;
+      .name{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        font-size: 30rpx;
+        padding-bottom: 20rpx;
+        icon{
+          font-size: 30rpx !important;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+        }
+        view{
+          font-size: 25rpx;
+          color: #fff;
+          margin-left: 10rpx;
+          border-radius: 10rpx;
+          background-color: #43beaa;
+          padding: 5rpx 15rpx;
+        }
+      }
+      // .timeortime{
+      //   display: flex;
+      //   align-items: flex-end;
+      //   justify-content: space-between;
+      //   flex-direction: column;
+      // }
+    }
+    .sta{
+      font-size: 28rpx;
+      color: #9f9f9f;
+      text-align: right;
+      padding-bottom:20rpx;
+    }
+    .button{
+      display: flex;
+      justify-content: flex-end;
+      border-top: 1rpx solid #9f9f9f;
+      view{
+        margin-top: 20rpx;
+        padding: 10rpx 20rpx;
+        border-radius: 5rpx;
+        background-color: #43beaa;
+        font-size: 25rpx;
+        color: #fff;
+      }
+      
+    }
+  }
+}
+</style>
+<template>
+<view>
+  <view class="reservationList">
+    <repeat for="{{reservationList}}" item="item">
+      <view class="item">
+        <view class="info">
+          <view>
+            <view class="name">
+              <icon class="iconfont icon-mingyizhuanjia"></icon>
+              {{item.drName}}
+              <view>{{item.deptName}}</view>
+            </view>
+            <view class="name">
+              <icon class="iconfont icon-yiliaohangyedeICON-2"></icon>
+              {{item.timeName}}
+              <view>{{item.registerTypeName}}</view>
+            </view>
+          </view>
+          <view class="timeortime">
+            <view class="sta" wx:if="{{item.appStatus === '0'}}">已预约</view>
+            <view class="sta" wx:if="{{item.appStatus === '1'}}">已就诊</view>
+            <view class="sta" wx:if="{{item.appStatus === '2'}}">已取消</view>
+            <view class="sta" wx:if="{{item.appStatus === '3'}}">爽约</view>
+            <view class="sta">{{item.appTime}}</view>
+          </view>
+          
+        </view>
+        <view class="button" wx:if="{{item.appStatus === '0'}}">
+          <view data-id="{{item.appointmentKey}}" @tap="cancelBook">取消</view>
+        </view>
+      </view>
+    </repeat>
+  </view>
+</view>
+</template>
+
+<script>
+import wepy from 'wepy';
+export default class ReservationList extends wepy.page {
+  config = {
+    navigationBarTitleText: '预约记录'
+  };
+  components = {
+  };
+
+  mixins = [];
+
+  data = {
+    reservationList: new Array(), // 预约记录
+    orgCode: '',
+    userInfo: new Object()
+  };
+
+  computed = {}
+
+  methods = {
+    cancelBook(e) {
+      wx.showModal({
+        title: '',
+        content: '是否取消',
+        success: res => {
+          if (res.confirm) {
+            this.runCancelBook(e)
+          }
+        }
+      })
+    }
+  }
+
+  events = {}
+
+  onLoad() {
+    this.orgCode = this.$parent.globalData.orgCode
+    this.userInfo = this.$parent.globalData.userInfo
+    // 获取用户的预约记录
+    this.geReservationList()
+  }
+  // 获取用户的预约记录
+  geReservationList() {
+    wx.request({
+      url: `${this.$parent.globalData.requestUrl}getappointmentBypatient`,
+      method: 'GET',
+      data: {
+        'dto.orgCode': this.orgCode,
+        'dto.rsAppointment.patientKey': this.userInfo.patientKey,
+        'dto.rsAppointment.status': '',
+      },
+      success: data => {
+        data = this.$parent.null2str(data)
+        data = data.data.dto
+        if (data.result === '0') {
+          this.reservationList = data.appointmentVos
+          this.$apply()
+        }
+      }
+    })
+  }
+  runCancelBook(e) {
+// e.currentTarget.dataset.id
+    wx.request({
+      url: `${this.$parent.globalData.requestUrl}weChatCancelBook`,
+      method: 'GET',
+      data: {
+        'dto.orgCode': this.orgCode,
+        'dto.rsAppointment.appointmentKey': e.currentTarget.dataset.id
+      },
+      success: data => {
+        data = this.$parent.null2str(data)
+        data = data.data.dto
+        if (data.result === '0') {
+          wx.showToast({
+            title: '取消成功',
+            icon: 'success',
+            duration: 2000,
+            mask:true
+          })
+          this.geReservationList()
+        }
+      }
+    })
+  }
+}
+</script>
