@@ -165,7 +165,6 @@ export default class ReservationList extends wepy.page {
     })
   }
   runCancelBook(e) {
-// e.currentTarget.dataset.id
     wx.request({
       url: `${this.$parent.globalData.requestUrl}weChatCancelBook`,
       method: 'GET',

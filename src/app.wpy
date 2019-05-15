@@ -327,7 +327,9 @@ export default class extends wepy.app {
       'pages/newAddress', // 新建收货地址
       'pages/packageList', // 套餐
       'pages/reservationList', // 预约列表
+      'pages/registerFwe', // 就诊记录
       'pages/setUserInfo' // 用户信息录入
+      
     ],
 
     window: {

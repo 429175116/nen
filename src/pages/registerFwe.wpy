@@ -1,0 +1,158 @@
+<style lang="less">
+  page{
+    background-color: #f5f5f5;
+  }
+  .user{
+    width: 750rpx;
+    height: 340rpx;
+    background-color: #43bea9;
+    padding-top: 30rpx;
+  }
+  .img1{
+    width: 750rpx;
+    height: 240rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .list{
+    width: 750rpx;
+    height: auto;
+  }
+  .item{
+    width: 630rpx;
+    margin: 30rpx;
+    padding: 30rpx;
+    height: auto;
+    background-color: #fff;
+    border-radius: 30rpx;
+    .info{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 28rpx;
+      color: #343434;
+      .time{
+        color: #9f9f9f;
+      }
+    }
+    .icdName{
+      font-size: 25rpx;
+      color: #9f9f9f;
+      border-bottom: 1rpx solid #9f9f9f;
+      padding: 20rpx 0;
+    }
+    .goInfo{
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 20rpx;
+      view{
+        padding: 5rpx 15rpx;
+        background-color: #43bea9;
+        border-radius: 5rpx;
+        color: #fff;
+        font-size: 25rpx
+      }
+    }
+  }
+</style>
+<template>
+<view>
+  <scroll-view scroll-y="hidden">
+    <view class="item">
+      <view class="info">
+        <view>医生名称</view>
+        <view class="time">2019-05-09 09:18:00</view>
+      </view>
+      <view class="icdName">感冒感冒</view>
+      <view class="goInfo">
+        <view>详情</view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  export default class RegisterFwe extends wepy.page {
+    config = {
+      navigationBarTitleText: '就诊记录'
+    }
+    components = {
+    }
+
+    mixins = []
+
+    data = {
+      userInfo: new Object(),
+      orgCode: ''
+    }
+
+    computed = {
+      
+    }
+
+    methods = {
+      goRegisterFwe() {
+        this.$navigate(`/pages/registerFwe`)
+      }
+    }
+
+    events = {
+  
+    }
+
+    onLoad() {
+      this.orgCode = this.$parent.globalData.orgCode
+      this.userInfo = this.$parent.globalData.userInfo
+      // 获取就诊记录
+      this.findRegisterFweChat()
+    }
+    findRegisterFweChat() {
+      this.registerFwe = [
+        {
+          registerKey: "b8061d7f20704171bf039c3d3e2a53c0",
+          userName: "医生",
+          createTime: "2019-05-09 09:18:00",
+          icdName: "感冒",
+        },
+        {
+          registerKey: "b8061d7f20704171bf039c3d3e2a53c0",
+          userName: "医生",
+          createTime: "2019-05-09 09:18:00",
+          icdName: "感冒",
+        },
+        {
+          registerKey: "b8061d7f20704171bf039c3d3e2a53c0",
+          userName: "医生",
+          createTime: "2019-05-09 09:18:00",
+          icdName: "感冒",
+        }
+
+      ]
+      return ''
+      wx.request({
+        url: `${this.$parent.globalData.requestUrl}findRegisterFweChat`,
+        method: 'GET',
+        data: {
+          'dto.orgCode': this.orgCode,
+          'dto.crmPatient.patientKey': this.userInfo.patientKey
+        },
+        success: data => {
+          data = this.$parent.null2str(data)
+          data = data.data.dto
+          if (data.result === '0') {
+            // wx.showToast({
+            //   title: '取消成功',
+            //   icon: 'success',
+            //   duration: 2000,
+            //   mask:true
+            // })
+            // this.geReservationList()
+          }
+        }
+      })
+    }
+  }
+</script>
