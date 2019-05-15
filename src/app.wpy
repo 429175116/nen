@@ -329,6 +329,7 @@ export default class extends wepy.app {
       'pages/reservationList', // 预约列表
       'pages/registerFwe', // 就诊记录
       'pages/registerFweInfo', // 就诊记录详情
+      'pages/myInfo', // 我的信息
       'pages/setUserInfo' // 用户信息录入
       
     ],

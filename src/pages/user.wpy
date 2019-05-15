@@ -87,6 +87,10 @@
       <view class="userName">{{userInfoShow.nickName}}</view>
     </view>
     <view class="userInfpList">
+      <view class="item" @tap="goMyInfo">
+        <view>我的信息</view>
+        <icon class="iconfont icon-jiantou"></icon>
+      </view>
       <view class="item" @tap="goRegisterFwe">
         <view>就诊记录</view>
         <icon class="iconfont icon-jiantou"></icon>
@@ -146,6 +150,9 @@
       goPage (url, evt) {
         // 销毁当前页{跳转}
         this.$redirect(url)
+      },
+      goMyInfo() {
+        this.$navigate(`/pages/myInfo`)
       },
       goRegisterFwe() {
         this.$navigate(`/pages/registerFwe`)

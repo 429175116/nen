@@ -1,0 +1,149 @@
+<style lang="less">
+page{
+  background-color: #fff;
+}
+.reportButton{
+  width: 750rpx;
+  height: 150rpx;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1rpx solid #979797;
+}
+.reportButton view{
+  width: 673rpx;
+  height: 94rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #7bb312;
+  border-radius: 20rpx;
+  font-size: 30rpx;
+  color: #fff;
+}
+.setUserInfo{
+  width: 690rpx;
+  padding: 50rpx 30rpx;
+  display: flex;
+  // align-items: center;
+  justify-content: space-between;
+}
+.con{
+  width: 490rpx;
+  font-size: 30rpx;
+}
+.info{
+  font-size: 25rpx;
+  color: #979797;
+  padding-top: 20rpx;
+  display: flex;
+  justify-content: flex-start;
+}
+.info view{
+  width: 143rpx;
+  height: 68rpx;
+  border: 1rpx solid;
+  font-size: 27rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10rpx;
+  margin-right: 20rpx;
+}
+.men{
+  color: #788fff;
+  border-color: #eaf0fe;
+  background-color: #eaf0fe;
+}
+.woman{
+  color: #fa3c48;
+  background-color: #ffe6e7;
+  border-color: #ffe6e7;
+}
+.lable{
+  width: 200rpx;
+  font-size: 30rpx;
+  color: #343434;
+}
+input{
+  color: #343434;
+  border-bottom: 1rpx solid #f2f2f2;
+}
+</style>
+<template>
+  <view>
+    <form bindsubmit="newUser" bindreset="formReset">
+      <view class="setUserInfo">
+        <lable>姓名：</lable>
+        <view class="con">
+          <input type="text" value="{{userInfo.patName}}" name="name" disabled />
+          <view class="info">
+            <view class="{{userInfo.sexKey == 1?'men':''}}" @tap="selGender">先生</view>
+            <view class="{{userInfo.sexKey == 2?'woman':''}}" @tap="selGender">女士</view>
+          </view>
+        </view>
+      </view>
+      <view class="setUserInfo">
+        <lable>电话：</lable>
+        <view class="con">
+          <input type="number" value="{{userInfo.phoneNumber}}" name="mobile" disabled />
+        </view>
+      </view>
+      <view class="setUserInfo">
+        <lable>身份证号：</lable>
+        <view class="con">
+          <input type="text" value="{{userInfo.papersCode}}" name="identity" disabled />
+        </view>
+      </view>
+      <view class="setUserInfo">
+        <lable>年龄</lable>
+        <view class="con">
+          <input type="text" value="{{userInfo.age}}" name="identity" disabled />
+        </view>
+      </view>
+      <view class="setUserInfo">
+        <lable>出生日期：</lable>
+        <view class="con">
+          <input type="text" value="{{userInfo.birthday}}" name="identity" disabled />
+        </view>
+      </view>
+    </form>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import check from '../mixins/check'
+  export default class MyInfo extends wepy.page {
+    config = {
+      navigationBarTitleText: '我的信息'
+    }
+    components = {
+
+    }
+
+    mixins = [check]
+
+    data = {
+      userInfo: new Object(),
+    }
+
+    computed = {
+
+    }
+
+    methods = {
+    }
+
+    events = {
+
+    }
+
+    onLoad() {
+      this.orgCode = this.$parent.globalData.orgCode
+      this.userInfo = this.$parent.globalData.userInfo
+    }
+  }
+</script>
