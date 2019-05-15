@@ -2,19 +2,6 @@
   page{
     background-color: #f5f5f5;
   }
-  .user{
-    width: 750rpx;
-    height: 340rpx;
-    background-color: #43bea9;
-    padding-top: 30rpx;
-  }
-  .img1{
-    width: 750rpx;
-    height: 240rpx;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
   .list{
     width: 750rpx;
     height: auto;
@@ -66,7 +53,7 @@
       </view>
       <view class="icdName">感冒感冒</view>
       <view class="goInfo">
-        <view>详情</view>
+        <view data-registerKey="b8061d7f20704171bf039c3d3e2a53c0" @tap="goRegisterFwe">详情</view>
       </view>
     </view>
   </scroll-view>
@@ -94,8 +81,8 @@
     }
 
     methods = {
-      goRegisterFwe() {
-        this.$navigate(`/pages/registerFwe`)
+      goRegisterFwe(e) {
+        this.$navigate(`/pages/registerFweInfo?registerkey=${e.currentTarget.dataset.registerKey}`)
       }
     }
 
