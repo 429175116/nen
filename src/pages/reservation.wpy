@@ -62,13 +62,13 @@
   justify-content: space-between;
   background-color: #fff;
   .all{
-    width: 80rpx;
-    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #43beaa;
+    flex-direction: column;
+    padding: 15rpx;
     color: #fff;
+    background-color: #43beaa;
   }
   .sel{
     display: flex;
@@ -197,35 +197,12 @@
 </view> -->
 <view>
   <view class="selTime">
-    <view class="all">全部</view>
-    <view class="sel">
-      <view>周三</view>
-      <view>05.15</view>
-    </view>
-    <view class="sel">
-      <view>周三</view>
-      <view>05.15</view>
-    </view>
-    <view class="sel">
-      <view>周三</view>
-      <view>05.15</view>
-    </view>
-    <view class="sel">
-      <view>周三</view>
-      <view>05.15</view>
-    </view>
-    <view class="sel">
-      <view>周三</view>
-      <view>05.15</view>
-    </view>
-    <view class="sel">
-      <view>周三</view>
-      <view>05.15</view>
-    </view>
-    <view class="sel">
-      <view>周三</view>
-      <view>05.15</view>
-    </view>
+    <repeat for="{{showTime}}" item="item">
+      <view data-i="{{item.i}}" @tap="selTime" class="{{item.i == thisSelTime ? 'all':'sel'}}">
+        <view>{{item.weekday}}</view>
+        <view>{{item.month}}.{{item.day}}</view>
+      </view>
+    </repeat>
   </view>
   <view class="doctors">
     <repeat for="{{doctorsList}}" item="item">
@@ -270,7 +247,8 @@ export default class Reservation extends wepy.page {
   data = {
     department: new Array(), // 诊所科室数据
     doctorsList: [],
-    index: 0,
+    showTime: [],
+    thisSelTime: 0,
     updata: {'name': '', 'mobile': '', 'dateValue': '日期选择', 'department': ''}, // 接口提交数据
     orgCode: '',
     userInfo: new Object()
@@ -305,6 +283,10 @@ export default class Reservation extends wepy.page {
           }
         }
       })
+    },
+    selTime(e) {
+      this.thisSelTime = e.currentTarget.dataset.i
+      this.getdepartmentArray()
     }
   }
 
@@ -314,15 +296,32 @@ export default class Reservation extends wepy.page {
     this.orgCode = this.$parent.globalData.orgCode
     this.userInfo = this.$parent.globalData.userInfo
     // 获取诊所科室数据
+    this.showTime = this.getNowFormatDate()
     this.getdepartmentArray()
+  }
+  getNowFormatDate() {
+    var oP = []
+    // 获取一星期后的时间：
+    var weekday = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];  
+    for(var i = 0; i <7; i++) {
+      var now = new Date();
+      var date = new Date(now.getTime()+i* 24 * 3600 * 1000);
+      var year = date.getFullYear();
+      var month = date.getMonth() + 1;
+      var day = date.getDate();
+      var myddy = date.getDay();
+      var timeJson = {'year': year, 'month': month, 'day': day, 'weekday': weekday[myddy],'i': i}
+      oP.push(timeJson)
+    }
+    return oP
   }
   // 获取诊所科室数据
   getdepartmentArray() {
-    // this.department = ['科室1', '科室2', '科室3', '科室4']
-    let time = new Date()
-    let year = time.getFullYear()
-    let month = time.getMonth() + 1
-    let date = time.getDate()
+    let i = this.thisSelTime
+    let time = this.showTime[i]
+    let year = time.year
+    let month = time.month
+    let date = time.day
     time = `${year}-${month}-${date}`
     wx.request({
       url: `${this.$parent.globalData.requestUrl}getRsDayByDrKey`,
@@ -335,6 +334,7 @@ export default class Reservation extends wepy.page {
       success: data => {
         data = this.$parent.null2str(data)
         data = data.data.dto
+        this.doctorsList = []
         if (data.result === '0') {
           this.doctorsList = data.rsDays
           this.$apply()
