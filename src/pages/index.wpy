@@ -391,7 +391,9 @@
             title: '',
             content: '是否注册',
             success: res => {
-              this.$redirect('/pages/setUserInfo')
+              if (res.confirm) {
+                this.$redirect('/pages/setUserInfo')
+              }
             }
           })
           return ''
@@ -514,7 +516,9 @@
                   title: '',
                   content: '是否注册',
                   success: res => {
-                    this.$redirect('/pages/setUserInfo')
+                    if (res.confirm) {
+                      this.$redirect('/pages/setUserInfo')
+                    }
                   }
                 })
               }

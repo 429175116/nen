@@ -93,7 +93,7 @@
         method: 'GET',
         data: {
           'dto.orgCode': this.orgCode,
-          'dto.rsRegister.registerKey': options.registerKey
+          'dto.rsRegister.registerKey': options.registerkey
         },
         success: data => {
           data = this.$parent.null2str(data)

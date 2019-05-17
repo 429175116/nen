@@ -338,17 +338,12 @@ export default class Reservation extends wepy.page {
         if (data.result === '0') {
           this.doctorsList = data.rsDays
           this.$apply()
+        } else {
+          wx.showModal({
+            title: '',
+            content: data.msg
+          })
         }
-        //   this.userInfo = data.crmPatient
-        //   this.$parent.globalData.userInfo = this.userInfo
-        //   wx.showModal({
-        //     title: '',
-        //     content: '是否注册',
-        //     success: res => {
-        //       this.$redirect('/pages/setUserInfo')
-        //     }
-        //   })
-        // }
       }
     })
     
@@ -374,6 +369,11 @@ export default class Reservation extends wepy.page {
             mask:true
           })
           this.getdepartmentArray()
+        } else {
+          wx.showModal({
+            title: '',
+            content: data.msg
+          })
         }
       }
     })

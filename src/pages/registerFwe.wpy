@@ -46,16 +46,18 @@
 <template>
 <view>
   <scroll-view scroll-y="hidden">
-    <view class="item">
-      <view class="info">
-        <view>医生名称</view>
-        <view class="time">2019-05-09 09:18:00</view>
+    <repeat for="{{registerFwe}}" item="item">
+      <view class="item">
+        <view class="info">
+          <view>{{item.userName}}</view>
+          <view class="time">{{item.createTime}}</view>
+        </view>
+        <view class="icdName">{{item.icdName}}</view>
+        <view class="goInfo">
+          <view data-registerkey="{{item.registerKey}}" @tap="goRegisterFwe">详情</view>
+        </view>
       </view>
-      <view class="icdName">感冒感冒</view>
-      <view class="goInfo">
-        <view data-registerKey="b8061d7f20704171bf039c3d3e2a53c0" @tap="goRegisterFwe">详情</view>
-      </view>
-    </view>
+    </repeat>
   </scroll-view>
 </view>
 </template>
@@ -73,6 +75,7 @@
 
     data = {
       userInfo: new Object(),
+      registerFwe: [],
       orgCode: ''
     }
 
@@ -82,7 +85,8 @@
 
     methods = {
       goRegisterFwe(e) {
-        this.$navigate(`/pages/registerFweInfo?registerkey=${e.currentTarget.dataset.registerKey}`)
+        console.log(e.currentTarget.dataset.registerkey)
+        this.$navigate(`/pages/registerFweInfo?registerkey=${e.currentTarget.dataset.registerkey}`)
       }
     }
 
@@ -97,28 +101,6 @@
       this.findRegisterFweChat()
     }
     findRegisterFweChat() {
-      this.registerFwe = [
-        {
-          registerKey: "b8061d7f20704171bf039c3d3e2a53c0",
-          userName: "医生",
-          createTime: "2019-05-09 09:18:00",
-          icdName: "感冒",
-        },
-        {
-          registerKey: "b8061d7f20704171bf039c3d3e2a53c0",
-          userName: "医生",
-          createTime: "2019-05-09 09:18:00",
-          icdName: "感冒",
-        },
-        {
-          registerKey: "b8061d7f20704171bf039c3d3e2a53c0",
-          userName: "医生",
-          createTime: "2019-05-09 09:18:00",
-          icdName: "感冒",
-        }
-
-      ]
-      return ''
       wx.request({
         url: `${this.$parent.globalData.requestUrl}findRegisterFweChat`,
         method: 'GET',
@@ -130,13 +112,9 @@
           data = this.$parent.null2str(data)
           data = data.data.dto
           if (data.result === '0') {
-            // wx.showToast({
-            //   title: '取消成功',
-            //   icon: 'success',
-            //   duration: 2000,
-            //   mask:true
-            // })
-            // this.geReservationList()
+            this.registerFwe = data.diagnosisList
+            console.log(this.registerFwe)
+            this.$apply()
           }
         }
       })
