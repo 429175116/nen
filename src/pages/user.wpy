@@ -79,18 +79,14 @@
     <view class="user">
       <view class="img1">
         <view class="img2">
-          <view class="img3">
-            <image @tap="goLogin" src="{{userInfoShow.avatarUrl}}" />
+          <view class="img3" @tap="goMyInfo">
+            <image src="{{userInfoShow.avatarUrl}}" />
           </view>
         </view>
       </view>
       <view class="userName">{{userInfoShow.nickName}}</view>
     </view>
     <view class="userInfpList">
-      <view class="item" @tap="goMyInfo">
-        <view>我的信息</view>
-        <icon class="iconfont icon-jiantou"></icon>
-      </view>
       <view class="item" @tap="goRegisterFwe">
         <view>就诊记录</view>
         <icon class="iconfont icon-jiantou"></icon>

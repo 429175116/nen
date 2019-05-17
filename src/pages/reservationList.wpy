@@ -84,15 +84,24 @@
               {{item.timeName}}
               <view>{{item.registerTypeName}}</view>
             </view>
+            <view class="name">
+              <icon class="iconfont icon-yiliaohangyedeICON-2"></icon>
+              {{item.appTime}}
+              <view>提交时间</view>
+            </view>
+            <view class="name">
+              <icon class="iconfont icon-yiliaohangyedeICON-2"></icon>
+              {{item.appRegTime}}
+              <view>预约时间</view>
+            </view>
           </view>
           <view class="timeortime">
             <view class="sta" wx:if="{{item.appStatus === '0'}}">已预约</view>
             <view class="sta" wx:if="{{item.appStatus === '1'}}">已就诊</view>
             <view class="sta" wx:if="{{item.appStatus === '2'}}">已取消</view>
             <view class="sta" wx:if="{{item.appStatus === '3'}}">爽约</view>
-            <view class="sta">{{item.appTime}}</view>
+            <!-- <view class="sta">{{item.appTime}}</view> -->
           </view>
-          
         </view>
         <view class="button" wx:if="{{item.appStatus === '0'}}">
           <view data-id="{{item.appointmentKey}}" @tap="cancelBook">取消</view>
@@ -160,6 +169,11 @@ export default class ReservationList extends wepy.page {
         if (data.result === '0') {
           this.reservationList = data.appointmentVos
           this.$apply()
+        } else {
+          wx.showModal({
+            title: '',
+            content: data.msg
+          })
         }
       }
     })
@@ -183,6 +197,11 @@ export default class ReservationList extends wepy.page {
             mask:true
           })
           this.geReservationList()
+        } else {
+          wx.showModal({
+            title: '',
+            content: data.msg
+          })
         }
       }
     })

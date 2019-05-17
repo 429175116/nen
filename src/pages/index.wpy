@@ -329,7 +329,7 @@
         </view>
         <view class="infoList">
           <icon class="iconfont icon-yiliaohangyedeICON-2"></icon>
-          {{contactData.time}}
+          {{contactData.mailbox}}
         </view>
         <view class="infoList">
           <icon class="iconfont icon-yiliaohangyedeICON-5"></icon>
@@ -672,8 +672,8 @@
     getcontactData() {
       this.contactData = {
         'address': '陕西省西安市沣东新城协同创新港研发办公楼A座8层-60号',
-        'time': '2019-01-30',
-        'phone': '029-888888888'
+        'mailbox': 'services@enuoe.cn',
+        'phone': '029-85798937'
       }
       this.$parent.globalData.contactData = this.contactData
       this.$apply()

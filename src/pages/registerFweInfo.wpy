@@ -109,6 +109,11 @@
             //   mask:true
             // })
             // this.geReservationList()
+          } else {
+            wx.showModal({
+              title: '',
+              content: data.msg
+            })
           }
         }
       })

@@ -27,7 +27,7 @@ image{
         </view>
         <view class="infoList">
           <icon class="iconfont icon-yiliaohangyedeICON-2"></icon>
-          {{contactData.time}}
+          {{contactData.mailbox}}
         </view>
         <view class="infoList">
           <icon class="iconfont icon-yiliaohangyedeICON-5"></icon>

@@ -201,17 +201,18 @@ input{
           'dto.crmPatient.phoneNumber': data.mobile
         },
         success: data => {
-          console.log(data)
-          if (data.data.dto.result === '0') {
+          data = this.$parent.null2str(data)
+          data = data.data.dto
+          if (data.result === '0') {
             wx.showModal({
               title: '',
-              content: data.data.dto.msg
+              content: data.msg
             })
             this.$redirect('/pages/index')
           } else {
             wx.showModal({
               title: '',
-              content: data.data.dto.msg
+              content: data.msg
             })
           }
         }
