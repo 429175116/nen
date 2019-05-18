@@ -62,6 +62,7 @@ button::after {
 .icon-yiliaohangyedeICON-12:before { content: "\e625"; } // 地址
 .icon-yiliaohangyedeICON-2:before { content: "\e610"; } // 预约日期
 .icon-yiliaohangyedeICON-5:before { content: "\e61b"; } // 消息
+.icon-yiliaohangyedeICON-4:before { content: "\e613"; } // 药品
 
 .icon-yiliaohangyedeICON-3:before { content: "\e611"; } // 智能导诊
 

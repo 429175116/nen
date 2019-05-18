@@ -167,6 +167,12 @@ export default class ReservationList extends wepy.page {
         data = this.$parent.null2str(data)
         data = data.data.dto
         if (data.result === '0') {
+          
+          let i = 0
+          for(i in data.appointmentVos) {
+            data.appointmentVos[i]['appTime'] = data.appointmentVos[i].appTime.split('.')[0]
+            data.appointmentVos[i]['appRegTime'] = data.appointmentVos[i].appRegTime.split(' ')[0]
+          }
           this.reservationList = data.appointmentVos
           this.$apply()
         } else {

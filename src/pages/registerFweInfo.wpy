@@ -17,36 +17,249 @@
 //       display: flex;
 //       align-items: center;
 //       justify-content: space-between;
-//       font-size: 28rpx;
-//       color: #343434;
-//       .time{
-//         color: #9f9f9f;
-//       }
-//     }
-//     .icdName{
-//       font-size: 25rpx;
-//       color: #9f9f9f;
-//       border-bottom: 1rpx solid #9f9f9f;
-//       padding: 20rpx 0;
-//     }
-//     .goInfo{
-//       display: flex;
-//       justify-content: flex-end;
-//       margin-top: 20rpx;
-//       view{
-//         padding: 5rpx 15rpx;
-//         background-color: #43bea9;
-//         border-radius: 5rpx;
-//         color: #fff;
-//         font-size: 25rpx
-//       }
-//     }
-//   }
+.typeItem{
+  padding: 20rpx;
+  width: 710rpx;
+  height: auto;
+  background-color: #fff;
+  .typeName{
+    width: 670rpx;
+    color: #fff;
+    font-size: 30rpx;
+    font-weight: 600;
+    background-color: #43beaa;
+    padding: 20rpx;
+  }
+  .centent{
+    margin-top: 20rpx;
+    font-size: 28rpx;
+    .itemName,.itemCom{
+      
+      width: 670rpx;
+      padding: 0 20rpx;
+      min-height: 80rpx;
+      height: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #eef2f6;
+      color: #707070;
+      icon{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 40rpx !important;
+        color: #43beaa;
+        margin-right: 10rpx;
+      }
+      .drugName{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+      }
+    }
+    .itemCom{
+      border-top: 1rpx solid #9f9f9f;
+      line-height: 60rpx;
+    }
+    .conwitht view{
+      width: 33.33%;
+    }
+    .conwitht view:nth-child(1){
+      text-align: left;
+    }
+    .conwitht view:nth-child(2){
+      text-align: center;
+    }
+    .conwitht view:nth-child(3){
+      text-align: right;
+    }
+  }
+}
 </style>
 <template>
 <view>
   <scroll-view scroll-y="hidden">
-    {{fweData}}
+    <view class="typeItem">
+      <view class="typeName">病历信息</view>
+      <view class="centent">
+        <view class="itemName conwitht">
+          <view>姓名</view>
+          <view>诊断时间</view>
+          <view>体温</view>
+        </view>
+        <view class="itemCom conwitht">
+          <view>{{fweData.dsRecord.userName}}</view>
+          <view>{{fweData.dsRecord.createTime}}</view>
+          <view>{{fweData.dsRecord.temperature}}</view>
+        </view>
+      </view>
+      <view class="centent">
+        <view class="itemName conwitht">
+          <view>呼吸</view>
+          <view>血压（低）</view>
+          <view>血压（高）</view>
+        </view>
+        <view class="itemCom conwitht">
+          <view>{{fweData.dsRecord.breath}}</view>
+          <view>{{fweData.dsRecord.diastolic}}</view>
+          <view>{{fweData.dsRecord.systolic}}</view>
+        </view>
+      </view>
+      <view class="centent">
+        <view class="itemName conwitht">
+          <view>身高</view>
+          <view>体重</view>
+          <view>脉搏</view>
+        </view>
+        <view class="itemCom conwitht">
+          <view>{{fweData.dsRecord.height}}</view>
+          <view>{{fweData.dsRecord.weight}}</view>
+          <view>{{fweData.dsRecord.pulse}}</view>
+        </view>
+      </view>
+      <view class="centent">
+        <view class="itemName">主诉</view>
+        <view class="itemCom">{{fweData.dsRecord.subject}}</view>
+      </view>
+      <view class="centent">
+        <view class="itemName">现病史</view>
+        <view class="itemCom">{{fweData.dsRecord.object}}</view>
+      </view>
+      <view class="centent">
+        <view class="itemName">医嘱建议</view>
+        <view class="itemCom">{{fweData.dsRecord.proposal}}</view>
+      </view>
+    </view>
+    <view class="typeItem">
+      <view class="typeName">诊断信息</view>
+      <view class="centent">
+        <view class="itemName">
+          <view>诊断内容</view>
+          <view>诊断时间</view>
+        </view>
+        <repeat for="{{fweData.diagnosisList}}" item="item">
+          <view class="itemCom">
+            <view>{{item.icdName}}</view>
+            <view>{{item.createTime}}</view>
+          </view>
+        </repeat>
+      </view>
+    </view>
+    <!-- <view class="typeItem">
+      <view class="typeName">检验检测信息</view>
+      <view class="centent">
+        <view class="itemName">检查项目</view>
+        <view class="itemCom">itemName</view>
+      </view>
+    </view> -->
+    <view class="typeItem">
+      <view class="typeName">处方信息</view>
+      <view class="centent">
+        <view class="itemName">
+          <view>处方类型名称</view>
+          <view>草药处方付数</view>
+        </view>
+        <repeat for="{{fweData.orderLists}}" item="item">
+          <view class="itemCom" data-orderType="{{item.orderType}}" data-orderKey="{{item.orderKey}}">
+            <view>{{item.orderName}}</view>
+            <view>{{item.takeDays}}</view>
+          </view>
+        </repeat>
+      </view>
+    </view>
+    <view class="typeItem">
+      <view class="typeName">西药处方信息</view>
+      <repeat for="{{fweData.dsOrderDetailListXY}}" item="item">
+        <view class="centent" data-orderKey="{{item.orderKey}}">
+          <view class="itemName">
+            <view class="drugName">
+              <icon class="iconfont icon-yiliaohangyedeICON-4"></icon>
+              药品名称
+            </view>
+            <view>{{item.itemName}}</view>
+          </view>
+          <view class="itemCom">
+            <view>药品规格</view>
+            <view>{{item.specifications}}</view>
+          </view>
+          <view class="itemCom">
+            <view>用量</view>
+            <view>{{item.useQty}}</view>
+          </view>
+          <view class="itemCom">
+            <view>用量单位</view>
+            <view>{{item.useUnitName}}</view>
+          </view>
+          <view class="itemCom">
+            <view>用法</view>
+            <view>{{item.frequency}}</view>
+          </view>
+          <view class="itemCom">
+            <view>使用天数</view>
+            <view>{{item.takeDays}}</view>
+          </view>
+          <view class="itemCom">
+            <view>总量</view>
+            <view>{{item.dosageQty}}</view>
+          </view>
+          <view class="itemCom">
+            <view>总量单位</view>
+            <view>{{item.saleUnitName}}</view>
+          </view>
+          <view class="itemCom">
+            <view>单价</view>
+            <view>{{item.price}}</view>
+          </view>
+          <view class="itemCom">
+            <view>总价</view>
+            <view>{{item.totAmount}}</view>
+          </view>
+        </view>
+      </repeat>
+    </view>
+    <view class="typeItem">
+      <view class="typeName">草药处方信息</view>
+      <repeat for="{{fweData.dsOrderDetailListCY}}" item="item">
+        <view class="centent" data-orderKey="{{item.orderKey}}">
+          <view class="itemName">
+            <view class="drugName">
+              <icon class="iconfont icon-yiliaohangyedeICON-4"></icon>
+              药品名称
+            </view>
+            <view>{{item.itemName}}</view>
+          </view>
+          <view class="itemCom">
+            <view>用量</view>
+            <view>{{item.useQty}}</view>
+          </view>
+          <view class="itemCom">
+            <view>用量单位</view>
+            <view>{{item.useUnitName}}</view>
+          </view>
+          <view class="itemCom">
+            <view>用法</view>
+            <view>{{item.frequency}}</view>
+          </view>
+          <view class="itemCom">
+            <view>总量</view>
+            <view>{{item.dosageQty}}</view>
+          </view>
+          <view class="itemCom">
+            <view>总量单位</view>
+            <view>{{item.saleUnitName}}</view>
+          </view>
+          <view class="itemCom">
+            <view>单价</view>
+            <view>{{item.price}}</view>
+          </view>
+          <view class="itemCom">
+            <view>总价</view>
+            <view>{{item.totAmount}}</view>
+          </view>
+        </view>
+      </repeat>
+    </view>
   </scroll-view>
 </view>
 </template>
@@ -98,17 +311,17 @@
         success: data => {
           data = this.$parent.null2str(data)
           data = data.data.dto
-          this.fweData = JSON.stringify(data)
-          this.$apply()
           if (data.result === '0') {
             
-            // wx.showToast({
-            //   title: '取消成功',
-            //   icon: 'success',
-            //   duration: 2000,
-            //   mask:true
-            // })
-            // this.geReservationList()
+            data.dsRecord['createTime'] = data.dsRecord.createTime.split(' ')[0]
+            for (let i = 0; i < data.diagnosisList.length; i++) {
+              data.diagnosisList[i]['createTime'] = data.diagnosisList[i].createTime.split(' ')[0]
+            }
+            for (let i = 0; i < data.dsOrderDetailListSQ.length; i++) {
+              data.dsOrderDetailListSQ[i]['createTime'] = data.dsOrderDetailListSQ[i].createTime.split(' ')[0]
+            }
+            this.fweData = data
+            this.$apply()
           } else {
             wx.showModal({
               title: '',
