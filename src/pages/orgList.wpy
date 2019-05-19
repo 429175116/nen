@@ -1,0 +1,120 @@
+<style lang="less">
+//   page{
+//     background-color: #f5f5f5;
+//   }
+//   .list{
+//     width: 750rpx;
+//     height: auto;
+//   }
+//   .item{
+//     width: 630rpx;
+//     margin: 30rpx;
+//     padding: 30rpx;
+//     height: auto;
+//     background-color: #fff;
+//     border-radius: 30rpx;
+//     .info{
+//       display: flex;
+//       align-items: center;
+//       justify-content: space-between;
+.list{
+  width: 750rpx;
+  height: auto;
+}
+.item{
+  width: 710rpx;
+  margin: 20rpx;
+  height: auto;
+  border-radius: 10rpx;
+  background-color: #fff;
+  color: #9f9f9f;
+}
+.name{
+  width: 100%;
+  background-color: #43beaa;
+  height: 150rpx;
+  color: #fff;
+  font-size: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10rpx 10rpx 0 0;
+}
+.address{
+  padding: 20rpx;
+  width: 670rpx;
+  color: #9f9f9f;
+  font-size: 28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  line-height: 50rpx;
+  .iconfont{
+    margin-left: 20rpx;
+  }
+}
+</style>
+<template>
+<view>
+  <scroll-view scroll-y="hidden">
+    <view class="list">
+      <view class="item" @tap="goOrg">
+        <view class="name">演示机构</view>
+        <view class="address">
+          <p>陕西省西安市沣东新城协同创新港研发办公楼A座8层-60号</p>
+          <icon class="iconfont icon-jiantou"></icon>
+        </view>
+      </view>
+      <view class="item" @tap="goOrg">
+        <view class="name">演示机构2-区域诊所</view>
+        <view class="address">
+          <p>诊所系统功能：患者管理、诊疗流程、药品管理、财务管理等功能。</p>
+          <icon class="iconfont icon-jiantou"></icon>
+        </view>
+      </view>
+      <view class="item" @tap="goOrg">
+        <view class="name">演示机构3-互联网医院</view>
+        <view class="address">
+          <p>以微信小程序为入口，实现在线问诊，电子处方，预约挂号，患者档案信息查询，把线下的医疗服务互联网化。</p>
+          <icon class="iconfont icon-jiantou"></icon>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  export default class OrgList extends wepy.page {
+    config = {
+      navigationBarTitleText: '诊所列表'
+    }
+    components = {
+    }
+
+    mixins = []
+
+    data = {
+      
+    }
+
+    computed = {
+      
+    }
+
+    methods = {
+      goOrg() {
+        this.$navigate(`/pages/index`)
+      }
+    }
+
+    events = {
+  
+    }
+
+    onLoad(options) {
+      
+    }
+  }
+</script>

@@ -450,7 +450,7 @@
       // 获取诊所ID
       this.orgCode = this.$parent.globalData.orgCode
       this.clinicInfo.id = '10'
-      this.clinicInfo.name = '长安区第一诊所'
+      this.clinicInfo.name = '互联网医院'
       wx.setNavigationBarTitle({
         title: this.clinicInfo.name
       })
@@ -613,14 +613,6 @@
       this.departmentList = [
         {'id': '1', 'name': '内科', 'position': '呼吸,消化,内分泌', 'icon': 'yiliaohangyedeICON-3'},
         {'id': '2', 'name': '外科', 'position': '骨科,心胸,脑,肝胆,泌尿', 'icon': 'yiliaohangyedeICON-3'},
-        {'id': '2', 'name': '儿科', 'position': '小儿发烧、咳嗽', 'icon': 'yiliaohangyedeICON-3'},
-        {'id': '2', 'name': '神经科', 'position': '小儿发烧、咳嗽', 'icon': 'yiliaohangyedeICON-3'},
-        {'id': '2', 'name': '精神科', 'position': '小儿发烧、咳嗽', 'icon': 'yiliaohangyedeICON-3'},
-
-        {'id': '2', 'name': '眼科', 'position': '小儿发烧、咳嗽', 'icon': 'yiliaohangyedeICON-3'},
-        {'id': '2', 'name': '肿瘤科', 'position': '小儿发烧、咳嗽', 'icon': 'yiliaohangyedeICON-3'},
-        {'id': '2', 'name': '皮肤科', 'position': '小儿发烧、咳嗽', 'icon': 'yiliaohangyedeICON-3'},
-        {'id': '2', 'name': '口腔科', 'position': '小儿发烧、咳嗽', 'icon': 'yiliaohangyedeICON-3'},
         {'id': '2', 'name': '检验科', 'position': '小儿发烧、咳嗽', 'icon': 'yiliaohangyedeICON-3'},
         {'id': '2', 'name': '中医', 'position': '小儿发烧、咳嗽', 'icon': 'yiliaohangyedeICON-3'},
         {'id': '3', 'name': '妇科', 'position': '小儿发烧、咳嗽', 'icon': 'yiliaohangyedeICON-3'}
