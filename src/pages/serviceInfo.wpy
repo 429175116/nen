@@ -121,7 +121,7 @@
       </repeat>
     </view>
     <view class="nav">
-      <view>
+      <view data-phone="{{contactData.phone}}" @tap="callPhone">
         <icon class="iconfont icon-dianhua"></icon>
         电话咨询
       </view>
@@ -143,6 +143,7 @@
     mixins = []
 
     data = {
+      contactData: new Object(), // 地址信息
       autoW: new Array(),
       autoH: new Array(),
       bannerImgList: new Array(), // banner轮播图数据
@@ -155,6 +156,9 @@
     }
 
     methods = {
+      callPhone(e) {
+        this.$parent.callPhone(e.currentTarget.dataset.phone)
+      },
       autoImage(e) {
         // 获取图片的宽高
         let index = e.currentTarget.dataset.index
@@ -185,6 +189,7 @@
     }
 
     onLoad() {
+      this.contactData = this.$parent.globalData.contactData
       // 获取banner轮播图数据
       this.getBannerList()
       // 获取服务的信息

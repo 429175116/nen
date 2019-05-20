@@ -399,6 +399,20 @@ export default class extends wepy.app {
   getLocalTime(nS) {     
     return new Date(parseInt(nS) * 1000).toLocaleString().replace(/:\d{1,2}$/,' ');     
   }
+  callPhone(phone) {
+    wx.makePhoneCall({
+      phoneNumber: phone //仅为示例，并非真实的电话号码
+    })
+  }
+  openMap(contactData){
+    wx.openLocation({
+      latitude: contactData.latitude,
+      longitude: contactData.longitude,
+      scale: 18,
+      name: contactData.name,
+      address: contactData.address
+    })
+  }
 
   /**
   * null => ''  数据中null转为""

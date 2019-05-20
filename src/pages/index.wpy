@@ -223,7 +223,7 @@
         <view class="iconfont icon-yiliaohangyedeICON-5"></view>
         <view>在线咨询</view>
       </button>
-      <view class="topNavItem" @tap="addressShow">
+      <view class="topNavItem" @tap="openMapRun">
         <view class="iconfont icon-yiliaohangyedeICON-12"></view>
         <view>来院路线</view>
       </view>
@@ -323,7 +323,7 @@
         </view>
       </view>
       <view class="expertList listaddress">
-        <view class="infoList">
+        <view class="infoList" @tap="openMapRun">
           <icon class="iconfont icon-yiliaohangyedeICON-12"></icon>
           {{contactData.address}}
         </view>
@@ -331,7 +331,7 @@
           <icon class="iconfont icon-yiliaohangyedeICON-2"></icon>
           {{contactData.mailbox}}
         </view>
-        <view class="infoList">
+        <view class="infoList" data-phone="{{contactData.phone}}" @tap="callPhone">
           <icon class="iconfont icon-yiliaohangyedeICON-5"></icon>
           {{contactData.phone}}
         </view>
@@ -384,6 +384,13 @@
         // 销毁当前页{跳转}
         this.$redirect(url)
       },
+      callPhone(e) {
+        this.$parent.callPhone(e.currentTarget.dataset.phone)
+      },
+      openMapRun(e) {
+        this.$parent.openMap(this.contactData)
+      },
+      // 
       // 挂号
       registered() {
         if (this.userInfo.patientKey === '') {
@@ -426,17 +433,6 @@
       },
       
 
-    }
-    addressShow() {
-      // wx.getLocation({
-      //   type: 'wgs84',
-      //   success(res) {
-      //     const latitude = res.latitude
-      //     const longitude = res.longitude
-      //     const speed = res.speed
-      //     const accuracy = res.accuracy
-      //   }
-      // })
     }
     events = {
   
@@ -663,6 +659,9 @@
     // 获取联系我们信息
     getcontactData() {
       this.contactData = {
+        'name': '西安一诺尔软件有限公司',
+        'latitude': 34.2559700000,
+        'longitude': 108.7700200000,
         'address': '陕西省西安市沣东新城协同创新港研发办公楼A座8层-60号',
         'mailbox': 'services@enuoe.cn',
         'phone': '029-85798937'

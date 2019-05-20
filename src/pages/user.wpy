@@ -99,18 +99,18 @@
         <view>我的预约</view>
         <icon class="iconfont icon-jiantou"></icon>
       </view>
-      <view class="item" @tap="goAddressList">
+      <!-- <view class="item" @tap="goAddressList">
         <view>收货地址</view>
         <icon class="iconfont icon-jiantou"></icon>
-      </view>
-      <view class="item" @tap="goAddressList">
+      </view> -->
+      <view class="item" @tap="goMyInfo">
         <view>患者档案</view>
         <icon class="iconfont icon-jiantou"></icon>
       </view>
-      <view class="item" @tap="goAddressList">
+      <!-- <view class="item" @tap="goAddressList">
         <view>检验检查</view>
         <icon class="iconfont icon-jiantou"></icon>
-      </view>
+      </view> -->
     </view>
   </scroll-view>
   <nav @childFn.user="goPage" />

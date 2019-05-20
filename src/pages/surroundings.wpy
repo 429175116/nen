@@ -21,7 +21,7 @@ image{
         </view>
       </view>
       <view class="expertList listaddress">
-        <view class="infoList">
+        <view class="infoList" @tap="openMapRun">
           <icon class="iconfont icon-yiliaohangyedeICON-12"></icon>
           {{contactData.address}}
         </view>
@@ -29,7 +29,7 @@ image{
           <icon class="iconfont icon-yiliaohangyedeICON-2"></icon>
           {{contactData.mailbox}}
         </view>
-        <view class="infoList">
+        <view class="infoList" data-phone="{{contactData.phone}}" @tap="callPhone">
           <icon class="iconfont icon-yiliaohangyedeICON-5"></icon>
           {{contactData.phone}}
         </view>
@@ -60,7 +60,12 @@ image{
     }
 
     methods = {
-      
+      callPhone(e) {
+        this.$parent.callPhone(e.currentTarget.dataset.phone)
+      },
+      openMapRun(e) {
+        this.$parent.openMap(this.contactData)
+      },
     }
     events = {
   

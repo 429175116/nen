@@ -89,7 +89,7 @@
       <view class="iconfont icon-yiliaohangyedeICON-5"></view>
       <view>在线咨询</view>
     </button>
-    <view class="topNavItem">
+    <view class="topNavItem" @tap="openMapRun">
       <view class="iconfont icon-yiliaohangyedeICON-12"></view>
       <view>来院路线</view>
     </view>
@@ -137,6 +137,7 @@
     mixins = []
 
     data = {
+      contactData: new Object(),
       doctorsInfo: new Object()
     }
 
@@ -145,13 +146,17 @@
     }
 
     methods = {
-      
+      openMapRun(e) {
+        this.$parent.openMap(this.contactData)
+      },
     }
     events = {
   
     }
 
     onLoad(option) {
+      // 获取保存在全局的联系我们数据
+      this.contactData = this.$parent.globalData.contactData
       // 获取医师信息
       this.getDoctorsInfo(option.id)
     }

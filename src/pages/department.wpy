@@ -73,7 +73,7 @@
         <view class="iconfont icon-yiliaohangyedeICON-5"></view>
         <view>在线咨询</view>
       </button>
-      <view class="topNavItem">
+      <view class="topNavItem" @tap="openMapRun">
         <view class="iconfont icon-yiliaohangyedeICON-12"></view>
         <view>来院路线</view>
       </view>
@@ -86,7 +86,7 @@
         <view></view>
       </view>
       <view class="expertList listaddress">
-        <view class="infoList">
+        <view class="infoList" @tap="openMapRun">
           <icon class="iconfont icon-yiliaohangyedeICON-12"></icon>
           {{contactData.address}}
         </view>
@@ -94,7 +94,7 @@
           <icon class="iconfont icon-yiliaohangyedeICON-2"></icon>
           {{contactData.mailbox}}
         </view>
-        <view class="infoList">
+        <view class="infoList" data-phone="{{contactData.phone}}" @tap="callPhone">
           <icon class="iconfont icon-yiliaohangyedeICON-5"></icon>
           {{contactData.phone}}
         </view>
@@ -123,7 +123,14 @@ export default class DoctorsInfo extends wepy.page {
 
   computed = {};
 
-  methods = {};
+  methods = {
+    callPhone(e) {
+      this.$parent.callPhone(e.currentTarget.dataset.phone)
+    },
+    openMapRun(e) {
+      this.$parent.openMap(this.contactData)
+    },
+  };
   events = {};
 
   onLoad() {
