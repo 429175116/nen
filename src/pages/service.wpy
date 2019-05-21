@@ -80,8 +80,12 @@
     methods = {
       // 底部导航跳转
       goPage (url, evt) {
-        // 销毁当前页{跳转}
-        this.$redirect(url)
+        if (url === '/pages/aboutUs') {
+          this.$navigate(url)
+        } else {
+          // 销毁当前页{跳转}
+          this.$redirect(url)
+        }
       },
       goService(e) {
         this.$navigate(`/pages/serviceInfo?id=${e.currentTarget.dataset.id}`)

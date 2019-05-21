@@ -105,7 +105,7 @@
 
     methods = {
       goOrg() {
-        this.$navigate(`/pages/index`)
+        this.$redirect(`/pages/index`)
       }
     }
 

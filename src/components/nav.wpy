@@ -166,7 +166,7 @@ export default class Nav extends wepy.component {
     },
     // 关于我们
     goAboutUs() {
-      this.$parent.$parent.globalData.navAction = ['noAction', 'noAction', 'noAction', 'action']
+      // this.$parent.$parent.globalData.navAction = ['noAction', 'noAction', 'noAction', 'action']
       this.$emit('childFn', '/pages/aboutUs')
     }
   };
