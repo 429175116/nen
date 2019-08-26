@@ -196,7 +196,8 @@ input{
         data: {
           'dto.orgCode': this.orgCode,
           'dto.crmPatient.wechat': this.userInfo.wechat,
-          'dto.crmPatient.patName': escape(data.name),
+          // 'dto.crmPatient.patName': escape(data.name),
+          'dto.crmPatient.patName': encodeURI(data.name),
           'dto.crmPatient.papersCode': data.identity,
           'dto.crmPatient.phoneNumber': data.mobile
         },

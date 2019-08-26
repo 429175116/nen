@@ -306,7 +306,9 @@ import 'wepy-async-function'
 export default class extends wepy.app {
   config = {
     pages: [
+      
       'pages/orgList',  // 机构列表
+      'pages/setUserInfo', // 用户信息录入
       'pages/index',  // 首页
       'pages/order',  // 订单
       'pages/orderList',  // 订单列表
@@ -332,7 +334,7 @@ export default class extends wepy.app {
       'pages/registerFwe', // 就诊记录
       'pages/registerFweInfo', // 就诊记录详情
       'pages/myInfo', // 我的信息
-      'pages/setUserInfo' // 用户信息录入
+      
       
     ],
 
